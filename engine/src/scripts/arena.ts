@@ -27,14 +27,29 @@ interface HistoryEntry {
   endedAt: number;
 }
 
+// Open a round if it doesn't exist yet; tolerate "already exists" so restarts
+// and the always-open-next-round flow never crash the loop.
+async function ensureRound(id: bigint, startsAt: bigint): Promise<void> {
+  try {
+    await arena.openRound(id, startsAt);
+    console.log(`[arena] round #${id} open — betting closes ${new Date(Number(startsAt) * 1000).toLocaleTimeString()}`);
+  } catch (err) {
+    console.warn(`[arena] openRound #${id} skipped (probably already open):`, (err as Error).message.slice(0, 90));
+  }
+}
+
 async function runRound(server: GameServer): Promise<void> {
   // our master is the only creator, so the next gameId is gameCount + 1
   const nextId = (await chain.gameCount()) + 1n;
-  const startsAt = BigInt(Math.floor((Date.now() + WINDOW_MS) / 1000));
-  await arena.openRound(nextId, startsAt);
-  console.log(`[arena] round #${nextId} open — betting closes ${new Date(Number(startsAt) * 1000).toLocaleTimeString()}`);
+  await ensureRound(nextId, BigInt(Math.floor((Date.now() + WINDOW_MS) / 1000)));
 
-  await sleep(WINDOW_MS);
+  // wait out this round's ON-CHAIN close time (correct even after a restart)
+  const r = await arena.round(nextId);
+  const waitMs = Number(r.startsAt) * 1000 - Date.now();
+  if (waitMs > 0) {
+    console.log(`[arena] betting on #${nextId} open for ${(waitMs / 1000).toFixed(0)}s…`);
+    await sleep(waitMs);
+  }
 
   try {
     await arena.closeBetting(nextId);
@@ -43,6 +58,10 @@ async function runRound(server: GameServer): Promise<void> {
   }
   const bets = await arena.betCount(nextId).catch(() => 0n);
   console.log(`[arena] betting closed for #${nextId} — ${bets} bet(s). Starting game…`);
+
+  // betting never stops: open the NEXT game's round immediately, so the crowd
+  // bets on game #N+1 while #N is playing out on screen.
+  await ensureRound(nextId + 1n, BigInt(Math.floor((Date.now() + WINDOW_MS) / 1000)));
 
   const frames: Snapshot[] = [];
   const game = new Game((snap) => {

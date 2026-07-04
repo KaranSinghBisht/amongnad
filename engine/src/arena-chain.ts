@@ -30,6 +30,11 @@ export const arena = {
   betCount: (g: bigint) =>
     publicClient.readContract({ ...ARENA, functionName: 'betCount', args: [g] } as any) as Promise<bigint>,
 
+  async round(g: bigint): Promise<{ startsAt: bigint; open: boolean; settled: boolean }> {
+    const r = (await publicClient.readContract({ ...ARENA, functionName: 'rounds', args: [g] } as any)) as any[];
+    return { startsAt: r[0] as bigint, open: r[1] as boolean, settled: r[2] as boolean };
+  },
+
   houseBalance: () =>
     publicClient.readContract({ ...ARENA, functionName: 'houseBalance', args: [] } as any) as Promise<bigint>,
 };
