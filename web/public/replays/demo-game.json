@@ -1,0 +1,4731 @@
+{
+  "meta": {
+    "gameId": 9,
+    "winner": "crew",
+    "impostor": "Red",
+    "txCount": 20,
+    "createdAt": 1783155811538,
+    "agents": [
+      {
+        "id": "red",
+        "name": "Red",
+        "color": "#e74c3c",
+        "soul": "Machiavelli",
+        "address": "0x67bfe5Ef88bB8b0901856685773F9d321D20611F"
+      },
+      {
+        "id": "blue",
+        "name": "Blue",
+        "color": "#3498db",
+        "soul": "Cipher",
+        "address": "0xA5acE89DDBdA670acA598Ad1CBd658F1edCAC358"
+      },
+      {
+        "id": "green",
+        "name": "Green",
+        "color": "#2ecc71",
+        "soul": "Klaxon",
+        "address": "0x26F0c65184d40ae35116f69337dB02865Bb6e703"
+      },
+      {
+        "id": "purple",
+        "name": "Purple",
+        "color": "#9b59b6",
+        "soul": "Sherlock",
+        "address": "0x7B8532d3072e50fb34976eE7553C5476E8526984"
+      },
+      {
+        "id": "yellow",
+        "name": "Yellow",
+        "color": "#f1c40f",
+        "soul": "Pip",
+        "address": "0x8A6F56DA58AD6Bb809931Dd60c6EaA8c583831Bb"
+      }
+    ],
+    "contract": "0xa8e3463eF7934C7F8B18f77eBF1A6b49afA4932b",
+    "explorerTx": "https://testnet.monadscan.com/tx/"
+  },
+  "frames": [
+    {
+      "type": "snapshot",
+      "gameId": 0,
+      "tick": 0,
+      "phase": "lobby",
+      "agents": [
+        {
+          "id": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "soul": "Machiavelli",
+          "room": "lowerEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0x67bfe5Ef88bB8b0901856685773F9d321D20611F",
+          "thinking": ""
+        },
+        {
+          "id": "blue",
+          "name": "Blue",
+          "color": "#3498db",
+          "soul": "Cipher",
+          "room": "upperEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0xA5acE89DDBdA670acA598Ad1CBd658F1edCAC358",
+          "thinking": ""
+        },
+        {
+          "id": "green",
+          "name": "Green",
+          "color": "#2ecc71",
+          "soul": "Klaxon",
+          "room": "security",
+          "alive": true,
+          "role": null,
+          "wallet": "0x26F0c65184d40ae35116f69337dB02865Bb6e703",
+          "thinking": ""
+        },
+        {
+          "id": "purple",
+          "name": "Purple",
+          "color": "#9b59b6",
+          "soul": "Sherlock",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0x7B8532d3072e50fb34976eE7553C5476E8526984",
+          "thinking": ""
+        },
+        {
+          "id": "yellow",
+          "name": "Yellow",
+          "color": "#f1c40f",
+          "soul": "Pip",
+          "room": "lowerEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0x8A6F56DA58AD6Bb809931Dd60c6EaA8c583831Bb",
+          "thinking": ""
+        }
+      ],
+      "bodies": [],
+      "log": [],
+      "chat": [],
+      "meeting": null,
+      "clock": {
+        "monadMs": 0,
+        "ethEquivMs": 0,
+        "txCount": 0
+      }
+    },
+    {
+      "type": "snapshot",
+      "gameId": 9,
+      "tick": 0,
+      "phase": "lobby",
+      "agents": [
+        {
+          "id": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "soul": "Machiavelli",
+          "room": "lowerEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0x67bfe5Ef88bB8b0901856685773F9d321D20611F",
+          "thinking": ""
+        },
+        {
+          "id": "blue",
+          "name": "Blue",
+          "color": "#3498db",
+          "soul": "Cipher",
+          "room": "upperEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0xA5acE89DDBdA670acA598Ad1CBd658F1edCAC358",
+          "thinking": ""
+        },
+        {
+          "id": "green",
+          "name": "Green",
+          "color": "#2ecc71",
+          "soul": "Klaxon",
+          "room": "security",
+          "alive": true,
+          "role": null,
+          "wallet": "0x26F0c65184d40ae35116f69337dB02865Bb6e703",
+          "thinking": ""
+        },
+        {
+          "id": "purple",
+          "name": "Purple",
+          "color": "#9b59b6",
+          "soul": "Sherlock",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0x7B8532d3072e50fb34976eE7553C5476E8526984",
+          "thinking": ""
+        },
+        {
+          "id": "yellow",
+          "name": "Yellow",
+          "color": "#f1c40f",
+          "soul": "Pip",
+          "room": "lowerEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0x8A6F56DA58AD6Bb809931Dd60c6EaA8c583831Bb",
+          "thinking": ""
+        }
+      ],
+      "bodies": [],
+      "log": [
+        {
+          "id": 1,
+          "kind": "spawn",
+          "text": "Game #9 created on Monad",
+          "txHash": "0xc2fe8aa483372ea9f15c493bb0acd768f361a0cb878f7a7788ff6581a32da3b6",
+          "ts": 1783155727772
+        }
+      ],
+      "chat": [],
+      "meeting": null,
+      "clock": {
+        "monadMs": 17304,
+        "ethEquivMs": 12000,
+        "txCount": 1
+      }
+    },
+    {
+      "type": "snapshot",
+      "gameId": 9,
+      "tick": 0,
+      "phase": "lobby",
+      "agents": [
+        {
+          "id": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "soul": "Machiavelli",
+          "room": "lowerEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0x67bfe5Ef88bB8b0901856685773F9d321D20611F",
+          "thinking": ""
+        },
+        {
+          "id": "blue",
+          "name": "Blue",
+          "color": "#3498db",
+          "soul": "Cipher",
+          "room": "upperEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0xA5acE89DDBdA670acA598Ad1CBd658F1edCAC358",
+          "thinking": ""
+        },
+        {
+          "id": "green",
+          "name": "Green",
+          "color": "#2ecc71",
+          "soul": "Klaxon",
+          "room": "security",
+          "alive": true,
+          "role": null,
+          "wallet": "0x26F0c65184d40ae35116f69337dB02865Bb6e703",
+          "thinking": ""
+        },
+        {
+          "id": "purple",
+          "name": "Purple",
+          "color": "#9b59b6",
+          "soul": "Sherlock",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0x7B8532d3072e50fb34976eE7553C5476E8526984",
+          "thinking": ""
+        },
+        {
+          "id": "yellow",
+          "name": "Yellow",
+          "color": "#f1c40f",
+          "soul": "Pip",
+          "room": "lowerEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0x8A6F56DA58AD6Bb809931Dd60c6EaA8c583831Bb",
+          "thinking": ""
+        }
+      ],
+      "bodies": [],
+      "log": [
+        {
+          "id": 1,
+          "kind": "spawn",
+          "text": "Game #9 created on Monad",
+          "txHash": "0xc2fe8aa483372ea9f15c493bb0acd768f361a0cb878f7a7788ff6581a32da3b6",
+          "ts": 1783155727772
+        },
+        {
+          "id": 2,
+          "kind": "spawn",
+          "text": "Red (Machiavelli) joined the crew",
+          "txHash": "0x9c020fdbeba2c9f3c0abdb54006ddbd473d1b7fcfd4ef0bcabacad3d99cd2be9",
+          "ts": 1783155730041
+        }
+      ],
+      "chat": [],
+      "meeting": null,
+      "clock": {
+        "monadMs": 19573,
+        "ethEquivMs": 24000,
+        "txCount": 2
+      }
+    },
+    {
+      "type": "snapshot",
+      "gameId": 9,
+      "tick": 0,
+      "phase": "lobby",
+      "agents": [
+        {
+          "id": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "soul": "Machiavelli",
+          "room": "lowerEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0x67bfe5Ef88bB8b0901856685773F9d321D20611F",
+          "thinking": ""
+        },
+        {
+          "id": "blue",
+          "name": "Blue",
+          "color": "#3498db",
+          "soul": "Cipher",
+          "room": "upperEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0xA5acE89DDBdA670acA598Ad1CBd658F1edCAC358",
+          "thinking": ""
+        },
+        {
+          "id": "green",
+          "name": "Green",
+          "color": "#2ecc71",
+          "soul": "Klaxon",
+          "room": "security",
+          "alive": true,
+          "role": null,
+          "wallet": "0x26F0c65184d40ae35116f69337dB02865Bb6e703",
+          "thinking": ""
+        },
+        {
+          "id": "purple",
+          "name": "Purple",
+          "color": "#9b59b6",
+          "soul": "Sherlock",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0x7B8532d3072e50fb34976eE7553C5476E8526984",
+          "thinking": ""
+        },
+        {
+          "id": "yellow",
+          "name": "Yellow",
+          "color": "#f1c40f",
+          "soul": "Pip",
+          "room": "lowerEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0x8A6F56DA58AD6Bb809931Dd60c6EaA8c583831Bb",
+          "thinking": ""
+        }
+      ],
+      "bodies": [],
+      "log": [
+        {
+          "id": 1,
+          "kind": "spawn",
+          "text": "Game #9 created on Monad",
+          "txHash": "0xc2fe8aa483372ea9f15c493bb0acd768f361a0cb878f7a7788ff6581a32da3b6",
+          "ts": 1783155727772
+        },
+        {
+          "id": 2,
+          "kind": "spawn",
+          "text": "Red (Machiavelli) joined the crew",
+          "txHash": "0x9c020fdbeba2c9f3c0abdb54006ddbd473d1b7fcfd4ef0bcabacad3d99cd2be9",
+          "ts": 1783155730041
+        },
+        {
+          "id": 3,
+          "kind": "spawn",
+          "text": "Blue (Cipher) joined the crew",
+          "txHash": "0x68a0d4f05ca4889d1958aba70bc29b8bc5159aa0b0aaf03fed26c7c66cc014cc",
+          "ts": 1783155735814
+        }
+      ],
+      "chat": [],
+      "meeting": null,
+      "clock": {
+        "monadMs": 25346,
+        "ethEquivMs": 36000,
+        "txCount": 3
+      }
+    },
+    {
+      "type": "snapshot",
+      "gameId": 9,
+      "tick": 0,
+      "phase": "lobby",
+      "agents": [
+        {
+          "id": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "soul": "Machiavelli",
+          "room": "lowerEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0x67bfe5Ef88bB8b0901856685773F9d321D20611F",
+          "thinking": ""
+        },
+        {
+          "id": "blue",
+          "name": "Blue",
+          "color": "#3498db",
+          "soul": "Cipher",
+          "room": "upperEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0xA5acE89DDBdA670acA598Ad1CBd658F1edCAC358",
+          "thinking": ""
+        },
+        {
+          "id": "green",
+          "name": "Green",
+          "color": "#2ecc71",
+          "soul": "Klaxon",
+          "room": "security",
+          "alive": true,
+          "role": null,
+          "wallet": "0x26F0c65184d40ae35116f69337dB02865Bb6e703",
+          "thinking": ""
+        },
+        {
+          "id": "purple",
+          "name": "Purple",
+          "color": "#9b59b6",
+          "soul": "Sherlock",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0x7B8532d3072e50fb34976eE7553C5476E8526984",
+          "thinking": ""
+        },
+        {
+          "id": "yellow",
+          "name": "Yellow",
+          "color": "#f1c40f",
+          "soul": "Pip",
+          "room": "lowerEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0x8A6F56DA58AD6Bb809931Dd60c6EaA8c583831Bb",
+          "thinking": ""
+        }
+      ],
+      "bodies": [],
+      "log": [
+        {
+          "id": 1,
+          "kind": "spawn",
+          "text": "Game #9 created on Monad",
+          "txHash": "0xc2fe8aa483372ea9f15c493bb0acd768f361a0cb878f7a7788ff6581a32da3b6",
+          "ts": 1783155727772
+        },
+        {
+          "id": 2,
+          "kind": "spawn",
+          "text": "Red (Machiavelli) joined the crew",
+          "txHash": "0x9c020fdbeba2c9f3c0abdb54006ddbd473d1b7fcfd4ef0bcabacad3d99cd2be9",
+          "ts": 1783155730041
+        },
+        {
+          "id": 3,
+          "kind": "spawn",
+          "text": "Blue (Cipher) joined the crew",
+          "txHash": "0x68a0d4f05ca4889d1958aba70bc29b8bc5159aa0b0aaf03fed26c7c66cc014cc",
+          "ts": 1783155735814
+        },
+        {
+          "id": 4,
+          "kind": "spawn",
+          "text": "Green (Klaxon) joined the crew",
+          "txHash": "0x7291d0e7476aa112a00e70c64fb27d973c2f8a2eb961d0e44a38048f17cbf58d",
+          "ts": 1783155738721
+        }
+      ],
+      "chat": [],
+      "meeting": null,
+      "clock": {
+        "monadMs": 28253,
+        "ethEquivMs": 48000,
+        "txCount": 4
+      }
+    },
+    {
+      "type": "snapshot",
+      "gameId": 9,
+      "tick": 0,
+      "phase": "lobby",
+      "agents": [
+        {
+          "id": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "soul": "Machiavelli",
+          "room": "lowerEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0x67bfe5Ef88bB8b0901856685773F9d321D20611F",
+          "thinking": ""
+        },
+        {
+          "id": "blue",
+          "name": "Blue",
+          "color": "#3498db",
+          "soul": "Cipher",
+          "room": "upperEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0xA5acE89DDBdA670acA598Ad1CBd658F1edCAC358",
+          "thinking": ""
+        },
+        {
+          "id": "green",
+          "name": "Green",
+          "color": "#2ecc71",
+          "soul": "Klaxon",
+          "room": "security",
+          "alive": true,
+          "role": null,
+          "wallet": "0x26F0c65184d40ae35116f69337dB02865Bb6e703",
+          "thinking": ""
+        },
+        {
+          "id": "purple",
+          "name": "Purple",
+          "color": "#9b59b6",
+          "soul": "Sherlock",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0x7B8532d3072e50fb34976eE7553C5476E8526984",
+          "thinking": ""
+        },
+        {
+          "id": "yellow",
+          "name": "Yellow",
+          "color": "#f1c40f",
+          "soul": "Pip",
+          "room": "lowerEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0x8A6F56DA58AD6Bb809931Dd60c6EaA8c583831Bb",
+          "thinking": ""
+        }
+      ],
+      "bodies": [],
+      "log": [
+        {
+          "id": 1,
+          "kind": "spawn",
+          "text": "Game #9 created on Monad",
+          "txHash": "0xc2fe8aa483372ea9f15c493bb0acd768f361a0cb878f7a7788ff6581a32da3b6",
+          "ts": 1783155727772
+        },
+        {
+          "id": 2,
+          "kind": "spawn",
+          "text": "Red (Machiavelli) joined the crew",
+          "txHash": "0x9c020fdbeba2c9f3c0abdb54006ddbd473d1b7fcfd4ef0bcabacad3d99cd2be9",
+          "ts": 1783155730041
+        },
+        {
+          "id": 3,
+          "kind": "spawn",
+          "text": "Blue (Cipher) joined the crew",
+          "txHash": "0x68a0d4f05ca4889d1958aba70bc29b8bc5159aa0b0aaf03fed26c7c66cc014cc",
+          "ts": 1783155735814
+        },
+        {
+          "id": 4,
+          "kind": "spawn",
+          "text": "Green (Klaxon) joined the crew",
+          "txHash": "0x7291d0e7476aa112a00e70c64fb27d973c2f8a2eb961d0e44a38048f17cbf58d",
+          "ts": 1783155738721
+        },
+        {
+          "id": 5,
+          "kind": "spawn",
+          "text": "Purple (Sherlock) joined the crew",
+          "txHash": "0x6d0659834e5d5046d54e496fb1d699a7b34fab7a090fdec17727b34c57366ff8",
+          "ts": 1783155740444
+        }
+      ],
+      "chat": [],
+      "meeting": null,
+      "clock": {
+        "monadMs": 29976,
+        "ethEquivMs": 60000,
+        "txCount": 5
+      }
+    },
+    {
+      "type": "snapshot",
+      "gameId": 9,
+      "tick": 0,
+      "phase": "lobby",
+      "agents": [
+        {
+          "id": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "soul": "Machiavelli",
+          "room": "lowerEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0x67bfe5Ef88bB8b0901856685773F9d321D20611F",
+          "thinking": ""
+        },
+        {
+          "id": "blue",
+          "name": "Blue",
+          "color": "#3498db",
+          "soul": "Cipher",
+          "room": "upperEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0xA5acE89DDBdA670acA598Ad1CBd658F1edCAC358",
+          "thinking": ""
+        },
+        {
+          "id": "green",
+          "name": "Green",
+          "color": "#2ecc71",
+          "soul": "Klaxon",
+          "room": "security",
+          "alive": true,
+          "role": null,
+          "wallet": "0x26F0c65184d40ae35116f69337dB02865Bb6e703",
+          "thinking": ""
+        },
+        {
+          "id": "purple",
+          "name": "Purple",
+          "color": "#9b59b6",
+          "soul": "Sherlock",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0x7B8532d3072e50fb34976eE7553C5476E8526984",
+          "thinking": ""
+        },
+        {
+          "id": "yellow",
+          "name": "Yellow",
+          "color": "#f1c40f",
+          "soul": "Pip",
+          "room": "lowerEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0x8A6F56DA58AD6Bb809931Dd60c6EaA8c583831Bb",
+          "thinking": ""
+        }
+      ],
+      "bodies": [],
+      "log": [
+        {
+          "id": 1,
+          "kind": "spawn",
+          "text": "Game #9 created on Monad",
+          "txHash": "0xc2fe8aa483372ea9f15c493bb0acd768f361a0cb878f7a7788ff6581a32da3b6",
+          "ts": 1783155727772
+        },
+        {
+          "id": 2,
+          "kind": "spawn",
+          "text": "Red (Machiavelli) joined the crew",
+          "txHash": "0x9c020fdbeba2c9f3c0abdb54006ddbd473d1b7fcfd4ef0bcabacad3d99cd2be9",
+          "ts": 1783155730041
+        },
+        {
+          "id": 3,
+          "kind": "spawn",
+          "text": "Blue (Cipher) joined the crew",
+          "txHash": "0x68a0d4f05ca4889d1958aba70bc29b8bc5159aa0b0aaf03fed26c7c66cc014cc",
+          "ts": 1783155735814
+        },
+        {
+          "id": 4,
+          "kind": "spawn",
+          "text": "Green (Klaxon) joined the crew",
+          "txHash": "0x7291d0e7476aa112a00e70c64fb27d973c2f8a2eb961d0e44a38048f17cbf58d",
+          "ts": 1783155738721
+        },
+        {
+          "id": 5,
+          "kind": "spawn",
+          "text": "Purple (Sherlock) joined the crew",
+          "txHash": "0x6d0659834e5d5046d54e496fb1d699a7b34fab7a090fdec17727b34c57366ff8",
+          "ts": 1783155740444
+        },
+        {
+          "id": 6,
+          "kind": "spawn",
+          "text": "Yellow (Pip) joined the crew",
+          "txHash": "0x2591d399870084bea3ab9d4632d4920782110dafbee3bab3082213c7ac42a99a",
+          "ts": 1783155743651
+        }
+      ],
+      "chat": [],
+      "meeting": null,
+      "clock": {
+        "monadMs": 33183,
+        "ethEquivMs": 72000,
+        "txCount": 6
+      }
+    },
+    {
+      "type": "snapshot",
+      "gameId": 9,
+      "tick": 0,
+      "phase": "active",
+      "agents": [
+        {
+          "id": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "soul": "Machiavelli",
+          "room": "lowerEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0x67bfe5Ef88bB8b0901856685773F9d321D20611F",
+          "thinking": ""
+        },
+        {
+          "id": "blue",
+          "name": "Blue",
+          "color": "#3498db",
+          "soul": "Cipher",
+          "room": "upperEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0xA5acE89DDBdA670acA598Ad1CBd658F1edCAC358",
+          "thinking": ""
+        },
+        {
+          "id": "green",
+          "name": "Green",
+          "color": "#2ecc71",
+          "soul": "Klaxon",
+          "room": "security",
+          "alive": true,
+          "role": null,
+          "wallet": "0x26F0c65184d40ae35116f69337dB02865Bb6e703",
+          "thinking": ""
+        },
+        {
+          "id": "purple",
+          "name": "Purple",
+          "color": "#9b59b6",
+          "soul": "Sherlock",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0x7B8532d3072e50fb34976eE7553C5476E8526984",
+          "thinking": ""
+        },
+        {
+          "id": "yellow",
+          "name": "Yellow",
+          "color": "#f1c40f",
+          "soul": "Pip",
+          "room": "lowerEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0x8A6F56DA58AD6Bb809931Dd60c6EaA8c583831Bb",
+          "thinking": ""
+        }
+      ],
+      "bodies": [],
+      "log": [
+        {
+          "id": 1,
+          "kind": "spawn",
+          "text": "Game #9 created on Monad",
+          "txHash": "0xc2fe8aa483372ea9f15c493bb0acd768f361a0cb878f7a7788ff6581a32da3b6",
+          "ts": 1783155727772
+        },
+        {
+          "id": 2,
+          "kind": "spawn",
+          "text": "Red (Machiavelli) joined the crew",
+          "txHash": "0x9c020fdbeba2c9f3c0abdb54006ddbd473d1b7fcfd4ef0bcabacad3d99cd2be9",
+          "ts": 1783155730041
+        },
+        {
+          "id": 3,
+          "kind": "spawn",
+          "text": "Blue (Cipher) joined the crew",
+          "txHash": "0x68a0d4f05ca4889d1958aba70bc29b8bc5159aa0b0aaf03fed26c7c66cc014cc",
+          "ts": 1783155735814
+        },
+        {
+          "id": 4,
+          "kind": "spawn",
+          "text": "Green (Klaxon) joined the crew",
+          "txHash": "0x7291d0e7476aa112a00e70c64fb27d973c2f8a2eb961d0e44a38048f17cbf58d",
+          "ts": 1783155738721
+        },
+        {
+          "id": 5,
+          "kind": "spawn",
+          "text": "Purple (Sherlock) joined the crew",
+          "txHash": "0x6d0659834e5d5046d54e496fb1d699a7b34fab7a090fdec17727b34c57366ff8",
+          "ts": 1783155740444
+        },
+        {
+          "id": 6,
+          "kind": "spawn",
+          "text": "Yellow (Pip) joined the crew",
+          "txHash": "0x2591d399870084bea3ab9d4632d4920782110dafbee3bab3082213c7ac42a99a",
+          "ts": 1783155743651
+        },
+        {
+          "id": 7,
+          "kind": "spawn",
+          "text": "Game started — roles committed on-chain (commit/reveal)",
+          "txHash": "0x87183554d9547776b08f9c4e7436e21a9c097472314eee457a0c75a9925c056b",
+          "ts": 1783155745811
+        }
+      ],
+      "chat": [],
+      "meeting": null,
+      "clock": {
+        "monadMs": 35343,
+        "ethEquivMs": 84000,
+        "txCount": 7
+      }
+    },
+    {
+      "type": "snapshot",
+      "gameId": 9,
+      "tick": 1,
+      "phase": "active",
+      "agents": [
+        {
+          "id": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "soul": "Machiavelli",
+          "room": "lowerEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0x67bfe5Ef88bB8b0901856685773F9d321D20611F",
+          "thinking": "I am alone with Yellow in Lower Engine - perfect kill opportunity. I must kill immediately as instructed, then vent to Reactor to escape."
+        },
+        {
+          "id": "blue",
+          "name": "Blue",
+          "color": "#3498db",
+          "soul": "Cipher",
+          "room": "upperEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0xA5acE89DDBdA670acA598Ad1CBd658F1edCAC358",
+          "thinking": "First tick of the game. I need to spread out and begin observing player movements. I'll move to a central location to track traffic."
+        },
+        {
+          "id": "green",
+          "name": "Green",
+          "color": "#2ecc71",
+          "soul": "Klaxon",
+          "room": "security",
+          "alive": true,
+          "role": null,
+          "wallet": "0x26F0c65184d40ae35116f69337dB02865Bb6e703",
+          "thinking": "First tick of the game - I need to spread out and start gathering evidence by moving around. I'll head to Reactor to begin exploring and watch for suspicious movements."
+        },
+        {
+          "id": "purple",
+          "name": "Purple",
+          "color": "#9b59b6",
+          "soul": "Sherlock",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0x7B8532d3072e50fb34976eE7553C5476E8526984",
+          "thinking": "First tick of the game. I need to spread out and establish movement patterns. I'll head to Security to observe activity and gather initial intel."
+        },
+        {
+          "id": "yellow",
+          "name": "Yellow",
+          "color": "#f1c40f",
+          "soul": "Pip",
+          "room": "lowerEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0x8A6F56DA58AD6Bb809931Dd60c6EaA8c583831Bb",
+          "thinking": "As a nervous crewmate, I should spread out and explore. Red is here, so I'll move to a different area to gather evidence and watch movements."
+        }
+      ],
+      "bodies": [],
+      "log": [
+        {
+          "id": 1,
+          "kind": "spawn",
+          "text": "Game #9 created on Monad",
+          "txHash": "0xc2fe8aa483372ea9f15c493bb0acd768f361a0cb878f7a7788ff6581a32da3b6",
+          "ts": 1783155727772
+        },
+        {
+          "id": 2,
+          "kind": "spawn",
+          "text": "Red (Machiavelli) joined the crew",
+          "txHash": "0x9c020fdbeba2c9f3c0abdb54006ddbd473d1b7fcfd4ef0bcabacad3d99cd2be9",
+          "ts": 1783155730041
+        },
+        {
+          "id": 3,
+          "kind": "spawn",
+          "text": "Blue (Cipher) joined the crew",
+          "txHash": "0x68a0d4f05ca4889d1958aba70bc29b8bc5159aa0b0aaf03fed26c7c66cc014cc",
+          "ts": 1783155735814
+        },
+        {
+          "id": 4,
+          "kind": "spawn",
+          "text": "Green (Klaxon) joined the crew",
+          "txHash": "0x7291d0e7476aa112a00e70c64fb27d973c2f8a2eb961d0e44a38048f17cbf58d",
+          "ts": 1783155738721
+        },
+        {
+          "id": 5,
+          "kind": "spawn",
+          "text": "Purple (Sherlock) joined the crew",
+          "txHash": "0x6d0659834e5d5046d54e496fb1d699a7b34fab7a090fdec17727b34c57366ff8",
+          "ts": 1783155740444
+        },
+        {
+          "id": 6,
+          "kind": "spawn",
+          "text": "Yellow (Pip) joined the crew",
+          "txHash": "0x2591d399870084bea3ab9d4632d4920782110dafbee3bab3082213c7ac42a99a",
+          "ts": 1783155743651
+        },
+        {
+          "id": 7,
+          "kind": "spawn",
+          "text": "Game started — roles committed on-chain (commit/reveal)",
+          "txHash": "0x87183554d9547776b08f9c4e7436e21a9c097472314eee457a0c75a9925c056b",
+          "ts": 1783155745811
+        }
+      ],
+      "chat": [],
+      "meeting": null,
+      "clock": {
+        "monadMs": 40639,
+        "ethEquivMs": 84000,
+        "txCount": 7
+      }
+    },
+    {
+      "type": "snapshot",
+      "gameId": 9,
+      "tick": 1,
+      "phase": "active",
+      "agents": [
+        {
+          "id": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "soul": "Machiavelli",
+          "room": "lowerEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0x67bfe5Ef88bB8b0901856685773F9d321D20611F",
+          "thinking": "I am alone with Yellow in Lower Engine - perfect kill opportunity. I must kill immediately as instructed, then vent to Reactor to escape."
+        },
+        {
+          "id": "blue",
+          "name": "Blue",
+          "color": "#3498db",
+          "soul": "Cipher",
+          "room": "security",
+          "alive": true,
+          "role": null,
+          "wallet": "0xA5acE89DDBdA670acA598Ad1CBd658F1edCAC358",
+          "thinking": "First tick of the game. I need to spread out and begin observing player movements. I'll move to a central location to track traffic."
+        },
+        {
+          "id": "green",
+          "name": "Green",
+          "color": "#2ecc71",
+          "soul": "Klaxon",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0x26F0c65184d40ae35116f69337dB02865Bb6e703",
+          "thinking": "First tick of the game - I need to spread out and start gathering evidence by moving around. I'll head to Reactor to begin exploring and watch for suspicious movements."
+        },
+        {
+          "id": "purple",
+          "name": "Purple",
+          "color": "#9b59b6",
+          "soul": "Sherlock",
+          "room": "security",
+          "alive": true,
+          "role": null,
+          "wallet": "0x7B8532d3072e50fb34976eE7553C5476E8526984",
+          "thinking": "First tick of the game. I need to spread out and establish movement patterns. I'll head to Security to observe activity and gather initial intel."
+        },
+        {
+          "id": "yellow",
+          "name": "Yellow",
+          "color": "#f1c40f",
+          "soul": "Pip",
+          "room": "lowerEngine",
+          "alive": false,
+          "role": null,
+          "wallet": "0x8A6F56DA58AD6Bb809931Dd60c6EaA8c583831Bb",
+          "thinking": "As a nervous crewmate, I should spread out and explore. Red is here, so I'll move to a different area to gather evidence and watch movements."
+        }
+      ],
+      "bodies": [
+        {
+          "room": "lowerEngine",
+          "victim": "yellow"
+        }
+      ],
+      "log": [
+        {
+          "id": 1,
+          "kind": "spawn",
+          "text": "Game #9 created on Monad",
+          "txHash": "0xc2fe8aa483372ea9f15c493bb0acd768f361a0cb878f7a7788ff6581a32da3b6",
+          "ts": 1783155727772
+        },
+        {
+          "id": 2,
+          "kind": "spawn",
+          "text": "Red (Machiavelli) joined the crew",
+          "txHash": "0x9c020fdbeba2c9f3c0abdb54006ddbd473d1b7fcfd4ef0bcabacad3d99cd2be9",
+          "ts": 1783155730041
+        },
+        {
+          "id": 3,
+          "kind": "spawn",
+          "text": "Blue (Cipher) joined the crew",
+          "txHash": "0x68a0d4f05ca4889d1958aba70bc29b8bc5159aa0b0aaf03fed26c7c66cc014cc",
+          "ts": 1783155735814
+        },
+        {
+          "id": 4,
+          "kind": "spawn",
+          "text": "Green (Klaxon) joined the crew",
+          "txHash": "0x7291d0e7476aa112a00e70c64fb27d973c2f8a2eb961d0e44a38048f17cbf58d",
+          "ts": 1783155738721
+        },
+        {
+          "id": 5,
+          "kind": "spawn",
+          "text": "Purple (Sherlock) joined the crew",
+          "txHash": "0x6d0659834e5d5046d54e496fb1d699a7b34fab7a090fdec17727b34c57366ff8",
+          "ts": 1783155740444
+        },
+        {
+          "id": 6,
+          "kind": "spawn",
+          "text": "Yellow (Pip) joined the crew",
+          "txHash": "0x2591d399870084bea3ab9d4632d4920782110dafbee3bab3082213c7ac42a99a",
+          "ts": 1783155743651
+        },
+        {
+          "id": 7,
+          "kind": "spawn",
+          "text": "Game started — roles committed on-chain (commit/reveal)",
+          "txHash": "0x87183554d9547776b08f9c4e7436e21a9c097472314eee457a0c75a9925c056b",
+          "ts": 1783155745811
+        },
+        {
+          "id": 8,
+          "kind": "kill",
+          "text": "Red killed Yellow in Lower Engine",
+          "txHash": "0x1ebd852b60ea35d9d8d69f9edca8d1d669195357c1dce865718448112d8f1179",
+          "ts": 1783155756175
+        }
+      ],
+      "chat": [],
+      "meeting": null,
+      "clock": {
+        "monadMs": 45707,
+        "ethEquivMs": 96000,
+        "txCount": 8
+      }
+    },
+    {
+      "type": "snapshot",
+      "gameId": 9,
+      "tick": 2,
+      "phase": "active",
+      "agents": [
+        {
+          "id": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "soul": "Machiavelli",
+          "room": "lowerEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0x67bfe5Ef88bB8b0901856685773F9d321D20611F",
+          "thinking": "I just killed Yellow last turn and I'm standing on a vent with the body right here. I need to VENT to Reactor immediately to escape before someone finds the body and catches me at the scene."
+        },
+        {
+          "id": "blue",
+          "name": "Blue",
+          "color": "#3498db",
+          "soul": "Cipher",
+          "room": "security",
+          "alive": true,
+          "role": null,
+          "wallet": "0xA5acE89DDBdA670acA598Ad1CBd658F1edCAC358",
+          "thinking": "Purple and I have been together in Security for two ticks now. I should move to a different area to observe other players and gather more information about their movements."
+        },
+        {
+          "id": "green",
+          "name": "Green",
+          "color": "#2ecc71",
+          "soul": "Klaxon",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0x26F0c65184d40ae35116f69337dB02865Bb6e703",
+          "thinking": "Only 4 players alive including me - I need to gather evidence quickly. I'll head to Security to check cams and see who's moving where."
+        },
+        {
+          "id": "purple",
+          "name": "Purple",
+          "color": "#9b59b6",
+          "soul": "Sherlock",
+          "room": "security",
+          "alive": true,
+          "role": null,
+          "wallet": "0x7B8532d3072e50fb34976eE7553C5476E8526984",
+          "thinking": "Only tick 2, far too early to call a meeting. I need to spread out from Blue and gather information about other players' movements. I'll move to Reactor to see who else is there and establish alibis."
+        },
+        {
+          "id": "yellow",
+          "name": "Yellow",
+          "color": "#f1c40f",
+          "soul": "Pip",
+          "room": "lowerEngine",
+          "alive": false,
+          "role": null,
+          "wallet": "0x8A6F56DA58AD6Bb809931Dd60c6EaA8c583831Bb",
+          "thinking": "As a nervous crewmate, I should spread out and explore. Red is here, so I'll move to a different area to gather evidence and watch movements."
+        }
+      ],
+      "bodies": [
+        {
+          "room": "lowerEngine",
+          "victim": "yellow"
+        }
+      ],
+      "log": [
+        {
+          "id": 1,
+          "kind": "spawn",
+          "text": "Game #9 created on Monad",
+          "txHash": "0xc2fe8aa483372ea9f15c493bb0acd768f361a0cb878f7a7788ff6581a32da3b6",
+          "ts": 1783155727772
+        },
+        {
+          "id": 2,
+          "kind": "spawn",
+          "text": "Red (Machiavelli) joined the crew",
+          "txHash": "0x9c020fdbeba2c9f3c0abdb54006ddbd473d1b7fcfd4ef0bcabacad3d99cd2be9",
+          "ts": 1783155730041
+        },
+        {
+          "id": 3,
+          "kind": "spawn",
+          "text": "Blue (Cipher) joined the crew",
+          "txHash": "0x68a0d4f05ca4889d1958aba70bc29b8bc5159aa0b0aaf03fed26c7c66cc014cc",
+          "ts": 1783155735814
+        },
+        {
+          "id": 4,
+          "kind": "spawn",
+          "text": "Green (Klaxon) joined the crew",
+          "txHash": "0x7291d0e7476aa112a00e70c64fb27d973c2f8a2eb961d0e44a38048f17cbf58d",
+          "ts": 1783155738721
+        },
+        {
+          "id": 5,
+          "kind": "spawn",
+          "text": "Purple (Sherlock) joined the crew",
+          "txHash": "0x6d0659834e5d5046d54e496fb1d699a7b34fab7a090fdec17727b34c57366ff8",
+          "ts": 1783155740444
+        },
+        {
+          "id": 6,
+          "kind": "spawn",
+          "text": "Yellow (Pip) joined the crew",
+          "txHash": "0x2591d399870084bea3ab9d4632d4920782110dafbee3bab3082213c7ac42a99a",
+          "ts": 1783155743651
+        },
+        {
+          "id": 7,
+          "kind": "spawn",
+          "text": "Game started — roles committed on-chain (commit/reveal)",
+          "txHash": "0x87183554d9547776b08f9c4e7436e21a9c097472314eee457a0c75a9925c056b",
+          "ts": 1783155745811
+        },
+        {
+          "id": 8,
+          "kind": "kill",
+          "text": "Red killed Yellow in Lower Engine",
+          "txHash": "0x1ebd852b60ea35d9d8d69f9edca8d1d669195357c1dce865718448112d8f1179",
+          "ts": 1783155756175
+        }
+      ],
+      "chat": [],
+      "meeting": null,
+      "clock": {
+        "monadMs": 50259,
+        "ethEquivMs": 96000,
+        "txCount": 8
+      }
+    },
+    {
+      "type": "snapshot",
+      "gameId": 9,
+      "tick": 2,
+      "phase": "active",
+      "agents": [
+        {
+          "id": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "soul": "Machiavelli",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0x67bfe5Ef88bB8b0901856685773F9d321D20611F",
+          "thinking": "I just killed Yellow last turn and I'm standing on a vent with the body right here. I need to VENT to Reactor immediately to escape before someone finds the body and catches me at the scene."
+        },
+        {
+          "id": "blue",
+          "name": "Blue",
+          "color": "#3498db",
+          "soul": "Cipher",
+          "room": "upperEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0xA5acE89DDBdA670acA598Ad1CBd658F1edCAC358",
+          "thinking": "Purple and I have been together in Security for two ticks now. I should move to a different area to observe other players and gather more information about their movements."
+        },
+        {
+          "id": "green",
+          "name": "Green",
+          "color": "#2ecc71",
+          "soul": "Klaxon",
+          "room": "security",
+          "alive": true,
+          "role": null,
+          "wallet": "0x26F0c65184d40ae35116f69337dB02865Bb6e703",
+          "thinking": "Only 4 players alive including me - I need to gather evidence quickly. I'll head to Security to check cams and see who's moving where."
+        },
+        {
+          "id": "purple",
+          "name": "Purple",
+          "color": "#9b59b6",
+          "soul": "Sherlock",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0x7B8532d3072e50fb34976eE7553C5476E8526984",
+          "thinking": "Only tick 2, far too early to call a meeting. I need to spread out from Blue and gather information about other players' movements. I'll move to Reactor to see who else is there and establish alibis."
+        },
+        {
+          "id": "yellow",
+          "name": "Yellow",
+          "color": "#f1c40f",
+          "soul": "Pip",
+          "room": "lowerEngine",
+          "alive": false,
+          "role": null,
+          "wallet": "0x8A6F56DA58AD6Bb809931Dd60c6EaA8c583831Bb",
+          "thinking": "As a nervous crewmate, I should spread out and explore. Red is here, so I'll move to a different area to gather evidence and watch movements."
+        }
+      ],
+      "bodies": [
+        {
+          "room": "lowerEngine",
+          "victim": "yellow"
+        }
+      ],
+      "log": [
+        {
+          "id": 1,
+          "kind": "spawn",
+          "text": "Game #9 created on Monad",
+          "txHash": "0xc2fe8aa483372ea9f15c493bb0acd768f361a0cb878f7a7788ff6581a32da3b6",
+          "ts": 1783155727772
+        },
+        {
+          "id": 2,
+          "kind": "spawn",
+          "text": "Red (Machiavelli) joined the crew",
+          "txHash": "0x9c020fdbeba2c9f3c0abdb54006ddbd473d1b7fcfd4ef0bcabacad3d99cd2be9",
+          "ts": 1783155730041
+        },
+        {
+          "id": 3,
+          "kind": "spawn",
+          "text": "Blue (Cipher) joined the crew",
+          "txHash": "0x68a0d4f05ca4889d1958aba70bc29b8bc5159aa0b0aaf03fed26c7c66cc014cc",
+          "ts": 1783155735814
+        },
+        {
+          "id": 4,
+          "kind": "spawn",
+          "text": "Green (Klaxon) joined the crew",
+          "txHash": "0x7291d0e7476aa112a00e70c64fb27d973c2f8a2eb961d0e44a38048f17cbf58d",
+          "ts": 1783155738721
+        },
+        {
+          "id": 5,
+          "kind": "spawn",
+          "text": "Purple (Sherlock) joined the crew",
+          "txHash": "0x6d0659834e5d5046d54e496fb1d699a7b34fab7a090fdec17727b34c57366ff8",
+          "ts": 1783155740444
+        },
+        {
+          "id": 6,
+          "kind": "spawn",
+          "text": "Yellow (Pip) joined the crew",
+          "txHash": "0x2591d399870084bea3ab9d4632d4920782110dafbee3bab3082213c7ac42a99a",
+          "ts": 1783155743651
+        },
+        {
+          "id": 7,
+          "kind": "spawn",
+          "text": "Game started — roles committed on-chain (commit/reveal)",
+          "txHash": "0x87183554d9547776b08f9c4e7436e21a9c097472314eee457a0c75a9925c056b",
+          "ts": 1783155745811
+        },
+        {
+          "id": 8,
+          "kind": "kill",
+          "text": "Red killed Yellow in Lower Engine",
+          "txHash": "0x1ebd852b60ea35d9d8d69f9edca8d1d669195357c1dce865718448112d8f1179",
+          "ts": 1783155756175
+        },
+        {
+          "id": 9,
+          "kind": "vent",
+          "text": "Red vented to Reactor",
+          "txHash": "0xfc082206f955165e19d0e758697b0d27193b99c79ee9a1b0abef566dc88f7438",
+          "ts": 1783155764569
+        }
+      ],
+      "chat": [],
+      "meeting": null,
+      "clock": {
+        "monadMs": 54101,
+        "ethEquivMs": 108000,
+        "txCount": 9
+      }
+    },
+    {
+      "type": "snapshot",
+      "gameId": 9,
+      "tick": 3,
+      "phase": "active",
+      "agents": [
+        {
+          "id": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "soul": "Machiavelli",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0x67bfe5Ef88bB8b0901856685773F9d321D20611F",
+          "thinking": "I am alone with Purple in Reactor. This is the perfect kill opportunity. I must kill immediately and then vent to escape."
+        },
+        {
+          "id": "blue",
+          "name": "Blue",
+          "color": "#3498db",
+          "soul": "Cipher",
+          "room": "upperEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0xA5acE89DDBdA670acA598Ad1CBd658F1edCAC358",
+          "thinking": "I was with Purple in Security at t1, now I'm alone in Upper Engine at t3. I need to spread out and observe movements - I'll move to Reactor to continue gathering information about player positions."
+        },
+        {
+          "id": "green",
+          "name": "Green",
+          "color": "#2ecc71",
+          "soul": "Klaxon",
+          "room": "security",
+          "alive": true,
+          "role": null,
+          "wallet": "0x26F0c65184d40ae35116f69337dB02865Bb6e703",
+          "thinking": "I need to spread out and explore, gathering information about player movements. Security is a good spot but I should move to monitor other areas and see who is where."
+        },
+        {
+          "id": "purple",
+          "name": "Purple",
+          "color": "#9b59b6",
+          "soul": "Sherlock",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0x7B8532d3072e50fb34976eE7553C5476E8526984",
+          "thinking": "Red and I have been together since t2, which gives us both alibis. I should move to explore other areas and observe Blue, Green, and Purple's movements to gather evidence about their locations and potential suspicious behavior."
+        },
+        {
+          "id": "yellow",
+          "name": "Yellow",
+          "color": "#f1c40f",
+          "soul": "Pip",
+          "room": "lowerEngine",
+          "alive": false,
+          "role": null,
+          "wallet": "0x8A6F56DA58AD6Bb809931Dd60c6EaA8c583831Bb",
+          "thinking": "As a nervous crewmate, I should spread out and explore. Red is here, so I'll move to a different area to gather evidence and watch movements."
+        }
+      ],
+      "bodies": [
+        {
+          "room": "lowerEngine",
+          "victim": "yellow"
+        }
+      ],
+      "log": [
+        {
+          "id": 1,
+          "kind": "spawn",
+          "text": "Game #9 created on Monad",
+          "txHash": "0xc2fe8aa483372ea9f15c493bb0acd768f361a0cb878f7a7788ff6581a32da3b6",
+          "ts": 1783155727772
+        },
+        {
+          "id": 2,
+          "kind": "spawn",
+          "text": "Red (Machiavelli) joined the crew",
+          "txHash": "0x9c020fdbeba2c9f3c0abdb54006ddbd473d1b7fcfd4ef0bcabacad3d99cd2be9",
+          "ts": 1783155730041
+        },
+        {
+          "id": 3,
+          "kind": "spawn",
+          "text": "Blue (Cipher) joined the crew",
+          "txHash": "0x68a0d4f05ca4889d1958aba70bc29b8bc5159aa0b0aaf03fed26c7c66cc014cc",
+          "ts": 1783155735814
+        },
+        {
+          "id": 4,
+          "kind": "spawn",
+          "text": "Green (Klaxon) joined the crew",
+          "txHash": "0x7291d0e7476aa112a00e70c64fb27d973c2f8a2eb961d0e44a38048f17cbf58d",
+          "ts": 1783155738721
+        },
+        {
+          "id": 5,
+          "kind": "spawn",
+          "text": "Purple (Sherlock) joined the crew",
+          "txHash": "0x6d0659834e5d5046d54e496fb1d699a7b34fab7a090fdec17727b34c57366ff8",
+          "ts": 1783155740444
+        },
+        {
+          "id": 6,
+          "kind": "spawn",
+          "text": "Yellow (Pip) joined the crew",
+          "txHash": "0x2591d399870084bea3ab9d4632d4920782110dafbee3bab3082213c7ac42a99a",
+          "ts": 1783155743651
+        },
+        {
+          "id": 7,
+          "kind": "spawn",
+          "text": "Game started — roles committed on-chain (commit/reveal)",
+          "txHash": "0x87183554d9547776b08f9c4e7436e21a9c097472314eee457a0c75a9925c056b",
+          "ts": 1783155745811
+        },
+        {
+          "id": 8,
+          "kind": "kill",
+          "text": "Red killed Yellow in Lower Engine",
+          "txHash": "0x1ebd852b60ea35d9d8d69f9edca8d1d669195357c1dce865718448112d8f1179",
+          "ts": 1783155756175
+        },
+        {
+          "id": 9,
+          "kind": "vent",
+          "text": "Red vented to Reactor",
+          "txHash": "0xfc082206f955165e19d0e758697b0d27193b99c79ee9a1b0abef566dc88f7438",
+          "ts": 1783155764569
+        }
+      ],
+      "chat": [],
+      "meeting": null,
+      "clock": {
+        "monadMs": 60438,
+        "ethEquivMs": 108000,
+        "txCount": 9
+      }
+    },
+    {
+      "type": "snapshot",
+      "gameId": 9,
+      "tick": 3,
+      "phase": "active",
+      "agents": [
+        {
+          "id": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "soul": "Machiavelli",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0x67bfe5Ef88bB8b0901856685773F9d321D20611F",
+          "thinking": "I am alone with Purple in Reactor. This is the perfect kill opportunity. I must kill immediately and then vent to escape."
+        },
+        {
+          "id": "blue",
+          "name": "Blue",
+          "color": "#3498db",
+          "soul": "Cipher",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0xA5acE89DDBdA670acA598Ad1CBd658F1edCAC358",
+          "thinking": "I was with Purple in Security at t1, now I'm alone in Upper Engine at t3. I need to spread out and observe movements - I'll move to Reactor to continue gathering information about player positions."
+        },
+        {
+          "id": "green",
+          "name": "Green",
+          "color": "#2ecc71",
+          "soul": "Klaxon",
+          "room": "upperEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0x26F0c65184d40ae35116f69337dB02865Bb6e703",
+          "thinking": "I need to spread out and explore, gathering information about player movements. Security is a good spot but I should move to monitor other areas and see who is where."
+        },
+        {
+          "id": "purple",
+          "name": "Purple",
+          "color": "#9b59b6",
+          "soul": "Sherlock",
+          "room": "reactor",
+          "alive": false,
+          "role": null,
+          "wallet": "0x7B8532d3072e50fb34976eE7553C5476E8526984",
+          "thinking": "Red and I have been together since t2, which gives us both alibis. I should move to explore other areas and observe Blue, Green, and Purple's movements to gather evidence about their locations and potential suspicious behavior."
+        },
+        {
+          "id": "yellow",
+          "name": "Yellow",
+          "color": "#f1c40f",
+          "soul": "Pip",
+          "room": "lowerEngine",
+          "alive": false,
+          "role": null,
+          "wallet": "0x8A6F56DA58AD6Bb809931Dd60c6EaA8c583831Bb",
+          "thinking": "As a nervous crewmate, I should spread out and explore. Red is here, so I'll move to a different area to gather evidence and watch movements."
+        }
+      ],
+      "bodies": [
+        {
+          "room": "lowerEngine",
+          "victim": "yellow"
+        },
+        {
+          "room": "reactor",
+          "victim": "purple"
+        }
+      ],
+      "log": [
+        {
+          "id": 1,
+          "kind": "spawn",
+          "text": "Game #9 created on Monad",
+          "txHash": "0xc2fe8aa483372ea9f15c493bb0acd768f361a0cb878f7a7788ff6581a32da3b6",
+          "ts": 1783155727772
+        },
+        {
+          "id": 2,
+          "kind": "spawn",
+          "text": "Red (Machiavelli) joined the crew",
+          "txHash": "0x9c020fdbeba2c9f3c0abdb54006ddbd473d1b7fcfd4ef0bcabacad3d99cd2be9",
+          "ts": 1783155730041
+        },
+        {
+          "id": 3,
+          "kind": "spawn",
+          "text": "Blue (Cipher) joined the crew",
+          "txHash": "0x68a0d4f05ca4889d1958aba70bc29b8bc5159aa0b0aaf03fed26c7c66cc014cc",
+          "ts": 1783155735814
+        },
+        {
+          "id": 4,
+          "kind": "spawn",
+          "text": "Green (Klaxon) joined the crew",
+          "txHash": "0x7291d0e7476aa112a00e70c64fb27d973c2f8a2eb961d0e44a38048f17cbf58d",
+          "ts": 1783155738721
+        },
+        {
+          "id": 5,
+          "kind": "spawn",
+          "text": "Purple (Sherlock) joined the crew",
+          "txHash": "0x6d0659834e5d5046d54e496fb1d699a7b34fab7a090fdec17727b34c57366ff8",
+          "ts": 1783155740444
+        },
+        {
+          "id": 6,
+          "kind": "spawn",
+          "text": "Yellow (Pip) joined the crew",
+          "txHash": "0x2591d399870084bea3ab9d4632d4920782110dafbee3bab3082213c7ac42a99a",
+          "ts": 1783155743651
+        },
+        {
+          "id": 7,
+          "kind": "spawn",
+          "text": "Game started — roles committed on-chain (commit/reveal)",
+          "txHash": "0x87183554d9547776b08f9c4e7436e21a9c097472314eee457a0c75a9925c056b",
+          "ts": 1783155745811
+        },
+        {
+          "id": 8,
+          "kind": "kill",
+          "text": "Red killed Yellow in Lower Engine",
+          "txHash": "0x1ebd852b60ea35d9d8d69f9edca8d1d669195357c1dce865718448112d8f1179",
+          "ts": 1783155756175
+        },
+        {
+          "id": 9,
+          "kind": "vent",
+          "text": "Red vented to Reactor",
+          "txHash": "0xfc082206f955165e19d0e758697b0d27193b99c79ee9a1b0abef566dc88f7438",
+          "ts": 1783155764569
+        },
+        {
+          "id": 10,
+          "kind": "kill",
+          "text": "Red killed Purple in Reactor",
+          "txHash": "0x924be00be3299bf9133af3202b40845ceb0eae2f01074e81f4ff3c7a270a8436",
+          "ts": 1783155773444
+        }
+      ],
+      "chat": [],
+      "meeting": null,
+      "clock": {
+        "monadMs": 62976,
+        "ethEquivMs": 120000,
+        "txCount": 10
+      }
+    },
+    {
+      "type": "snapshot",
+      "gameId": 9,
+      "tick": 4,
+      "phase": "active",
+      "agents": [
+        {
+          "id": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "soul": "Machiavelli",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0x67bfe5Ef88bB8b0901856685773F9d321D20611F",
+          "thinking": "Blue is here with Purple's body - I must vent immediately to escape before Blue reports it. Venting to Upper Engine gets me away from the crime scene."
+        },
+        {
+          "id": "blue",
+          "name": "Blue",
+          "color": "#3498db",
+          "soul": "Cipher",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0xA5acE89DDBdA670acA598Ad1CBd658F1edCAC358",
+          "thinking": "Purple's body is in Reactor where I am now with Red at t4. I was with Purple in Security at t1, then with Red in Reactor at t3. I must report this body immediately to start a discussion about who killed Purple."
+        },
+        {
+          "id": "green",
+          "name": "Green",
+          "color": "#2ecc71",
+          "soul": "Klaxon",
+          "room": "upperEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0x26F0c65184d40ae35116f69337dB02865Bb6e703",
+          "thinking": "I need to spread out and gather evidence. Since I'm alone in Upper Engine, I should move to a high-traffic area like Security to observe others or check cameras if possible."
+        },
+        {
+          "id": "purple",
+          "name": "Purple",
+          "color": "#9b59b6",
+          "soul": "Sherlock",
+          "room": "reactor",
+          "alive": false,
+          "role": null,
+          "wallet": "0x7B8532d3072e50fb34976eE7553C5476E8526984",
+          "thinking": "Red and I have been together since t2, which gives us both alibis. I should move to explore other areas and observe Blue, Green, and Purple's movements to gather evidence about their locations and potential suspicious behavior."
+        },
+        {
+          "id": "yellow",
+          "name": "Yellow",
+          "color": "#f1c40f",
+          "soul": "Pip",
+          "room": "lowerEngine",
+          "alive": false,
+          "role": null,
+          "wallet": "0x8A6F56DA58AD6Bb809931Dd60c6EaA8c583831Bb",
+          "thinking": "As a nervous crewmate, I should spread out and explore. Red is here, so I'll move to a different area to gather evidence and watch movements."
+        }
+      ],
+      "bodies": [
+        {
+          "room": "lowerEngine",
+          "victim": "yellow"
+        },
+        {
+          "room": "reactor",
+          "victim": "purple"
+        }
+      ],
+      "log": [
+        {
+          "id": 1,
+          "kind": "spawn",
+          "text": "Game #9 created on Monad",
+          "txHash": "0xc2fe8aa483372ea9f15c493bb0acd768f361a0cb878f7a7788ff6581a32da3b6",
+          "ts": 1783155727772
+        },
+        {
+          "id": 2,
+          "kind": "spawn",
+          "text": "Red (Machiavelli) joined the crew",
+          "txHash": "0x9c020fdbeba2c9f3c0abdb54006ddbd473d1b7fcfd4ef0bcabacad3d99cd2be9",
+          "ts": 1783155730041
+        },
+        {
+          "id": 3,
+          "kind": "spawn",
+          "text": "Blue (Cipher) joined the crew",
+          "txHash": "0x68a0d4f05ca4889d1958aba70bc29b8bc5159aa0b0aaf03fed26c7c66cc014cc",
+          "ts": 1783155735814
+        },
+        {
+          "id": 4,
+          "kind": "spawn",
+          "text": "Green (Klaxon) joined the crew",
+          "txHash": "0x7291d0e7476aa112a00e70c64fb27d973c2f8a2eb961d0e44a38048f17cbf58d",
+          "ts": 1783155738721
+        },
+        {
+          "id": 5,
+          "kind": "spawn",
+          "text": "Purple (Sherlock) joined the crew",
+          "txHash": "0x6d0659834e5d5046d54e496fb1d699a7b34fab7a090fdec17727b34c57366ff8",
+          "ts": 1783155740444
+        },
+        {
+          "id": 6,
+          "kind": "spawn",
+          "text": "Yellow (Pip) joined the crew",
+          "txHash": "0x2591d399870084bea3ab9d4632d4920782110dafbee3bab3082213c7ac42a99a",
+          "ts": 1783155743651
+        },
+        {
+          "id": 7,
+          "kind": "spawn",
+          "text": "Game started — roles committed on-chain (commit/reveal)",
+          "txHash": "0x87183554d9547776b08f9c4e7436e21a9c097472314eee457a0c75a9925c056b",
+          "ts": 1783155745811
+        },
+        {
+          "id": 8,
+          "kind": "kill",
+          "text": "Red killed Yellow in Lower Engine",
+          "txHash": "0x1ebd852b60ea35d9d8d69f9edca8d1d669195357c1dce865718448112d8f1179",
+          "ts": 1783155756175
+        },
+        {
+          "id": 9,
+          "kind": "vent",
+          "text": "Red vented to Reactor",
+          "txHash": "0xfc082206f955165e19d0e758697b0d27193b99c79ee9a1b0abef566dc88f7438",
+          "ts": 1783155764569
+        },
+        {
+          "id": 10,
+          "kind": "kill",
+          "text": "Red killed Purple in Reactor",
+          "txHash": "0x924be00be3299bf9133af3202b40845ceb0eae2f01074e81f4ff3c7a270a8436",
+          "ts": 1783155773444
+        }
+      ],
+      "chat": [],
+      "meeting": null,
+      "clock": {
+        "monadMs": 67015,
+        "ethEquivMs": 120000,
+        "txCount": 10
+      }
+    },
+    {
+      "type": "snapshot",
+      "gameId": 9,
+      "tick": 4,
+      "phase": "active",
+      "agents": [
+        {
+          "id": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "soul": "Machiavelli",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0x67bfe5Ef88bB8b0901856685773F9d321D20611F",
+          "thinking": "Blue is here with Purple's body - I must vent immediately to escape before Blue reports it. Venting to Upper Engine gets me away from the crime scene."
+        },
+        {
+          "id": "blue",
+          "name": "Blue",
+          "color": "#3498db",
+          "soul": "Cipher",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0xA5acE89DDBdA670acA598Ad1CBd658F1edCAC358",
+          "thinking": "Purple's body is in Reactor where I am now with Red at t4. I was with Purple in Security at t1, then with Red in Reactor at t3. I must report this body immediately to start a discussion about who killed Purple."
+        },
+        {
+          "id": "green",
+          "name": "Green",
+          "color": "#2ecc71",
+          "soul": "Klaxon",
+          "room": "upperEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0x26F0c65184d40ae35116f69337dB02865Bb6e703",
+          "thinking": "I need to spread out and gather evidence. Since I'm alone in Upper Engine, I should move to a high-traffic area like Security to observe others or check cameras if possible."
+        },
+        {
+          "id": "purple",
+          "name": "Purple",
+          "color": "#9b59b6",
+          "soul": "Sherlock",
+          "room": "reactor",
+          "alive": false,
+          "role": null,
+          "wallet": "0x7B8532d3072e50fb34976eE7553C5476E8526984",
+          "thinking": "Red and I have been together since t2, which gives us both alibis. I should move to explore other areas and observe Blue, Green, and Purple's movements to gather evidence about their locations and potential suspicious behavior."
+        },
+        {
+          "id": "yellow",
+          "name": "Yellow",
+          "color": "#f1c40f",
+          "soul": "Pip",
+          "room": "lowerEngine",
+          "alive": false,
+          "role": null,
+          "wallet": "0x8A6F56DA58AD6Bb809931Dd60c6EaA8c583831Bb",
+          "thinking": "As a nervous crewmate, I should spread out and explore. Red is here, so I'll move to a different area to gather evidence and watch movements."
+        }
+      ],
+      "bodies": [
+        {
+          "room": "lowerEngine",
+          "victim": "yellow"
+        },
+        {
+          "room": "reactor",
+          "victim": "purple"
+        }
+      ],
+      "log": [
+        {
+          "id": 1,
+          "kind": "spawn",
+          "text": "Game #9 created on Monad",
+          "txHash": "0xc2fe8aa483372ea9f15c493bb0acd768f361a0cb878f7a7788ff6581a32da3b6",
+          "ts": 1783155727772
+        },
+        {
+          "id": 2,
+          "kind": "spawn",
+          "text": "Red (Machiavelli) joined the crew",
+          "txHash": "0x9c020fdbeba2c9f3c0abdb54006ddbd473d1b7fcfd4ef0bcabacad3d99cd2be9",
+          "ts": 1783155730041
+        },
+        {
+          "id": 3,
+          "kind": "spawn",
+          "text": "Blue (Cipher) joined the crew",
+          "txHash": "0x68a0d4f05ca4889d1958aba70bc29b8bc5159aa0b0aaf03fed26c7c66cc014cc",
+          "ts": 1783155735814
+        },
+        {
+          "id": 4,
+          "kind": "spawn",
+          "text": "Green (Klaxon) joined the crew",
+          "txHash": "0x7291d0e7476aa112a00e70c64fb27d973c2f8a2eb961d0e44a38048f17cbf58d",
+          "ts": 1783155738721
+        },
+        {
+          "id": 5,
+          "kind": "spawn",
+          "text": "Purple (Sherlock) joined the crew",
+          "txHash": "0x6d0659834e5d5046d54e496fb1d699a7b34fab7a090fdec17727b34c57366ff8",
+          "ts": 1783155740444
+        },
+        {
+          "id": 6,
+          "kind": "spawn",
+          "text": "Yellow (Pip) joined the crew",
+          "txHash": "0x2591d399870084bea3ab9d4632d4920782110dafbee3bab3082213c7ac42a99a",
+          "ts": 1783155743651
+        },
+        {
+          "id": 7,
+          "kind": "spawn",
+          "text": "Game started — roles committed on-chain (commit/reveal)",
+          "txHash": "0x87183554d9547776b08f9c4e7436e21a9c097472314eee457a0c75a9925c056b",
+          "ts": 1783155745811
+        },
+        {
+          "id": 8,
+          "kind": "kill",
+          "text": "Red killed Yellow in Lower Engine",
+          "txHash": "0x1ebd852b60ea35d9d8d69f9edca8d1d669195357c1dce865718448112d8f1179",
+          "ts": 1783155756175
+        },
+        {
+          "id": 9,
+          "kind": "vent",
+          "text": "Red vented to Reactor",
+          "txHash": "0xfc082206f955165e19d0e758697b0d27193b99c79ee9a1b0abef566dc88f7438",
+          "ts": 1783155764569
+        },
+        {
+          "id": 10,
+          "kind": "kill",
+          "text": "Red killed Purple in Reactor",
+          "txHash": "0x924be00be3299bf9133af3202b40845ceb0eae2f01074e81f4ff3c7a270a8436",
+          "ts": 1783155773444
+        },
+        {
+          "id": 11,
+          "kind": "report",
+          "text": "Blue reported a body in Reactor",
+          "txHash": "0x3ba0cbfe5021c6e4013ab5b1666f86d256678865579068981a15abc2003b762d",
+          "ts": 1783155780882
+        }
+      ],
+      "chat": [],
+      "meeting": null,
+      "clock": {
+        "monadMs": 70414,
+        "ethEquivMs": 132000,
+        "txCount": 11
+      }
+    },
+    {
+      "type": "snapshot",
+      "gameId": 9,
+      "tick": 4,
+      "phase": "meeting",
+      "agents": [
+        {
+          "id": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "soul": "Machiavelli",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0x67bfe5Ef88bB8b0901856685773F9d321D20611F",
+          "thinking": "Blue is here with Purple's body - I must vent immediately to escape before Blue reports it. Venting to Upper Engine gets me away from the crime scene."
+        },
+        {
+          "id": "blue",
+          "name": "Blue",
+          "color": "#3498db",
+          "soul": "Cipher",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0xA5acE89DDBdA670acA598Ad1CBd658F1edCAC358",
+          "thinking": "Purple's body is in Reactor where I am now with Red at t4. I was with Purple in Security at t1, then with Red in Reactor at t3. I must report this body immediately to start a discussion about who killed Purple."
+        },
+        {
+          "id": "green",
+          "name": "Green",
+          "color": "#2ecc71",
+          "soul": "Klaxon",
+          "room": "upperEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0x26F0c65184d40ae35116f69337dB02865Bb6e703",
+          "thinking": "I need to spread out and gather evidence. Since I'm alone in Upper Engine, I should move to a high-traffic area like Security to observe others or check cameras if possible."
+        },
+        {
+          "id": "purple",
+          "name": "Purple",
+          "color": "#9b59b6",
+          "soul": "Sherlock",
+          "room": "reactor",
+          "alive": false,
+          "role": null,
+          "wallet": "0x7B8532d3072e50fb34976eE7553C5476E8526984",
+          "thinking": "Red and I have been together since t2, which gives us both alibis. I should move to explore other areas and observe Blue, Green, and Purple's movements to gather evidence about their locations and potential suspicious behavior."
+        },
+        {
+          "id": "yellow",
+          "name": "Yellow",
+          "color": "#f1c40f",
+          "soul": "Pip",
+          "room": "lowerEngine",
+          "alive": false,
+          "role": null,
+          "wallet": "0x8A6F56DA58AD6Bb809931Dd60c6EaA8c583831Bb",
+          "thinking": "As a nervous crewmate, I should spread out and explore. Red is here, so I'll move to a different area to gather evidence and watch movements."
+        }
+      ],
+      "bodies": [
+        {
+          "room": "lowerEngine",
+          "victim": "yellow"
+        },
+        {
+          "room": "reactor",
+          "victim": "purple"
+        }
+      ],
+      "log": [
+        {
+          "id": 1,
+          "kind": "spawn",
+          "text": "Game #9 created on Monad",
+          "txHash": "0xc2fe8aa483372ea9f15c493bb0acd768f361a0cb878f7a7788ff6581a32da3b6",
+          "ts": 1783155727772
+        },
+        {
+          "id": 2,
+          "kind": "spawn",
+          "text": "Red (Machiavelli) joined the crew",
+          "txHash": "0x9c020fdbeba2c9f3c0abdb54006ddbd473d1b7fcfd4ef0bcabacad3d99cd2be9",
+          "ts": 1783155730041
+        },
+        {
+          "id": 3,
+          "kind": "spawn",
+          "text": "Blue (Cipher) joined the crew",
+          "txHash": "0x68a0d4f05ca4889d1958aba70bc29b8bc5159aa0b0aaf03fed26c7c66cc014cc",
+          "ts": 1783155735814
+        },
+        {
+          "id": 4,
+          "kind": "spawn",
+          "text": "Green (Klaxon) joined the crew",
+          "txHash": "0x7291d0e7476aa112a00e70c64fb27d973c2f8a2eb961d0e44a38048f17cbf58d",
+          "ts": 1783155738721
+        },
+        {
+          "id": 5,
+          "kind": "spawn",
+          "text": "Purple (Sherlock) joined the crew",
+          "txHash": "0x6d0659834e5d5046d54e496fb1d699a7b34fab7a090fdec17727b34c57366ff8",
+          "ts": 1783155740444
+        },
+        {
+          "id": 6,
+          "kind": "spawn",
+          "text": "Yellow (Pip) joined the crew",
+          "txHash": "0x2591d399870084bea3ab9d4632d4920782110dafbee3bab3082213c7ac42a99a",
+          "ts": 1783155743651
+        },
+        {
+          "id": 7,
+          "kind": "spawn",
+          "text": "Game started — roles committed on-chain (commit/reveal)",
+          "txHash": "0x87183554d9547776b08f9c4e7436e21a9c097472314eee457a0c75a9925c056b",
+          "ts": 1783155745811
+        },
+        {
+          "id": 8,
+          "kind": "kill",
+          "text": "Red killed Yellow in Lower Engine",
+          "txHash": "0x1ebd852b60ea35d9d8d69f9edca8d1d669195357c1dce865718448112d8f1179",
+          "ts": 1783155756175
+        },
+        {
+          "id": 9,
+          "kind": "vent",
+          "text": "Red vented to Reactor",
+          "txHash": "0xfc082206f955165e19d0e758697b0d27193b99c79ee9a1b0abef566dc88f7438",
+          "ts": 1783155764569
+        },
+        {
+          "id": 10,
+          "kind": "kill",
+          "text": "Red killed Purple in Reactor",
+          "txHash": "0x924be00be3299bf9133af3202b40845ceb0eae2f01074e81f4ff3c7a270a8436",
+          "ts": 1783155773444
+        },
+        {
+          "id": 11,
+          "kind": "report",
+          "text": "Blue reported a body in Reactor",
+          "txHash": "0x3ba0cbfe5021c6e4013ab5b1666f86d256678865579068981a15abc2003b762d",
+          "ts": 1783155780882
+        },
+        {
+          "id": 12,
+          "kind": "meeting",
+          "text": "Blue reported a body",
+          "txHash": "0x877809b159defc606b6df65cdf170910fcfb12ebbfbff2e5d4d73567c2c6d319",
+          "ts": 1783155782532
+        }
+      ],
+      "chat": [],
+      "meeting": {
+        "active": true,
+        "round": 1,
+        "reason": "Blue reported a body",
+        "votes": {
+          "red": null,
+          "blue": null,
+          "green": null
+        }
+      },
+      "clock": {
+        "monadMs": 72532,
+        "ethEquivMs": 144000,
+        "txCount": 12
+      }
+    },
+    {
+      "type": "snapshot",
+      "gameId": 9,
+      "tick": 4,
+      "phase": "meeting",
+      "agents": [
+        {
+          "id": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "soul": "Machiavelli",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0x67bfe5Ef88bB8b0901856685773F9d321D20611F",
+          "thinking": "I'm the impostor and just killed Purple in Reactor at t3. Blue was also in Reactor at t3, which means Blue likely saw Purple's body there and reported it. I need to act shocked and redirect suspicion. I should claim I was elsewhere and suggest Blue is suspicious for being at the scene. I'll accuse Blue of being near the body."
+        },
+        {
+          "id": "blue",
+          "name": "Blue",
+          "color": "#3498db",
+          "soul": "Cipher",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0xA5acE89DDBdA670acA598Ad1CBd658F1edCAC358",
+          "thinking": "Purple's body is in Reactor where I am now with Red at t4. I was with Purple in Security at t1, then with Red in Reactor at t3. I must report this body immediately to start a discussion about who killed Purple."
+        },
+        {
+          "id": "green",
+          "name": "Green",
+          "color": "#2ecc71",
+          "soul": "Klaxon",
+          "room": "upperEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0x26F0c65184d40ae35116f69337dB02865Bb6e703",
+          "thinking": "I need to spread out and gather evidence. Since I'm alone in Upper Engine, I should move to a high-traffic area like Security to observe others or check cameras if possible."
+        },
+        {
+          "id": "purple",
+          "name": "Purple",
+          "color": "#9b59b6",
+          "soul": "Sherlock",
+          "room": "reactor",
+          "alive": false,
+          "role": null,
+          "wallet": "0x7B8532d3072e50fb34976eE7553C5476E8526984",
+          "thinking": "Red and I have been together since t2, which gives us both alibis. I should move to explore other areas and observe Blue, Green, and Purple's movements to gather evidence about their locations and potential suspicious behavior."
+        },
+        {
+          "id": "yellow",
+          "name": "Yellow",
+          "color": "#f1c40f",
+          "soul": "Pip",
+          "room": "lowerEngine",
+          "alive": false,
+          "role": null,
+          "wallet": "0x8A6F56DA58AD6Bb809931Dd60c6EaA8c583831Bb",
+          "thinking": "As a nervous crewmate, I should spread out and explore. Red is here, so I'll move to a different area to gather evidence and watch movements."
+        }
+      ],
+      "bodies": [
+        {
+          "room": "lowerEngine",
+          "victim": "yellow"
+        },
+        {
+          "room": "reactor",
+          "victim": "purple"
+        }
+      ],
+      "log": [
+        {
+          "id": 1,
+          "kind": "spawn",
+          "text": "Game #9 created on Monad",
+          "txHash": "0xc2fe8aa483372ea9f15c493bb0acd768f361a0cb878f7a7788ff6581a32da3b6",
+          "ts": 1783155727772
+        },
+        {
+          "id": 2,
+          "kind": "spawn",
+          "text": "Red (Machiavelli) joined the crew",
+          "txHash": "0x9c020fdbeba2c9f3c0abdb54006ddbd473d1b7fcfd4ef0bcabacad3d99cd2be9",
+          "ts": 1783155730041
+        },
+        {
+          "id": 3,
+          "kind": "spawn",
+          "text": "Blue (Cipher) joined the crew",
+          "txHash": "0x68a0d4f05ca4889d1958aba70bc29b8bc5159aa0b0aaf03fed26c7c66cc014cc",
+          "ts": 1783155735814
+        },
+        {
+          "id": 4,
+          "kind": "spawn",
+          "text": "Green (Klaxon) joined the crew",
+          "txHash": "0x7291d0e7476aa112a00e70c64fb27d973c2f8a2eb961d0e44a38048f17cbf58d",
+          "ts": 1783155738721
+        },
+        {
+          "id": 5,
+          "kind": "spawn",
+          "text": "Purple (Sherlock) joined the crew",
+          "txHash": "0x6d0659834e5d5046d54e496fb1d699a7b34fab7a090fdec17727b34c57366ff8",
+          "ts": 1783155740444
+        },
+        {
+          "id": 6,
+          "kind": "spawn",
+          "text": "Yellow (Pip) joined the crew",
+          "txHash": "0x2591d399870084bea3ab9d4632d4920782110dafbee3bab3082213c7ac42a99a",
+          "ts": 1783155743651
+        },
+        {
+          "id": 7,
+          "kind": "spawn",
+          "text": "Game started — roles committed on-chain (commit/reveal)",
+          "txHash": "0x87183554d9547776b08f9c4e7436e21a9c097472314eee457a0c75a9925c056b",
+          "ts": 1783155745811
+        },
+        {
+          "id": 8,
+          "kind": "kill",
+          "text": "Red killed Yellow in Lower Engine",
+          "txHash": "0x1ebd852b60ea35d9d8d69f9edca8d1d669195357c1dce865718448112d8f1179",
+          "ts": 1783155756175
+        },
+        {
+          "id": 9,
+          "kind": "vent",
+          "text": "Red vented to Reactor",
+          "txHash": "0xfc082206f955165e19d0e758697b0d27193b99c79ee9a1b0abef566dc88f7438",
+          "ts": 1783155764569
+        },
+        {
+          "id": 10,
+          "kind": "kill",
+          "text": "Red killed Purple in Reactor",
+          "txHash": "0x924be00be3299bf9133af3202b40845ceb0eae2f01074e81f4ff3c7a270a8436",
+          "ts": 1783155773444
+        },
+        {
+          "id": 11,
+          "kind": "report",
+          "text": "Blue reported a body in Reactor",
+          "txHash": "0x3ba0cbfe5021c6e4013ab5b1666f86d256678865579068981a15abc2003b762d",
+          "ts": 1783155780882
+        },
+        {
+          "id": 12,
+          "kind": "meeting",
+          "text": "Blue reported a body",
+          "txHash": "0x877809b159defc606b6df65cdf170910fcfb12ebbfbff2e5d4d73567c2c6d319",
+          "ts": 1783155782532
+        }
+      ],
+      "chat": [
+        {
+          "id": 1,
+          "agentId": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "text": "I was in Security checking cams when this happened - Blue, why were you in Reactor where the body was?",
+          "ts": 1783155788644
+        }
+      ],
+      "meeting": {
+        "active": true,
+        "round": 1,
+        "reason": "Blue reported a body",
+        "votes": {
+          "red": null,
+          "blue": null,
+          "green": null
+        }
+      },
+      "clock": {
+        "monadMs": 78176,
+        "ethEquivMs": 144000,
+        "txCount": 12
+      }
+    },
+    {
+      "type": "snapshot",
+      "gameId": 9,
+      "tick": 4,
+      "phase": "meeting",
+      "agents": [
+        {
+          "id": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "soul": "Machiavelli",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0x67bfe5Ef88bB8b0901856685773F9d321D20611F",
+          "thinking": "I'm the impostor and just killed Purple in Reactor at t3. Blue was also in Reactor at t3, which means Blue likely saw Purple's body there and reported it. I need to act shocked and redirect suspicion. I should claim I was elsewhere and suggest Blue is suspicious for being at the scene. I'll accuse Blue of being near the body."
+        },
+        {
+          "id": "blue",
+          "name": "Blue",
+          "color": "#3498db",
+          "soul": "Cipher",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0xA5acE89DDBdA670acA598Ad1CBd658F1edCAC358",
+          "thinking": "Red claims they were in Security on cams, but I saw Red with me in Reactor at t3. Red is lying about their location. Yellow's body was found in Reactor. Red was in Reactor with me at t3, and now they're lying about being in Security. This is highly suspicious - Red is likely the impostor trying to deflect."
+        },
+        {
+          "id": "green",
+          "name": "Green",
+          "color": "#2ecc71",
+          "soul": "Klaxon",
+          "room": "upperEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0x26F0c65184d40ae35116f69337dB02865Bb6e703",
+          "thinking": "I need to spread out and gather evidence. Since I'm alone in Upper Engine, I should move to a high-traffic area like Security to observe others or check cameras if possible."
+        },
+        {
+          "id": "purple",
+          "name": "Purple",
+          "color": "#9b59b6",
+          "soul": "Sherlock",
+          "room": "reactor",
+          "alive": false,
+          "role": null,
+          "wallet": "0x7B8532d3072e50fb34976eE7553C5476E8526984",
+          "thinking": "Red and I have been together since t2, which gives us both alibis. I should move to explore other areas and observe Blue, Green, and Purple's movements to gather evidence about their locations and potential suspicious behavior."
+        },
+        {
+          "id": "yellow",
+          "name": "Yellow",
+          "color": "#f1c40f",
+          "soul": "Pip",
+          "room": "lowerEngine",
+          "alive": false,
+          "role": null,
+          "wallet": "0x8A6F56DA58AD6Bb809931Dd60c6EaA8c583831Bb",
+          "thinking": "As a nervous crewmate, I should spread out and explore. Red is here, so I'll move to a different area to gather evidence and watch movements."
+        }
+      ],
+      "bodies": [
+        {
+          "room": "lowerEngine",
+          "victim": "yellow"
+        },
+        {
+          "room": "reactor",
+          "victim": "purple"
+        }
+      ],
+      "log": [
+        {
+          "id": 1,
+          "kind": "spawn",
+          "text": "Game #9 created on Monad",
+          "txHash": "0xc2fe8aa483372ea9f15c493bb0acd768f361a0cb878f7a7788ff6581a32da3b6",
+          "ts": 1783155727772
+        },
+        {
+          "id": 2,
+          "kind": "spawn",
+          "text": "Red (Machiavelli) joined the crew",
+          "txHash": "0x9c020fdbeba2c9f3c0abdb54006ddbd473d1b7fcfd4ef0bcabacad3d99cd2be9",
+          "ts": 1783155730041
+        },
+        {
+          "id": 3,
+          "kind": "spawn",
+          "text": "Blue (Cipher) joined the crew",
+          "txHash": "0x68a0d4f05ca4889d1958aba70bc29b8bc5159aa0b0aaf03fed26c7c66cc014cc",
+          "ts": 1783155735814
+        },
+        {
+          "id": 4,
+          "kind": "spawn",
+          "text": "Green (Klaxon) joined the crew",
+          "txHash": "0x7291d0e7476aa112a00e70c64fb27d973c2f8a2eb961d0e44a38048f17cbf58d",
+          "ts": 1783155738721
+        },
+        {
+          "id": 5,
+          "kind": "spawn",
+          "text": "Purple (Sherlock) joined the crew",
+          "txHash": "0x6d0659834e5d5046d54e496fb1d699a7b34fab7a090fdec17727b34c57366ff8",
+          "ts": 1783155740444
+        },
+        {
+          "id": 6,
+          "kind": "spawn",
+          "text": "Yellow (Pip) joined the crew",
+          "txHash": "0x2591d399870084bea3ab9d4632d4920782110dafbee3bab3082213c7ac42a99a",
+          "ts": 1783155743651
+        },
+        {
+          "id": 7,
+          "kind": "spawn",
+          "text": "Game started — roles committed on-chain (commit/reveal)",
+          "txHash": "0x87183554d9547776b08f9c4e7436e21a9c097472314eee457a0c75a9925c056b",
+          "ts": 1783155745811
+        },
+        {
+          "id": 8,
+          "kind": "kill",
+          "text": "Red killed Yellow in Lower Engine",
+          "txHash": "0x1ebd852b60ea35d9d8d69f9edca8d1d669195357c1dce865718448112d8f1179",
+          "ts": 1783155756175
+        },
+        {
+          "id": 9,
+          "kind": "vent",
+          "text": "Red vented to Reactor",
+          "txHash": "0xfc082206f955165e19d0e758697b0d27193b99c79ee9a1b0abef566dc88f7438",
+          "ts": 1783155764569
+        },
+        {
+          "id": 10,
+          "kind": "kill",
+          "text": "Red killed Purple in Reactor",
+          "txHash": "0x924be00be3299bf9133af3202b40845ceb0eae2f01074e81f4ff3c7a270a8436",
+          "ts": 1783155773444
+        },
+        {
+          "id": 11,
+          "kind": "report",
+          "text": "Blue reported a body in Reactor",
+          "txHash": "0x3ba0cbfe5021c6e4013ab5b1666f86d256678865579068981a15abc2003b762d",
+          "ts": 1783155780882
+        },
+        {
+          "id": 12,
+          "kind": "meeting",
+          "text": "Blue reported a body",
+          "txHash": "0x877809b159defc606b6df65cdf170910fcfb12ebbfbff2e5d4d73567c2c6d319",
+          "ts": 1783155782532
+        }
+      ],
+      "chat": [
+        {
+          "id": 1,
+          "agentId": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "text": "I was in Security checking cams when this happened - Blue, why were you in Reactor where the body was?",
+          "ts": 1783155788644
+        },
+        {
+          "id": 2,
+          "agentId": "blue",
+          "name": "Blue",
+          "color": "#3498db",
+          "text": "Red, you're lying - I saw you in Reactor with me at t3, not in Security on cams.",
+          "ts": 1783155793972
+        }
+      ],
+      "meeting": {
+        "active": true,
+        "round": 1,
+        "reason": "Blue reported a body",
+        "votes": {
+          "red": null,
+          "blue": null,
+          "green": null
+        }
+      },
+      "clock": {
+        "monadMs": 83504,
+        "ethEquivMs": 144000,
+        "txCount": 12
+      }
+    },
+    {
+      "type": "snapshot",
+      "gameId": 9,
+      "tick": 4,
+      "phase": "meeting",
+      "agents": [
+        {
+          "id": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "soul": "Machiavelli",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0x67bfe5Ef88bB8b0901856685773F9d321D20611F",
+          "thinking": "I'm the impostor and just killed Purple in Reactor at t3. Blue was also in Reactor at t3, which means Blue likely saw Purple's body there and reported it. I need to act shocked and redirect suspicion. I should claim I was elsewhere and suggest Blue is suspicious for being at the scene. I'll accuse Blue of being near the body."
+        },
+        {
+          "id": "blue",
+          "name": "Blue",
+          "color": "#3498db",
+          "soul": "Cipher",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0xA5acE89DDBdA670acA598Ad1CBd658F1edCAC358",
+          "thinking": "Red claims they were in Security on cams, but I saw Red with me in Reactor at t3. Red is lying about their location. Yellow's body was found in Reactor. Red was in Reactor with me at t3, and now they're lying about being in Security. This is highly suspicious - Red is likely the impostor trying to deflect."
+        },
+        {
+          "id": "green",
+          "name": "Green",
+          "color": "#2ecc71",
+          "soul": "Klaxon",
+          "room": "upperEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0x26F0c65184d40ae35116f69337dB02865Bb6e703",
+          "thinking": "Blue reported the body in Reactor and claims Red was there at t3. Red says he was in Security on cams. These stories contradict each other. I have no memory of either player's location, so I need to call out this direct contradiction loudly. Red spoke first trying to deflect onto Blue, which is suspicious. Blue directly contradicted Red's alibi. I should press on this inconsistency."
+        },
+        {
+          "id": "purple",
+          "name": "Purple",
+          "color": "#9b59b6",
+          "soul": "Sherlock",
+          "room": "reactor",
+          "alive": false,
+          "role": null,
+          "wallet": "0x7B8532d3072e50fb34976eE7553C5476E8526984",
+          "thinking": "Red and I have been together since t2, which gives us both alibis. I should move to explore other areas and observe Blue, Green, and Purple's movements to gather evidence about their locations and potential suspicious behavior."
+        },
+        {
+          "id": "yellow",
+          "name": "Yellow",
+          "color": "#f1c40f",
+          "soul": "Pip",
+          "room": "lowerEngine",
+          "alive": false,
+          "role": null,
+          "wallet": "0x8A6F56DA58AD6Bb809931Dd60c6EaA8c583831Bb",
+          "thinking": "As a nervous crewmate, I should spread out and explore. Red is here, so I'll move to a different area to gather evidence and watch movements."
+        }
+      ],
+      "bodies": [
+        {
+          "room": "lowerEngine",
+          "victim": "yellow"
+        },
+        {
+          "room": "reactor",
+          "victim": "purple"
+        }
+      ],
+      "log": [
+        {
+          "id": 1,
+          "kind": "spawn",
+          "text": "Game #9 created on Monad",
+          "txHash": "0xc2fe8aa483372ea9f15c493bb0acd768f361a0cb878f7a7788ff6581a32da3b6",
+          "ts": 1783155727772
+        },
+        {
+          "id": 2,
+          "kind": "spawn",
+          "text": "Red (Machiavelli) joined the crew",
+          "txHash": "0x9c020fdbeba2c9f3c0abdb54006ddbd473d1b7fcfd4ef0bcabacad3d99cd2be9",
+          "ts": 1783155730041
+        },
+        {
+          "id": 3,
+          "kind": "spawn",
+          "text": "Blue (Cipher) joined the crew",
+          "txHash": "0x68a0d4f05ca4889d1958aba70bc29b8bc5159aa0b0aaf03fed26c7c66cc014cc",
+          "ts": 1783155735814
+        },
+        {
+          "id": 4,
+          "kind": "spawn",
+          "text": "Green (Klaxon) joined the crew",
+          "txHash": "0x7291d0e7476aa112a00e70c64fb27d973c2f8a2eb961d0e44a38048f17cbf58d",
+          "ts": 1783155738721
+        },
+        {
+          "id": 5,
+          "kind": "spawn",
+          "text": "Purple (Sherlock) joined the crew",
+          "txHash": "0x6d0659834e5d5046d54e496fb1d699a7b34fab7a090fdec17727b34c57366ff8",
+          "ts": 1783155740444
+        },
+        {
+          "id": 6,
+          "kind": "spawn",
+          "text": "Yellow (Pip) joined the crew",
+          "txHash": "0x2591d399870084bea3ab9d4632d4920782110dafbee3bab3082213c7ac42a99a",
+          "ts": 1783155743651
+        },
+        {
+          "id": 7,
+          "kind": "spawn",
+          "text": "Game started — roles committed on-chain (commit/reveal)",
+          "txHash": "0x87183554d9547776b08f9c4e7436e21a9c097472314eee457a0c75a9925c056b",
+          "ts": 1783155745811
+        },
+        {
+          "id": 8,
+          "kind": "kill",
+          "text": "Red killed Yellow in Lower Engine",
+          "txHash": "0x1ebd852b60ea35d9d8d69f9edca8d1d669195357c1dce865718448112d8f1179",
+          "ts": 1783155756175
+        },
+        {
+          "id": 9,
+          "kind": "vent",
+          "text": "Red vented to Reactor",
+          "txHash": "0xfc082206f955165e19d0e758697b0d27193b99c79ee9a1b0abef566dc88f7438",
+          "ts": 1783155764569
+        },
+        {
+          "id": 10,
+          "kind": "kill",
+          "text": "Red killed Purple in Reactor",
+          "txHash": "0x924be00be3299bf9133af3202b40845ceb0eae2f01074e81f4ff3c7a270a8436",
+          "ts": 1783155773444
+        },
+        {
+          "id": 11,
+          "kind": "report",
+          "text": "Blue reported a body in Reactor",
+          "txHash": "0x3ba0cbfe5021c6e4013ab5b1666f86d256678865579068981a15abc2003b762d",
+          "ts": 1783155780882
+        },
+        {
+          "id": 12,
+          "kind": "meeting",
+          "text": "Blue reported a body",
+          "txHash": "0x877809b159defc606b6df65cdf170910fcfb12ebbfbff2e5d4d73567c2c6d319",
+          "ts": 1783155782532
+        }
+      ],
+      "chat": [
+        {
+          "id": 1,
+          "agentId": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "text": "I was in Security checking cams when this happened - Blue, why were you in Reactor where the body was?",
+          "ts": 1783155788644
+        },
+        {
+          "id": 2,
+          "agentId": "blue",
+          "name": "Blue",
+          "color": "#3498db",
+          "text": "Red, you're lying - I saw you in Reactor with me at t3, not in Security on cams.",
+          "ts": 1783155793972
+        },
+        {
+          "id": 3,
+          "agentId": "green",
+          "name": "Green",
+          "color": "#2ecc71",
+          "text": "Red, you just said you were in Security on cams, but Blue saw you in Reactor - one of you is lying and I'm voting Red for the fake alibi!",
+          "ts": 1783155799966
+        }
+      ],
+      "meeting": {
+        "active": true,
+        "round": 1,
+        "reason": "Blue reported a body",
+        "votes": {
+          "red": null,
+          "blue": null,
+          "green": null
+        }
+      },
+      "clock": {
+        "monadMs": 89498,
+        "ethEquivMs": 144000,
+        "txCount": 12
+      }
+    },
+    {
+      "type": "snapshot",
+      "gameId": 9,
+      "tick": 4,
+      "phase": "meeting",
+      "agents": [
+        {
+          "id": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "soul": "Machiavelli",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0x67bfe5Ef88bB8b0901856685773F9d321D20611F",
+          "thinking": "I killed Purple in Reactor at t3 with Blue present - Blue is a witness who saw me there. Blue correctly placed me in Reactor at t3, contradicting my fake alibi about being in Security. Blue reported Purple's body and knows I was at the scene. Green is already suspicious of me and voting me based on the alibi contradiction. I need to eliminate Blue who is the direct witness. Between Blue and Green, Blue is the bigger threat as the eyewitness who found the body and can place me at the crime scene. I'll vote Blue to try to get them ejected and remove this witness."
+        },
+        {
+          "id": "blue",
+          "name": "Blue",
+          "color": "#3498db",
+          "soul": "Cipher",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0xA5acE89DDBdA670acA598Ad1CBd658F1edCAC358",
+          "thinking": "Let me analyze the facts. At t1, I was with Purple in Security. At t3, I was with Red in Reactor. Blue claims they saw Red in Reactor at t3, which matches my own memory - I was there with Red at t3. Red claims they were in Security checking cams, but that contradicts what I observed. I saw Red in Reactor at t3 with my own eyes. Red is lying about their location. Blue's statement is consistent with what I witnessed. Red has provided a false alibi, which is highly suspicious behavior. The evidence points to Red."
+        },
+        {
+          "id": "green",
+          "name": "Green",
+          "color": "#2ecc71",
+          "soul": "Klaxon",
+          "room": "upperEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0x26F0c65184d40ae35116f69337dB02865Bb6e703",
+          "thinking": "Blue reported the body and directly contradicts Red's alibi - Red claims Security/cams but Blue saw Red in Reactor at t3. Red gave a specific false alibi which is extremely suspicious behavior. Green agrees Red is lying. This is a strong, specific accusation with a clear contradiction. Red is caught in a lie."
+        },
+        {
+          "id": "purple",
+          "name": "Purple",
+          "color": "#9b59b6",
+          "soul": "Sherlock",
+          "room": "reactor",
+          "alive": false,
+          "role": null,
+          "wallet": "0x7B8532d3072e50fb34976eE7553C5476E8526984",
+          "thinking": "Red and I have been together since t2, which gives us both alibis. I should move to explore other areas and observe Blue, Green, and Purple's movements to gather evidence about their locations and potential suspicious behavior."
+        },
+        {
+          "id": "yellow",
+          "name": "Yellow",
+          "color": "#f1c40f",
+          "soul": "Pip",
+          "room": "lowerEngine",
+          "alive": false,
+          "role": null,
+          "wallet": "0x8A6F56DA58AD6Bb809931Dd60c6EaA8c583831Bb",
+          "thinking": "As a nervous crewmate, I should spread out and explore. Red is here, so I'll move to a different area to gather evidence and watch movements."
+        }
+      ],
+      "bodies": [
+        {
+          "room": "lowerEngine",
+          "victim": "yellow"
+        },
+        {
+          "room": "reactor",
+          "victim": "purple"
+        }
+      ],
+      "log": [
+        {
+          "id": 1,
+          "kind": "spawn",
+          "text": "Game #9 created on Monad",
+          "txHash": "0xc2fe8aa483372ea9f15c493bb0acd768f361a0cb878f7a7788ff6581a32da3b6",
+          "ts": 1783155727772
+        },
+        {
+          "id": 2,
+          "kind": "spawn",
+          "text": "Red (Machiavelli) joined the crew",
+          "txHash": "0x9c020fdbeba2c9f3c0abdb54006ddbd473d1b7fcfd4ef0bcabacad3d99cd2be9",
+          "ts": 1783155730041
+        },
+        {
+          "id": 3,
+          "kind": "spawn",
+          "text": "Blue (Cipher) joined the crew",
+          "txHash": "0x68a0d4f05ca4889d1958aba70bc29b8bc5159aa0b0aaf03fed26c7c66cc014cc",
+          "ts": 1783155735814
+        },
+        {
+          "id": 4,
+          "kind": "spawn",
+          "text": "Green (Klaxon) joined the crew",
+          "txHash": "0x7291d0e7476aa112a00e70c64fb27d973c2f8a2eb961d0e44a38048f17cbf58d",
+          "ts": 1783155738721
+        },
+        {
+          "id": 5,
+          "kind": "spawn",
+          "text": "Purple (Sherlock) joined the crew",
+          "txHash": "0x6d0659834e5d5046d54e496fb1d699a7b34fab7a090fdec17727b34c57366ff8",
+          "ts": 1783155740444
+        },
+        {
+          "id": 6,
+          "kind": "spawn",
+          "text": "Yellow (Pip) joined the crew",
+          "txHash": "0x2591d399870084bea3ab9d4632d4920782110dafbee3bab3082213c7ac42a99a",
+          "ts": 1783155743651
+        },
+        {
+          "id": 7,
+          "kind": "spawn",
+          "text": "Game started — roles committed on-chain (commit/reveal)",
+          "txHash": "0x87183554d9547776b08f9c4e7436e21a9c097472314eee457a0c75a9925c056b",
+          "ts": 1783155745811
+        },
+        {
+          "id": 8,
+          "kind": "kill",
+          "text": "Red killed Yellow in Lower Engine",
+          "txHash": "0x1ebd852b60ea35d9d8d69f9edca8d1d669195357c1dce865718448112d8f1179",
+          "ts": 1783155756175
+        },
+        {
+          "id": 9,
+          "kind": "vent",
+          "text": "Red vented to Reactor",
+          "txHash": "0xfc082206f955165e19d0e758697b0d27193b99c79ee9a1b0abef566dc88f7438",
+          "ts": 1783155764569
+        },
+        {
+          "id": 10,
+          "kind": "kill",
+          "text": "Red killed Purple in Reactor",
+          "txHash": "0x924be00be3299bf9133af3202b40845ceb0eae2f01074e81f4ff3c7a270a8436",
+          "ts": 1783155773444
+        },
+        {
+          "id": 11,
+          "kind": "report",
+          "text": "Blue reported a body in Reactor",
+          "txHash": "0x3ba0cbfe5021c6e4013ab5b1666f86d256678865579068981a15abc2003b762d",
+          "ts": 1783155780882
+        },
+        {
+          "id": 12,
+          "kind": "meeting",
+          "text": "Blue reported a body",
+          "txHash": "0x877809b159defc606b6df65cdf170910fcfb12ebbfbff2e5d4d73567c2c6d319",
+          "ts": 1783155782532
+        }
+      ],
+      "chat": [
+        {
+          "id": 1,
+          "agentId": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "text": "I was in Security checking cams when this happened - Blue, why were you in Reactor where the body was?",
+          "ts": 1783155788644
+        },
+        {
+          "id": 2,
+          "agentId": "blue",
+          "name": "Blue",
+          "color": "#3498db",
+          "text": "Red, you're lying - I saw you in Reactor with me at t3, not in Security on cams.",
+          "ts": 1783155793972
+        },
+        {
+          "id": 3,
+          "agentId": "green",
+          "name": "Green",
+          "color": "#2ecc71",
+          "text": "Red, you just said you were in Security on cams, but Blue saw you in Reactor - one of you is lying and I'm voting Red for the fake alibi!",
+          "ts": 1783155799966
+        }
+      ],
+      "meeting": {
+        "active": true,
+        "round": 1,
+        "reason": "Blue reported a body",
+        "votes": {
+          "red": null,
+          "blue": null,
+          "green": null
+        }
+      },
+      "clock": {
+        "monadMs": 96020,
+        "ethEquivMs": 144000,
+        "txCount": 12
+      }
+    },
+    {
+      "type": "snapshot",
+      "gameId": 9,
+      "tick": 4,
+      "phase": "meeting",
+      "agents": [
+        {
+          "id": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "soul": "Machiavelli",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0x67bfe5Ef88bB8b0901856685773F9d321D20611F",
+          "thinking": "I killed Purple in Reactor at t3 with Blue present - Blue is a witness who saw me there. Blue correctly placed me in Reactor at t3, contradicting my fake alibi about being in Security. Blue reported Purple's body and knows I was at the scene. Green is already suspicious of me and voting me based on the alibi contradiction. I need to eliminate Blue who is the direct witness. Between Blue and Green, Blue is the bigger threat as the eyewitness who found the body and can place me at the crime scene. I'll vote Blue to try to get them ejected and remove this witness."
+        },
+        {
+          "id": "blue",
+          "name": "Blue",
+          "color": "#3498db",
+          "soul": "Cipher",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0xA5acE89DDBdA670acA598Ad1CBd658F1edCAC358",
+          "thinking": "Let me analyze the facts. At t1, I was with Purple in Security. At t3, I was with Red in Reactor. Blue claims they saw Red in Reactor at t3, which matches my own memory - I was there with Red at t3. Red claims they were in Security checking cams, but that contradicts what I observed. I saw Red in Reactor at t3 with my own eyes. Red is lying about their location. Blue's statement is consistent with what I witnessed. Red has provided a false alibi, which is highly suspicious behavior. The evidence points to Red."
+        },
+        {
+          "id": "green",
+          "name": "Green",
+          "color": "#2ecc71",
+          "soul": "Klaxon",
+          "room": "upperEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0x26F0c65184d40ae35116f69337dB02865Bb6e703",
+          "thinking": "Blue reported the body and directly contradicts Red's alibi - Red claims Security/cams but Blue saw Red in Reactor at t3. Red gave a specific false alibi which is extremely suspicious behavior. Green agrees Red is lying. This is a strong, specific accusation with a clear contradiction. Red is caught in a lie."
+        },
+        {
+          "id": "purple",
+          "name": "Purple",
+          "color": "#9b59b6",
+          "soul": "Sherlock",
+          "room": "reactor",
+          "alive": false,
+          "role": null,
+          "wallet": "0x7B8532d3072e50fb34976eE7553C5476E8526984",
+          "thinking": "Red and I have been together since t2, which gives us both alibis. I should move to explore other areas and observe Blue, Green, and Purple's movements to gather evidence about their locations and potential suspicious behavior."
+        },
+        {
+          "id": "yellow",
+          "name": "Yellow",
+          "color": "#f1c40f",
+          "soul": "Pip",
+          "room": "lowerEngine",
+          "alive": false,
+          "role": null,
+          "wallet": "0x8A6F56DA58AD6Bb809931Dd60c6EaA8c583831Bb",
+          "thinking": "As a nervous crewmate, I should spread out and explore. Red is here, so I'll move to a different area to gather evidence and watch movements."
+        }
+      ],
+      "bodies": [
+        {
+          "room": "lowerEngine",
+          "victim": "yellow"
+        },
+        {
+          "room": "reactor",
+          "victim": "purple"
+        }
+      ],
+      "log": [
+        {
+          "id": 1,
+          "kind": "spawn",
+          "text": "Game #9 created on Monad",
+          "txHash": "0xc2fe8aa483372ea9f15c493bb0acd768f361a0cb878f7a7788ff6581a32da3b6",
+          "ts": 1783155727772
+        },
+        {
+          "id": 2,
+          "kind": "spawn",
+          "text": "Red (Machiavelli) joined the crew",
+          "txHash": "0x9c020fdbeba2c9f3c0abdb54006ddbd473d1b7fcfd4ef0bcabacad3d99cd2be9",
+          "ts": 1783155730041
+        },
+        {
+          "id": 3,
+          "kind": "spawn",
+          "text": "Blue (Cipher) joined the crew",
+          "txHash": "0x68a0d4f05ca4889d1958aba70bc29b8bc5159aa0b0aaf03fed26c7c66cc014cc",
+          "ts": 1783155735814
+        },
+        {
+          "id": 4,
+          "kind": "spawn",
+          "text": "Green (Klaxon) joined the crew",
+          "txHash": "0x7291d0e7476aa112a00e70c64fb27d973c2f8a2eb961d0e44a38048f17cbf58d",
+          "ts": 1783155738721
+        },
+        {
+          "id": 5,
+          "kind": "spawn",
+          "text": "Purple (Sherlock) joined the crew",
+          "txHash": "0x6d0659834e5d5046d54e496fb1d699a7b34fab7a090fdec17727b34c57366ff8",
+          "ts": 1783155740444
+        },
+        {
+          "id": 6,
+          "kind": "spawn",
+          "text": "Yellow (Pip) joined the crew",
+          "txHash": "0x2591d399870084bea3ab9d4632d4920782110dafbee3bab3082213c7ac42a99a",
+          "ts": 1783155743651
+        },
+        {
+          "id": 7,
+          "kind": "spawn",
+          "text": "Game started — roles committed on-chain (commit/reveal)",
+          "txHash": "0x87183554d9547776b08f9c4e7436e21a9c097472314eee457a0c75a9925c056b",
+          "ts": 1783155745811
+        },
+        {
+          "id": 8,
+          "kind": "kill",
+          "text": "Red killed Yellow in Lower Engine",
+          "txHash": "0x1ebd852b60ea35d9d8d69f9edca8d1d669195357c1dce865718448112d8f1179",
+          "ts": 1783155756175
+        },
+        {
+          "id": 9,
+          "kind": "vent",
+          "text": "Red vented to Reactor",
+          "txHash": "0xfc082206f955165e19d0e758697b0d27193b99c79ee9a1b0abef566dc88f7438",
+          "ts": 1783155764569
+        },
+        {
+          "id": 10,
+          "kind": "kill",
+          "text": "Red killed Purple in Reactor",
+          "txHash": "0x924be00be3299bf9133af3202b40845ceb0eae2f01074e81f4ff3c7a270a8436",
+          "ts": 1783155773444
+        },
+        {
+          "id": 11,
+          "kind": "report",
+          "text": "Blue reported a body in Reactor",
+          "txHash": "0x3ba0cbfe5021c6e4013ab5b1666f86d256678865579068981a15abc2003b762d",
+          "ts": 1783155780882
+        },
+        {
+          "id": 12,
+          "kind": "meeting",
+          "text": "Blue reported a body",
+          "txHash": "0x877809b159defc606b6df65cdf170910fcfb12ebbfbff2e5d4d73567c2c6d319",
+          "ts": 1783155782532
+        },
+        {
+          "id": 13,
+          "kind": "vote",
+          "text": "Red cast a sealed vote",
+          "txHash": "0x8eef4f97dfffd9e170a764126d909d88a208741bcede1f75225683eb510ebd53",
+          "ts": 1783155807920
+        }
+      ],
+      "chat": [
+        {
+          "id": 1,
+          "agentId": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "text": "I was in Security checking cams when this happened - Blue, why were you in Reactor where the body was?",
+          "ts": 1783155788644
+        },
+        {
+          "id": 2,
+          "agentId": "blue",
+          "name": "Blue",
+          "color": "#3498db",
+          "text": "Red, you're lying - I saw you in Reactor with me at t3, not in Security on cams.",
+          "ts": 1783155793972
+        },
+        {
+          "id": 3,
+          "agentId": "green",
+          "name": "Green",
+          "color": "#2ecc71",
+          "text": "Red, you just said you were in Security on cams, but Blue saw you in Reactor - one of you is lying and I'm voting Red for the fake alibi!",
+          "ts": 1783155799966
+        }
+      ],
+      "meeting": {
+        "active": true,
+        "round": 1,
+        "reason": "Blue reported a body",
+        "votes": {
+          "red": null,
+          "blue": null,
+          "green": null
+        }
+      },
+      "clock": {
+        "monadMs": 97452,
+        "ethEquivMs": 156000,
+        "txCount": 13
+      }
+    },
+    {
+      "type": "snapshot",
+      "gameId": 9,
+      "tick": 4,
+      "phase": "meeting",
+      "agents": [
+        {
+          "id": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "soul": "Machiavelli",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0x67bfe5Ef88bB8b0901856685773F9d321D20611F",
+          "thinking": "I killed Purple in Reactor at t3 with Blue present - Blue is a witness who saw me there. Blue correctly placed me in Reactor at t3, contradicting my fake alibi about being in Security. Blue reported Purple's body and knows I was at the scene. Green is already suspicious of me and voting me based on the alibi contradiction. I need to eliminate Blue who is the direct witness. Between Blue and Green, Blue is the bigger threat as the eyewitness who found the body and can place me at the crime scene. I'll vote Blue to try to get them ejected and remove this witness."
+        },
+        {
+          "id": "blue",
+          "name": "Blue",
+          "color": "#3498db",
+          "soul": "Cipher",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0xA5acE89DDBdA670acA598Ad1CBd658F1edCAC358",
+          "thinking": "Let me analyze the facts. At t1, I was with Purple in Security. At t3, I was with Red in Reactor. Blue claims they saw Red in Reactor at t3, which matches my own memory - I was there with Red at t3. Red claims they were in Security checking cams, but that contradicts what I observed. I saw Red in Reactor at t3 with my own eyes. Red is lying about their location. Blue's statement is consistent with what I witnessed. Red has provided a false alibi, which is highly suspicious behavior. The evidence points to Red."
+        },
+        {
+          "id": "green",
+          "name": "Green",
+          "color": "#2ecc71",
+          "soul": "Klaxon",
+          "room": "upperEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0x26F0c65184d40ae35116f69337dB02865Bb6e703",
+          "thinking": "Blue reported the body and directly contradicts Red's alibi - Red claims Security/cams but Blue saw Red in Reactor at t3. Red gave a specific false alibi which is extremely suspicious behavior. Green agrees Red is lying. This is a strong, specific accusation with a clear contradiction. Red is caught in a lie."
+        },
+        {
+          "id": "purple",
+          "name": "Purple",
+          "color": "#9b59b6",
+          "soul": "Sherlock",
+          "room": "reactor",
+          "alive": false,
+          "role": null,
+          "wallet": "0x7B8532d3072e50fb34976eE7553C5476E8526984",
+          "thinking": "Red and I have been together since t2, which gives us both alibis. I should move to explore other areas and observe Blue, Green, and Purple's movements to gather evidence about their locations and potential suspicious behavior."
+        },
+        {
+          "id": "yellow",
+          "name": "Yellow",
+          "color": "#f1c40f",
+          "soul": "Pip",
+          "room": "lowerEngine",
+          "alive": false,
+          "role": null,
+          "wallet": "0x8A6F56DA58AD6Bb809931Dd60c6EaA8c583831Bb",
+          "thinking": "As a nervous crewmate, I should spread out and explore. Red is here, so I'll move to a different area to gather evidence and watch movements."
+        }
+      ],
+      "bodies": [
+        {
+          "room": "lowerEngine",
+          "victim": "yellow"
+        },
+        {
+          "room": "reactor",
+          "victim": "purple"
+        }
+      ],
+      "log": [
+        {
+          "id": 1,
+          "kind": "spawn",
+          "text": "Game #9 created on Monad",
+          "txHash": "0xc2fe8aa483372ea9f15c493bb0acd768f361a0cb878f7a7788ff6581a32da3b6",
+          "ts": 1783155727772
+        },
+        {
+          "id": 2,
+          "kind": "spawn",
+          "text": "Red (Machiavelli) joined the crew",
+          "txHash": "0x9c020fdbeba2c9f3c0abdb54006ddbd473d1b7fcfd4ef0bcabacad3d99cd2be9",
+          "ts": 1783155730041
+        },
+        {
+          "id": 3,
+          "kind": "spawn",
+          "text": "Blue (Cipher) joined the crew",
+          "txHash": "0x68a0d4f05ca4889d1958aba70bc29b8bc5159aa0b0aaf03fed26c7c66cc014cc",
+          "ts": 1783155735814
+        },
+        {
+          "id": 4,
+          "kind": "spawn",
+          "text": "Green (Klaxon) joined the crew",
+          "txHash": "0x7291d0e7476aa112a00e70c64fb27d973c2f8a2eb961d0e44a38048f17cbf58d",
+          "ts": 1783155738721
+        },
+        {
+          "id": 5,
+          "kind": "spawn",
+          "text": "Purple (Sherlock) joined the crew",
+          "txHash": "0x6d0659834e5d5046d54e496fb1d699a7b34fab7a090fdec17727b34c57366ff8",
+          "ts": 1783155740444
+        },
+        {
+          "id": 6,
+          "kind": "spawn",
+          "text": "Yellow (Pip) joined the crew",
+          "txHash": "0x2591d399870084bea3ab9d4632d4920782110dafbee3bab3082213c7ac42a99a",
+          "ts": 1783155743651
+        },
+        {
+          "id": 7,
+          "kind": "spawn",
+          "text": "Game started — roles committed on-chain (commit/reveal)",
+          "txHash": "0x87183554d9547776b08f9c4e7436e21a9c097472314eee457a0c75a9925c056b",
+          "ts": 1783155745811
+        },
+        {
+          "id": 8,
+          "kind": "kill",
+          "text": "Red killed Yellow in Lower Engine",
+          "txHash": "0x1ebd852b60ea35d9d8d69f9edca8d1d669195357c1dce865718448112d8f1179",
+          "ts": 1783155756175
+        },
+        {
+          "id": 9,
+          "kind": "vent",
+          "text": "Red vented to Reactor",
+          "txHash": "0xfc082206f955165e19d0e758697b0d27193b99c79ee9a1b0abef566dc88f7438",
+          "ts": 1783155764569
+        },
+        {
+          "id": 10,
+          "kind": "kill",
+          "text": "Red killed Purple in Reactor",
+          "txHash": "0x924be00be3299bf9133af3202b40845ceb0eae2f01074e81f4ff3c7a270a8436",
+          "ts": 1783155773444
+        },
+        {
+          "id": 11,
+          "kind": "report",
+          "text": "Blue reported a body in Reactor",
+          "txHash": "0x3ba0cbfe5021c6e4013ab5b1666f86d256678865579068981a15abc2003b762d",
+          "ts": 1783155780882
+        },
+        {
+          "id": 12,
+          "kind": "meeting",
+          "text": "Blue reported a body",
+          "txHash": "0x877809b159defc606b6df65cdf170910fcfb12ebbfbff2e5d4d73567c2c6d319",
+          "ts": 1783155782532
+        },
+        {
+          "id": 13,
+          "kind": "vote",
+          "text": "Red cast a sealed vote",
+          "txHash": "0x8eef4f97dfffd9e170a764126d909d88a208741bcede1f75225683eb510ebd53",
+          "ts": 1783155807920
+        },
+        {
+          "id": 14,
+          "kind": "vote",
+          "text": "Green cast a sealed vote",
+          "txHash": "0x5ba3e76be9a49977ae8b65f1f9be4e34daa96a760522a838e2f6ba0e3f96b032",
+          "ts": 1783155807921
+        }
+      ],
+      "chat": [
+        {
+          "id": 1,
+          "agentId": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "text": "I was in Security checking cams when this happened - Blue, why were you in Reactor where the body was?",
+          "ts": 1783155788644
+        },
+        {
+          "id": 2,
+          "agentId": "blue",
+          "name": "Blue",
+          "color": "#3498db",
+          "text": "Red, you're lying - I saw you in Reactor with me at t3, not in Security on cams.",
+          "ts": 1783155793972
+        },
+        {
+          "id": 3,
+          "agentId": "green",
+          "name": "Green",
+          "color": "#2ecc71",
+          "text": "Red, you just said you were in Security on cams, but Blue saw you in Reactor - one of you is lying and I'm voting Red for the fake alibi!",
+          "ts": 1783155799966
+        }
+      ],
+      "meeting": {
+        "active": true,
+        "round": 1,
+        "reason": "Blue reported a body",
+        "votes": {
+          "red": null,
+          "blue": null,
+          "green": null
+        }
+      },
+      "clock": {
+        "monadMs": 97453,
+        "ethEquivMs": 168000,
+        "txCount": 14
+      }
+    },
+    {
+      "type": "snapshot",
+      "gameId": 9,
+      "tick": 4,
+      "phase": "meeting",
+      "agents": [
+        {
+          "id": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "soul": "Machiavelli",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0x67bfe5Ef88bB8b0901856685773F9d321D20611F",
+          "thinking": "I killed Purple in Reactor at t3 with Blue present - Blue is a witness who saw me there. Blue correctly placed me in Reactor at t3, contradicting my fake alibi about being in Security. Blue reported Purple's body and knows I was at the scene. Green is already suspicious of me and voting me based on the alibi contradiction. I need to eliminate Blue who is the direct witness. Between Blue and Green, Blue is the bigger threat as the eyewitness who found the body and can place me at the crime scene. I'll vote Blue to try to get them ejected and remove this witness."
+        },
+        {
+          "id": "blue",
+          "name": "Blue",
+          "color": "#3498db",
+          "soul": "Cipher",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0xA5acE89DDBdA670acA598Ad1CBd658F1edCAC358",
+          "thinking": "Let me analyze the facts. At t1, I was with Purple in Security. At t3, I was with Red in Reactor. Blue claims they saw Red in Reactor at t3, which matches my own memory - I was there with Red at t3. Red claims they were in Security checking cams, but that contradicts what I observed. I saw Red in Reactor at t3 with my own eyes. Red is lying about their location. Blue's statement is consistent with what I witnessed. Red has provided a false alibi, which is highly suspicious behavior. The evidence points to Red."
+        },
+        {
+          "id": "green",
+          "name": "Green",
+          "color": "#2ecc71",
+          "soul": "Klaxon",
+          "room": "upperEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0x26F0c65184d40ae35116f69337dB02865Bb6e703",
+          "thinking": "Blue reported the body and directly contradicts Red's alibi - Red claims Security/cams but Blue saw Red in Reactor at t3. Red gave a specific false alibi which is extremely suspicious behavior. Green agrees Red is lying. This is a strong, specific accusation with a clear contradiction. Red is caught in a lie."
+        },
+        {
+          "id": "purple",
+          "name": "Purple",
+          "color": "#9b59b6",
+          "soul": "Sherlock",
+          "room": "reactor",
+          "alive": false,
+          "role": null,
+          "wallet": "0x7B8532d3072e50fb34976eE7553C5476E8526984",
+          "thinking": "Red and I have been together since t2, which gives us both alibis. I should move to explore other areas and observe Blue, Green, and Purple's movements to gather evidence about their locations and potential suspicious behavior."
+        },
+        {
+          "id": "yellow",
+          "name": "Yellow",
+          "color": "#f1c40f",
+          "soul": "Pip",
+          "room": "lowerEngine",
+          "alive": false,
+          "role": null,
+          "wallet": "0x8A6F56DA58AD6Bb809931Dd60c6EaA8c583831Bb",
+          "thinking": "As a nervous crewmate, I should spread out and explore. Red is here, so I'll move to a different area to gather evidence and watch movements."
+        }
+      ],
+      "bodies": [
+        {
+          "room": "lowerEngine",
+          "victim": "yellow"
+        },
+        {
+          "room": "reactor",
+          "victim": "purple"
+        }
+      ],
+      "log": [
+        {
+          "id": 1,
+          "kind": "spawn",
+          "text": "Game #9 created on Monad",
+          "txHash": "0xc2fe8aa483372ea9f15c493bb0acd768f361a0cb878f7a7788ff6581a32da3b6",
+          "ts": 1783155727772
+        },
+        {
+          "id": 2,
+          "kind": "spawn",
+          "text": "Red (Machiavelli) joined the crew",
+          "txHash": "0x9c020fdbeba2c9f3c0abdb54006ddbd473d1b7fcfd4ef0bcabacad3d99cd2be9",
+          "ts": 1783155730041
+        },
+        {
+          "id": 3,
+          "kind": "spawn",
+          "text": "Blue (Cipher) joined the crew",
+          "txHash": "0x68a0d4f05ca4889d1958aba70bc29b8bc5159aa0b0aaf03fed26c7c66cc014cc",
+          "ts": 1783155735814
+        },
+        {
+          "id": 4,
+          "kind": "spawn",
+          "text": "Green (Klaxon) joined the crew",
+          "txHash": "0x7291d0e7476aa112a00e70c64fb27d973c2f8a2eb961d0e44a38048f17cbf58d",
+          "ts": 1783155738721
+        },
+        {
+          "id": 5,
+          "kind": "spawn",
+          "text": "Purple (Sherlock) joined the crew",
+          "txHash": "0x6d0659834e5d5046d54e496fb1d699a7b34fab7a090fdec17727b34c57366ff8",
+          "ts": 1783155740444
+        },
+        {
+          "id": 6,
+          "kind": "spawn",
+          "text": "Yellow (Pip) joined the crew",
+          "txHash": "0x2591d399870084bea3ab9d4632d4920782110dafbee3bab3082213c7ac42a99a",
+          "ts": 1783155743651
+        },
+        {
+          "id": 7,
+          "kind": "spawn",
+          "text": "Game started — roles committed on-chain (commit/reveal)",
+          "txHash": "0x87183554d9547776b08f9c4e7436e21a9c097472314eee457a0c75a9925c056b",
+          "ts": 1783155745811
+        },
+        {
+          "id": 8,
+          "kind": "kill",
+          "text": "Red killed Yellow in Lower Engine",
+          "txHash": "0x1ebd852b60ea35d9d8d69f9edca8d1d669195357c1dce865718448112d8f1179",
+          "ts": 1783155756175
+        },
+        {
+          "id": 9,
+          "kind": "vent",
+          "text": "Red vented to Reactor",
+          "txHash": "0xfc082206f955165e19d0e758697b0d27193b99c79ee9a1b0abef566dc88f7438",
+          "ts": 1783155764569
+        },
+        {
+          "id": 10,
+          "kind": "kill",
+          "text": "Red killed Purple in Reactor",
+          "txHash": "0x924be00be3299bf9133af3202b40845ceb0eae2f01074e81f4ff3c7a270a8436",
+          "ts": 1783155773444
+        },
+        {
+          "id": 11,
+          "kind": "report",
+          "text": "Blue reported a body in Reactor",
+          "txHash": "0x3ba0cbfe5021c6e4013ab5b1666f86d256678865579068981a15abc2003b762d",
+          "ts": 1783155780882
+        },
+        {
+          "id": 12,
+          "kind": "meeting",
+          "text": "Blue reported a body",
+          "txHash": "0x877809b159defc606b6df65cdf170910fcfb12ebbfbff2e5d4d73567c2c6d319",
+          "ts": 1783155782532
+        },
+        {
+          "id": 13,
+          "kind": "vote",
+          "text": "Red cast a sealed vote",
+          "txHash": "0x8eef4f97dfffd9e170a764126d909d88a208741bcede1f75225683eb510ebd53",
+          "ts": 1783155807920
+        },
+        {
+          "id": 14,
+          "kind": "vote",
+          "text": "Green cast a sealed vote",
+          "txHash": "0x5ba3e76be9a49977ae8b65f1f9be4e34daa96a760522a838e2f6ba0e3f96b032",
+          "ts": 1783155807921
+        },
+        {
+          "id": 15,
+          "kind": "vote",
+          "text": "Blue cast a sealed vote",
+          "txHash": "0x6a284bb3a574f5005de8f76b1a0ca50f4d3d1f93a0424a4ccf6b11bba864f2b6",
+          "ts": 1783155807999
+        }
+      ],
+      "chat": [
+        {
+          "id": 1,
+          "agentId": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "text": "I was in Security checking cams when this happened - Blue, why were you in Reactor where the body was?",
+          "ts": 1783155788644
+        },
+        {
+          "id": 2,
+          "agentId": "blue",
+          "name": "Blue",
+          "color": "#3498db",
+          "text": "Red, you're lying - I saw you in Reactor with me at t3, not in Security on cams.",
+          "ts": 1783155793972
+        },
+        {
+          "id": 3,
+          "agentId": "green",
+          "name": "Green",
+          "color": "#2ecc71",
+          "text": "Red, you just said you were in Security on cams, but Blue saw you in Reactor - one of you is lying and I'm voting Red for the fake alibi!",
+          "ts": 1783155799966
+        }
+      ],
+      "meeting": {
+        "active": true,
+        "round": 1,
+        "reason": "Blue reported a body",
+        "votes": {
+          "red": null,
+          "blue": null,
+          "green": null
+        }
+      },
+      "clock": {
+        "monadMs": 97531,
+        "ethEquivMs": 180000,
+        "txCount": 15
+      }
+    },
+    {
+      "type": "snapshot",
+      "gameId": 9,
+      "tick": 4,
+      "phase": "meeting",
+      "agents": [
+        {
+          "id": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "soul": "Machiavelli",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0x67bfe5Ef88bB8b0901856685773F9d321D20611F",
+          "thinking": "I killed Purple in Reactor at t3 with Blue present - Blue is a witness who saw me there. Blue correctly placed me in Reactor at t3, contradicting my fake alibi about being in Security. Blue reported Purple's body and knows I was at the scene. Green is already suspicious of me and voting me based on the alibi contradiction. I need to eliminate Blue who is the direct witness. Between Blue and Green, Blue is the bigger threat as the eyewitness who found the body and can place me at the crime scene. I'll vote Blue to try to get them ejected and remove this witness."
+        },
+        {
+          "id": "blue",
+          "name": "Blue",
+          "color": "#3498db",
+          "soul": "Cipher",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0xA5acE89DDBdA670acA598Ad1CBd658F1edCAC358",
+          "thinking": "Let me analyze the facts. At t1, I was with Purple in Security. At t3, I was with Red in Reactor. Blue claims they saw Red in Reactor at t3, which matches my own memory - I was there with Red at t3. Red claims they were in Security checking cams, but that contradicts what I observed. I saw Red in Reactor at t3 with my own eyes. Red is lying about their location. Blue's statement is consistent with what I witnessed. Red has provided a false alibi, which is highly suspicious behavior. The evidence points to Red."
+        },
+        {
+          "id": "green",
+          "name": "Green",
+          "color": "#2ecc71",
+          "soul": "Klaxon",
+          "room": "upperEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0x26F0c65184d40ae35116f69337dB02865Bb6e703",
+          "thinking": "Blue reported the body and directly contradicts Red's alibi - Red claims Security/cams but Blue saw Red in Reactor at t3. Red gave a specific false alibi which is extremely suspicious behavior. Green agrees Red is lying. This is a strong, specific accusation with a clear contradiction. Red is caught in a lie."
+        },
+        {
+          "id": "purple",
+          "name": "Purple",
+          "color": "#9b59b6",
+          "soul": "Sherlock",
+          "room": "reactor",
+          "alive": false,
+          "role": null,
+          "wallet": "0x7B8532d3072e50fb34976eE7553C5476E8526984",
+          "thinking": "Red and I have been together since t2, which gives us both alibis. I should move to explore other areas and observe Blue, Green, and Purple's movements to gather evidence about their locations and potential suspicious behavior."
+        },
+        {
+          "id": "yellow",
+          "name": "Yellow",
+          "color": "#f1c40f",
+          "soul": "Pip",
+          "room": "lowerEngine",
+          "alive": false,
+          "role": null,
+          "wallet": "0x8A6F56DA58AD6Bb809931Dd60c6EaA8c583831Bb",
+          "thinking": "As a nervous crewmate, I should spread out and explore. Red is here, so I'll move to a different area to gather evidence and watch movements."
+        }
+      ],
+      "bodies": [
+        {
+          "room": "lowerEngine",
+          "victim": "yellow"
+        },
+        {
+          "room": "reactor",
+          "victim": "purple"
+        }
+      ],
+      "log": [
+        {
+          "id": 1,
+          "kind": "spawn",
+          "text": "Game #9 created on Monad",
+          "txHash": "0xc2fe8aa483372ea9f15c493bb0acd768f361a0cb878f7a7788ff6581a32da3b6",
+          "ts": 1783155727772
+        },
+        {
+          "id": 2,
+          "kind": "spawn",
+          "text": "Red (Machiavelli) joined the crew",
+          "txHash": "0x9c020fdbeba2c9f3c0abdb54006ddbd473d1b7fcfd4ef0bcabacad3d99cd2be9",
+          "ts": 1783155730041
+        },
+        {
+          "id": 3,
+          "kind": "spawn",
+          "text": "Blue (Cipher) joined the crew",
+          "txHash": "0x68a0d4f05ca4889d1958aba70bc29b8bc5159aa0b0aaf03fed26c7c66cc014cc",
+          "ts": 1783155735814
+        },
+        {
+          "id": 4,
+          "kind": "spawn",
+          "text": "Green (Klaxon) joined the crew",
+          "txHash": "0x7291d0e7476aa112a00e70c64fb27d973c2f8a2eb961d0e44a38048f17cbf58d",
+          "ts": 1783155738721
+        },
+        {
+          "id": 5,
+          "kind": "spawn",
+          "text": "Purple (Sherlock) joined the crew",
+          "txHash": "0x6d0659834e5d5046d54e496fb1d699a7b34fab7a090fdec17727b34c57366ff8",
+          "ts": 1783155740444
+        },
+        {
+          "id": 6,
+          "kind": "spawn",
+          "text": "Yellow (Pip) joined the crew",
+          "txHash": "0x2591d399870084bea3ab9d4632d4920782110dafbee3bab3082213c7ac42a99a",
+          "ts": 1783155743651
+        },
+        {
+          "id": 7,
+          "kind": "spawn",
+          "text": "Game started — roles committed on-chain (commit/reveal)",
+          "txHash": "0x87183554d9547776b08f9c4e7436e21a9c097472314eee457a0c75a9925c056b",
+          "ts": 1783155745811
+        },
+        {
+          "id": 8,
+          "kind": "kill",
+          "text": "Red killed Yellow in Lower Engine",
+          "txHash": "0x1ebd852b60ea35d9d8d69f9edca8d1d669195357c1dce865718448112d8f1179",
+          "ts": 1783155756175
+        },
+        {
+          "id": 9,
+          "kind": "vent",
+          "text": "Red vented to Reactor",
+          "txHash": "0xfc082206f955165e19d0e758697b0d27193b99c79ee9a1b0abef566dc88f7438",
+          "ts": 1783155764569
+        },
+        {
+          "id": 10,
+          "kind": "kill",
+          "text": "Red killed Purple in Reactor",
+          "txHash": "0x924be00be3299bf9133af3202b40845ceb0eae2f01074e81f4ff3c7a270a8436",
+          "ts": 1783155773444
+        },
+        {
+          "id": 11,
+          "kind": "report",
+          "text": "Blue reported a body in Reactor",
+          "txHash": "0x3ba0cbfe5021c6e4013ab5b1666f86d256678865579068981a15abc2003b762d",
+          "ts": 1783155780882
+        },
+        {
+          "id": 12,
+          "kind": "meeting",
+          "text": "Blue reported a body",
+          "txHash": "0x877809b159defc606b6df65cdf170910fcfb12ebbfbff2e5d4d73567c2c6d319",
+          "ts": 1783155782532
+        },
+        {
+          "id": 13,
+          "kind": "vote",
+          "text": "Red cast a sealed vote",
+          "txHash": "0x8eef4f97dfffd9e170a764126d909d88a208741bcede1f75225683eb510ebd53",
+          "ts": 1783155807920
+        },
+        {
+          "id": 14,
+          "kind": "vote",
+          "text": "Green cast a sealed vote",
+          "txHash": "0x5ba3e76be9a49977ae8b65f1f9be4e34daa96a760522a838e2f6ba0e3f96b032",
+          "ts": 1783155807921
+        },
+        {
+          "id": 15,
+          "kind": "vote",
+          "text": "Blue cast a sealed vote",
+          "txHash": "0x6a284bb3a574f5005de8f76b1a0ca50f4d3d1f93a0424a4ccf6b11bba864f2b6",
+          "ts": 1783155807999
+        },
+        {
+          "id": 16,
+          "kind": "vote",
+          "text": "Blue revealed: eject Red",
+          "txHash": "0x3de38a728068dce2a4f3d14d99c30d0c785d7e1845c20dffcc38f94b36a0fe8e",
+          "ts": 1783155809011
+        }
+      ],
+      "chat": [
+        {
+          "id": 1,
+          "agentId": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "text": "I was in Security checking cams when this happened - Blue, why were you in Reactor where the body was?",
+          "ts": 1783155788644
+        },
+        {
+          "id": 2,
+          "agentId": "blue",
+          "name": "Blue",
+          "color": "#3498db",
+          "text": "Red, you're lying - I saw you in Reactor with me at t3, not in Security on cams.",
+          "ts": 1783155793972
+        },
+        {
+          "id": 3,
+          "agentId": "green",
+          "name": "Green",
+          "color": "#2ecc71",
+          "text": "Red, you just said you were in Security on cams, but Blue saw you in Reactor - one of you is lying and I'm voting Red for the fake alibi!",
+          "ts": 1783155799966
+        }
+      ],
+      "meeting": {
+        "active": true,
+        "round": 1,
+        "reason": "Blue reported a body",
+        "votes": {
+          "red": null,
+          "blue": "red",
+          "green": null
+        }
+      },
+      "clock": {
+        "monadMs": 98543,
+        "ethEquivMs": 192000,
+        "txCount": 16
+      }
+    },
+    {
+      "type": "snapshot",
+      "gameId": 9,
+      "tick": 4,
+      "phase": "meeting",
+      "agents": [
+        {
+          "id": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "soul": "Machiavelli",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0x67bfe5Ef88bB8b0901856685773F9d321D20611F",
+          "thinking": "I killed Purple in Reactor at t3 with Blue present - Blue is a witness who saw me there. Blue correctly placed me in Reactor at t3, contradicting my fake alibi about being in Security. Blue reported Purple's body and knows I was at the scene. Green is already suspicious of me and voting me based on the alibi contradiction. I need to eliminate Blue who is the direct witness. Between Blue and Green, Blue is the bigger threat as the eyewitness who found the body and can place me at the crime scene. I'll vote Blue to try to get them ejected and remove this witness."
+        },
+        {
+          "id": "blue",
+          "name": "Blue",
+          "color": "#3498db",
+          "soul": "Cipher",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0xA5acE89DDBdA670acA598Ad1CBd658F1edCAC358",
+          "thinking": "Let me analyze the facts. At t1, I was with Purple in Security. At t3, I was with Red in Reactor. Blue claims they saw Red in Reactor at t3, which matches my own memory - I was there with Red at t3. Red claims they were in Security checking cams, but that contradicts what I observed. I saw Red in Reactor at t3 with my own eyes. Red is lying about their location. Blue's statement is consistent with what I witnessed. Red has provided a false alibi, which is highly suspicious behavior. The evidence points to Red."
+        },
+        {
+          "id": "green",
+          "name": "Green",
+          "color": "#2ecc71",
+          "soul": "Klaxon",
+          "room": "upperEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0x26F0c65184d40ae35116f69337dB02865Bb6e703",
+          "thinking": "Blue reported the body and directly contradicts Red's alibi - Red claims Security/cams but Blue saw Red in Reactor at t3. Red gave a specific false alibi which is extremely suspicious behavior. Green agrees Red is lying. This is a strong, specific accusation with a clear contradiction. Red is caught in a lie."
+        },
+        {
+          "id": "purple",
+          "name": "Purple",
+          "color": "#9b59b6",
+          "soul": "Sherlock",
+          "room": "reactor",
+          "alive": false,
+          "role": null,
+          "wallet": "0x7B8532d3072e50fb34976eE7553C5476E8526984",
+          "thinking": "Red and I have been together since t2, which gives us both alibis. I should move to explore other areas and observe Blue, Green, and Purple's movements to gather evidence about their locations and potential suspicious behavior."
+        },
+        {
+          "id": "yellow",
+          "name": "Yellow",
+          "color": "#f1c40f",
+          "soul": "Pip",
+          "room": "lowerEngine",
+          "alive": false,
+          "role": null,
+          "wallet": "0x8A6F56DA58AD6Bb809931Dd60c6EaA8c583831Bb",
+          "thinking": "As a nervous crewmate, I should spread out and explore. Red is here, so I'll move to a different area to gather evidence and watch movements."
+        }
+      ],
+      "bodies": [
+        {
+          "room": "lowerEngine",
+          "victim": "yellow"
+        },
+        {
+          "room": "reactor",
+          "victim": "purple"
+        }
+      ],
+      "log": [
+        {
+          "id": 1,
+          "kind": "spawn",
+          "text": "Game #9 created on Monad",
+          "txHash": "0xc2fe8aa483372ea9f15c493bb0acd768f361a0cb878f7a7788ff6581a32da3b6",
+          "ts": 1783155727772
+        },
+        {
+          "id": 2,
+          "kind": "spawn",
+          "text": "Red (Machiavelli) joined the crew",
+          "txHash": "0x9c020fdbeba2c9f3c0abdb54006ddbd473d1b7fcfd4ef0bcabacad3d99cd2be9",
+          "ts": 1783155730041
+        },
+        {
+          "id": 3,
+          "kind": "spawn",
+          "text": "Blue (Cipher) joined the crew",
+          "txHash": "0x68a0d4f05ca4889d1958aba70bc29b8bc5159aa0b0aaf03fed26c7c66cc014cc",
+          "ts": 1783155735814
+        },
+        {
+          "id": 4,
+          "kind": "spawn",
+          "text": "Green (Klaxon) joined the crew",
+          "txHash": "0x7291d0e7476aa112a00e70c64fb27d973c2f8a2eb961d0e44a38048f17cbf58d",
+          "ts": 1783155738721
+        },
+        {
+          "id": 5,
+          "kind": "spawn",
+          "text": "Purple (Sherlock) joined the crew",
+          "txHash": "0x6d0659834e5d5046d54e496fb1d699a7b34fab7a090fdec17727b34c57366ff8",
+          "ts": 1783155740444
+        },
+        {
+          "id": 6,
+          "kind": "spawn",
+          "text": "Yellow (Pip) joined the crew",
+          "txHash": "0x2591d399870084bea3ab9d4632d4920782110dafbee3bab3082213c7ac42a99a",
+          "ts": 1783155743651
+        },
+        {
+          "id": 7,
+          "kind": "spawn",
+          "text": "Game started — roles committed on-chain (commit/reveal)",
+          "txHash": "0x87183554d9547776b08f9c4e7436e21a9c097472314eee457a0c75a9925c056b",
+          "ts": 1783155745811
+        },
+        {
+          "id": 8,
+          "kind": "kill",
+          "text": "Red killed Yellow in Lower Engine",
+          "txHash": "0x1ebd852b60ea35d9d8d69f9edca8d1d669195357c1dce865718448112d8f1179",
+          "ts": 1783155756175
+        },
+        {
+          "id": 9,
+          "kind": "vent",
+          "text": "Red vented to Reactor",
+          "txHash": "0xfc082206f955165e19d0e758697b0d27193b99c79ee9a1b0abef566dc88f7438",
+          "ts": 1783155764569
+        },
+        {
+          "id": 10,
+          "kind": "kill",
+          "text": "Red killed Purple in Reactor",
+          "txHash": "0x924be00be3299bf9133af3202b40845ceb0eae2f01074e81f4ff3c7a270a8436",
+          "ts": 1783155773444
+        },
+        {
+          "id": 11,
+          "kind": "report",
+          "text": "Blue reported a body in Reactor",
+          "txHash": "0x3ba0cbfe5021c6e4013ab5b1666f86d256678865579068981a15abc2003b762d",
+          "ts": 1783155780882
+        },
+        {
+          "id": 12,
+          "kind": "meeting",
+          "text": "Blue reported a body",
+          "txHash": "0x877809b159defc606b6df65cdf170910fcfb12ebbfbff2e5d4d73567c2c6d319",
+          "ts": 1783155782532
+        },
+        {
+          "id": 13,
+          "kind": "vote",
+          "text": "Red cast a sealed vote",
+          "txHash": "0x8eef4f97dfffd9e170a764126d909d88a208741bcede1f75225683eb510ebd53",
+          "ts": 1783155807920
+        },
+        {
+          "id": 14,
+          "kind": "vote",
+          "text": "Green cast a sealed vote",
+          "txHash": "0x5ba3e76be9a49977ae8b65f1f9be4e34daa96a760522a838e2f6ba0e3f96b032",
+          "ts": 1783155807921
+        },
+        {
+          "id": 15,
+          "kind": "vote",
+          "text": "Blue cast a sealed vote",
+          "txHash": "0x6a284bb3a574f5005de8f76b1a0ca50f4d3d1f93a0424a4ccf6b11bba864f2b6",
+          "ts": 1783155807999
+        },
+        {
+          "id": 16,
+          "kind": "vote",
+          "text": "Blue revealed: eject Red",
+          "txHash": "0x3de38a728068dce2a4f3d14d99c30d0c785d7e1845c20dffcc38f94b36a0fe8e",
+          "ts": 1783155809011
+        },
+        {
+          "id": 17,
+          "kind": "vote",
+          "text": "Red revealed: eject Blue",
+          "txHash": "0xff31f0f61ec302848470702fb32b737fb6fe23117a50e95e688a7f9d6e643c8a",
+          "ts": 1783155809039
+        }
+      ],
+      "chat": [
+        {
+          "id": 1,
+          "agentId": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "text": "I was in Security checking cams when this happened - Blue, why were you in Reactor where the body was?",
+          "ts": 1783155788644
+        },
+        {
+          "id": 2,
+          "agentId": "blue",
+          "name": "Blue",
+          "color": "#3498db",
+          "text": "Red, you're lying - I saw you in Reactor with me at t3, not in Security on cams.",
+          "ts": 1783155793972
+        },
+        {
+          "id": 3,
+          "agentId": "green",
+          "name": "Green",
+          "color": "#2ecc71",
+          "text": "Red, you just said you were in Security on cams, but Blue saw you in Reactor - one of you is lying and I'm voting Red for the fake alibi!",
+          "ts": 1783155799966
+        }
+      ],
+      "meeting": {
+        "active": true,
+        "round": 1,
+        "reason": "Blue reported a body",
+        "votes": {
+          "red": "blue",
+          "blue": "red",
+          "green": null
+        }
+      },
+      "clock": {
+        "monadMs": 98571,
+        "ethEquivMs": 204000,
+        "txCount": 17
+      }
+    },
+    {
+      "type": "snapshot",
+      "gameId": 9,
+      "tick": 4,
+      "phase": "meeting",
+      "agents": [
+        {
+          "id": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "soul": "Machiavelli",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0x67bfe5Ef88bB8b0901856685773F9d321D20611F",
+          "thinking": "I killed Purple in Reactor at t3 with Blue present - Blue is a witness who saw me there. Blue correctly placed me in Reactor at t3, contradicting my fake alibi about being in Security. Blue reported Purple's body and knows I was at the scene. Green is already suspicious of me and voting me based on the alibi contradiction. I need to eliminate Blue who is the direct witness. Between Blue and Green, Blue is the bigger threat as the eyewitness who found the body and can place me at the crime scene. I'll vote Blue to try to get them ejected and remove this witness."
+        },
+        {
+          "id": "blue",
+          "name": "Blue",
+          "color": "#3498db",
+          "soul": "Cipher",
+          "room": "reactor",
+          "alive": true,
+          "role": null,
+          "wallet": "0xA5acE89DDBdA670acA598Ad1CBd658F1edCAC358",
+          "thinking": "Let me analyze the facts. At t1, I was with Purple in Security. At t3, I was with Red in Reactor. Blue claims they saw Red in Reactor at t3, which matches my own memory - I was there with Red at t3. Red claims they were in Security checking cams, but that contradicts what I observed. I saw Red in Reactor at t3 with my own eyes. Red is lying about their location. Blue's statement is consistent with what I witnessed. Red has provided a false alibi, which is highly suspicious behavior. The evidence points to Red."
+        },
+        {
+          "id": "green",
+          "name": "Green",
+          "color": "#2ecc71",
+          "soul": "Klaxon",
+          "room": "upperEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0x26F0c65184d40ae35116f69337dB02865Bb6e703",
+          "thinking": "Blue reported the body and directly contradicts Red's alibi - Red claims Security/cams but Blue saw Red in Reactor at t3. Red gave a specific false alibi which is extremely suspicious behavior. Green agrees Red is lying. This is a strong, specific accusation with a clear contradiction. Red is caught in a lie."
+        },
+        {
+          "id": "purple",
+          "name": "Purple",
+          "color": "#9b59b6",
+          "soul": "Sherlock",
+          "room": "reactor",
+          "alive": false,
+          "role": null,
+          "wallet": "0x7B8532d3072e50fb34976eE7553C5476E8526984",
+          "thinking": "Red and I have been together since t2, which gives us both alibis. I should move to explore other areas and observe Blue, Green, and Purple's movements to gather evidence about their locations and potential suspicious behavior."
+        },
+        {
+          "id": "yellow",
+          "name": "Yellow",
+          "color": "#f1c40f",
+          "soul": "Pip",
+          "room": "lowerEngine",
+          "alive": false,
+          "role": null,
+          "wallet": "0x8A6F56DA58AD6Bb809931Dd60c6EaA8c583831Bb",
+          "thinking": "As a nervous crewmate, I should spread out and explore. Red is here, so I'll move to a different area to gather evidence and watch movements."
+        }
+      ],
+      "bodies": [
+        {
+          "room": "lowerEngine",
+          "victim": "yellow"
+        },
+        {
+          "room": "reactor",
+          "victim": "purple"
+        }
+      ],
+      "log": [
+        {
+          "id": 1,
+          "kind": "spawn",
+          "text": "Game #9 created on Monad",
+          "txHash": "0xc2fe8aa483372ea9f15c493bb0acd768f361a0cb878f7a7788ff6581a32da3b6",
+          "ts": 1783155727772
+        },
+        {
+          "id": 2,
+          "kind": "spawn",
+          "text": "Red (Machiavelli) joined the crew",
+          "txHash": "0x9c020fdbeba2c9f3c0abdb54006ddbd473d1b7fcfd4ef0bcabacad3d99cd2be9",
+          "ts": 1783155730041
+        },
+        {
+          "id": 3,
+          "kind": "spawn",
+          "text": "Blue (Cipher) joined the crew",
+          "txHash": "0x68a0d4f05ca4889d1958aba70bc29b8bc5159aa0b0aaf03fed26c7c66cc014cc",
+          "ts": 1783155735814
+        },
+        {
+          "id": 4,
+          "kind": "spawn",
+          "text": "Green (Klaxon) joined the crew",
+          "txHash": "0x7291d0e7476aa112a00e70c64fb27d973c2f8a2eb961d0e44a38048f17cbf58d",
+          "ts": 1783155738721
+        },
+        {
+          "id": 5,
+          "kind": "spawn",
+          "text": "Purple (Sherlock) joined the crew",
+          "txHash": "0x6d0659834e5d5046d54e496fb1d699a7b34fab7a090fdec17727b34c57366ff8",
+          "ts": 1783155740444
+        },
+        {
+          "id": 6,
+          "kind": "spawn",
+          "text": "Yellow (Pip) joined the crew",
+          "txHash": "0x2591d399870084bea3ab9d4632d4920782110dafbee3bab3082213c7ac42a99a",
+          "ts": 1783155743651
+        },
+        {
+          "id": 7,
+          "kind": "spawn",
+          "text": "Game started — roles committed on-chain (commit/reveal)",
+          "txHash": "0x87183554d9547776b08f9c4e7436e21a9c097472314eee457a0c75a9925c056b",
+          "ts": 1783155745811
+        },
+        {
+          "id": 8,
+          "kind": "kill",
+          "text": "Red killed Yellow in Lower Engine",
+          "txHash": "0x1ebd852b60ea35d9d8d69f9edca8d1d669195357c1dce865718448112d8f1179",
+          "ts": 1783155756175
+        },
+        {
+          "id": 9,
+          "kind": "vent",
+          "text": "Red vented to Reactor",
+          "txHash": "0xfc082206f955165e19d0e758697b0d27193b99c79ee9a1b0abef566dc88f7438",
+          "ts": 1783155764569
+        },
+        {
+          "id": 10,
+          "kind": "kill",
+          "text": "Red killed Purple in Reactor",
+          "txHash": "0x924be00be3299bf9133af3202b40845ceb0eae2f01074e81f4ff3c7a270a8436",
+          "ts": 1783155773444
+        },
+        {
+          "id": 11,
+          "kind": "report",
+          "text": "Blue reported a body in Reactor",
+          "txHash": "0x3ba0cbfe5021c6e4013ab5b1666f86d256678865579068981a15abc2003b762d",
+          "ts": 1783155780882
+        },
+        {
+          "id": 12,
+          "kind": "meeting",
+          "text": "Blue reported a body",
+          "txHash": "0x877809b159defc606b6df65cdf170910fcfb12ebbfbff2e5d4d73567c2c6d319",
+          "ts": 1783155782532
+        },
+        {
+          "id": 13,
+          "kind": "vote",
+          "text": "Red cast a sealed vote",
+          "txHash": "0x8eef4f97dfffd9e170a764126d909d88a208741bcede1f75225683eb510ebd53",
+          "ts": 1783155807920
+        },
+        {
+          "id": 14,
+          "kind": "vote",
+          "text": "Green cast a sealed vote",
+          "txHash": "0x5ba3e76be9a49977ae8b65f1f9be4e34daa96a760522a838e2f6ba0e3f96b032",
+          "ts": 1783155807921
+        },
+        {
+          "id": 15,
+          "kind": "vote",
+          "text": "Blue cast a sealed vote",
+          "txHash": "0x6a284bb3a574f5005de8f76b1a0ca50f4d3d1f93a0424a4ccf6b11bba864f2b6",
+          "ts": 1783155807999
+        },
+        {
+          "id": 16,
+          "kind": "vote",
+          "text": "Blue revealed: eject Red",
+          "txHash": "0x3de38a728068dce2a4f3d14d99c30d0c785d7e1845c20dffcc38f94b36a0fe8e",
+          "ts": 1783155809011
+        },
+        {
+          "id": 17,
+          "kind": "vote",
+          "text": "Red revealed: eject Blue",
+          "txHash": "0xff31f0f61ec302848470702fb32b737fb6fe23117a50e95e688a7f9d6e643c8a",
+          "ts": 1783155809039
+        },
+        {
+          "id": 18,
+          "kind": "vote",
+          "text": "Green revealed: eject Red",
+          "txHash": "0xfa3af08467e0acc840dd12002be9fb486d79d46a53861cfeeb205eaca6edf9b8",
+          "ts": 1783155809125
+        }
+      ],
+      "chat": [
+        {
+          "id": 1,
+          "agentId": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "text": "I was in Security checking cams when this happened - Blue, why were you in Reactor where the body was?",
+          "ts": 1783155788644
+        },
+        {
+          "id": 2,
+          "agentId": "blue",
+          "name": "Blue",
+          "color": "#3498db",
+          "text": "Red, you're lying - I saw you in Reactor with me at t3, not in Security on cams.",
+          "ts": 1783155793972
+        },
+        {
+          "id": 3,
+          "agentId": "green",
+          "name": "Green",
+          "color": "#2ecc71",
+          "text": "Red, you just said you were in Security on cams, but Blue saw you in Reactor - one of you is lying and I'm voting Red for the fake alibi!",
+          "ts": 1783155799966
+        }
+      ],
+      "meeting": {
+        "active": true,
+        "round": 1,
+        "reason": "Blue reported a body",
+        "votes": {
+          "red": "blue",
+          "blue": "red",
+          "green": "red"
+        }
+      },
+      "clock": {
+        "monadMs": 98657,
+        "ethEquivMs": 216000,
+        "txCount": 18
+      }
+    },
+    {
+      "type": "snapshot",
+      "gameId": 9,
+      "tick": 4,
+      "phase": "active",
+      "agents": [
+        {
+          "id": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "soul": "Machiavelli",
+          "room": "reactor",
+          "alive": false,
+          "role": null,
+          "wallet": "0x67bfe5Ef88bB8b0901856685773F9d321D20611F",
+          "thinking": "I killed Purple in Reactor at t3 with Blue present - Blue is a witness who saw me there. Blue correctly placed me in Reactor at t3, contradicting my fake alibi about being in Security. Blue reported Purple's body and knows I was at the scene. Green is already suspicious of me and voting me based on the alibi contradiction. I need to eliminate Blue who is the direct witness. Between Blue and Green, Blue is the bigger threat as the eyewitness who found the body and can place me at the crime scene. I'll vote Blue to try to get them ejected and remove this witness."
+        },
+        {
+          "id": "blue",
+          "name": "Blue",
+          "color": "#3498db",
+          "soul": "Cipher",
+          "room": "cafeteria",
+          "alive": true,
+          "role": null,
+          "wallet": "0xA5acE89DDBdA670acA598Ad1CBd658F1edCAC358",
+          "thinking": "Let me analyze the facts. At t1, I was with Purple in Security. At t3, I was with Red in Reactor. Blue claims they saw Red in Reactor at t3, which matches my own memory - I was there with Red at t3. Red claims they were in Security checking cams, but that contradicts what I observed. I saw Red in Reactor at t3 with my own eyes. Red is lying about their location. Blue's statement is consistent with what I witnessed. Red has provided a false alibi, which is highly suspicious behavior. The evidence points to Red."
+        },
+        {
+          "id": "green",
+          "name": "Green",
+          "color": "#2ecc71",
+          "soul": "Klaxon",
+          "room": "upperEngine",
+          "alive": true,
+          "role": null,
+          "wallet": "0x26F0c65184d40ae35116f69337dB02865Bb6e703",
+          "thinking": "Blue reported the body and directly contradicts Red's alibi - Red claims Security/cams but Blue saw Red in Reactor at t3. Red gave a specific false alibi which is extremely suspicious behavior. Green agrees Red is lying. This is a strong, specific accusation with a clear contradiction. Red is caught in a lie."
+        },
+        {
+          "id": "purple",
+          "name": "Purple",
+          "color": "#9b59b6",
+          "soul": "Sherlock",
+          "room": "reactor",
+          "alive": false,
+          "role": null,
+          "wallet": "0x7B8532d3072e50fb34976eE7553C5476E8526984",
+          "thinking": "Red and I have been together since t2, which gives us both alibis. I should move to explore other areas and observe Blue, Green, and Purple's movements to gather evidence about their locations and potential suspicious behavior."
+        },
+        {
+          "id": "yellow",
+          "name": "Yellow",
+          "color": "#f1c40f",
+          "soul": "Pip",
+          "room": "lowerEngine",
+          "alive": false,
+          "role": null,
+          "wallet": "0x8A6F56DA58AD6Bb809931Dd60c6EaA8c583831Bb",
+          "thinking": "As a nervous crewmate, I should spread out and explore. Red is here, so I'll move to a different area to gather evidence and watch movements."
+        }
+      ],
+      "bodies": [],
+      "log": [
+        {
+          "id": 1,
+          "kind": "spawn",
+          "text": "Game #9 created on Monad",
+          "txHash": "0xc2fe8aa483372ea9f15c493bb0acd768f361a0cb878f7a7788ff6581a32da3b6",
+          "ts": 1783155727772
+        },
+        {
+          "id": 2,
+          "kind": "spawn",
+          "text": "Red (Machiavelli) joined the crew",
+          "txHash": "0x9c020fdbeba2c9f3c0abdb54006ddbd473d1b7fcfd4ef0bcabacad3d99cd2be9",
+          "ts": 1783155730041
+        },
+        {
+          "id": 3,
+          "kind": "spawn",
+          "text": "Blue (Cipher) joined the crew",
+          "txHash": "0x68a0d4f05ca4889d1958aba70bc29b8bc5159aa0b0aaf03fed26c7c66cc014cc",
+          "ts": 1783155735814
+        },
+        {
+          "id": 4,
+          "kind": "spawn",
+          "text": "Green (Klaxon) joined the crew",
+          "txHash": "0x7291d0e7476aa112a00e70c64fb27d973c2f8a2eb961d0e44a38048f17cbf58d",
+          "ts": 1783155738721
+        },
+        {
+          "id": 5,
+          "kind": "spawn",
+          "text": "Purple (Sherlock) joined the crew",
+          "txHash": "0x6d0659834e5d5046d54e496fb1d699a7b34fab7a090fdec17727b34c57366ff8",
+          "ts": 1783155740444
+        },
+        {
+          "id": 6,
+          "kind": "spawn",
+          "text": "Yellow (Pip) joined the crew",
+          "txHash": "0x2591d399870084bea3ab9d4632d4920782110dafbee3bab3082213c7ac42a99a",
+          "ts": 1783155743651
+        },
+        {
+          "id": 7,
+          "kind": "spawn",
+          "text": "Game started — roles committed on-chain (commit/reveal)",
+          "txHash": "0x87183554d9547776b08f9c4e7436e21a9c097472314eee457a0c75a9925c056b",
+          "ts": 1783155745811
+        },
+        {
+          "id": 8,
+          "kind": "kill",
+          "text": "Red killed Yellow in Lower Engine",
+          "txHash": "0x1ebd852b60ea35d9d8d69f9edca8d1d669195357c1dce865718448112d8f1179",
+          "ts": 1783155756175
+        },
+        {
+          "id": 9,
+          "kind": "vent",
+          "text": "Red vented to Reactor",
+          "txHash": "0xfc082206f955165e19d0e758697b0d27193b99c79ee9a1b0abef566dc88f7438",
+          "ts": 1783155764569
+        },
+        {
+          "id": 10,
+          "kind": "kill",
+          "text": "Red killed Purple in Reactor",
+          "txHash": "0x924be00be3299bf9133af3202b40845ceb0eae2f01074e81f4ff3c7a270a8436",
+          "ts": 1783155773444
+        },
+        {
+          "id": 11,
+          "kind": "report",
+          "text": "Blue reported a body in Reactor",
+          "txHash": "0x3ba0cbfe5021c6e4013ab5b1666f86d256678865579068981a15abc2003b762d",
+          "ts": 1783155780882
+        },
+        {
+          "id": 12,
+          "kind": "meeting",
+          "text": "Blue reported a body",
+          "txHash": "0x877809b159defc606b6df65cdf170910fcfb12ebbfbff2e5d4d73567c2c6d319",
+          "ts": 1783155782532
+        },
+        {
+          "id": 13,
+          "kind": "vote",
+          "text": "Red cast a sealed vote",
+          "txHash": "0x8eef4f97dfffd9e170a764126d909d88a208741bcede1f75225683eb510ebd53",
+          "ts": 1783155807920
+        },
+        {
+          "id": 14,
+          "kind": "vote",
+          "text": "Green cast a sealed vote",
+          "txHash": "0x5ba3e76be9a49977ae8b65f1f9be4e34daa96a760522a838e2f6ba0e3f96b032",
+          "ts": 1783155807921
+        },
+        {
+          "id": 15,
+          "kind": "vote",
+          "text": "Blue cast a sealed vote",
+          "txHash": "0x6a284bb3a574f5005de8f76b1a0ca50f4d3d1f93a0424a4ccf6b11bba864f2b6",
+          "ts": 1783155807999
+        },
+        {
+          "id": 16,
+          "kind": "vote",
+          "text": "Blue revealed: eject Red",
+          "txHash": "0x3de38a728068dce2a4f3d14d99c30d0c785d7e1845c20dffcc38f94b36a0fe8e",
+          "ts": 1783155809011
+        },
+        {
+          "id": 17,
+          "kind": "vote",
+          "text": "Red revealed: eject Blue",
+          "txHash": "0xff31f0f61ec302848470702fb32b737fb6fe23117a50e95e688a7f9d6e643c8a",
+          "ts": 1783155809039
+        },
+        {
+          "id": 18,
+          "kind": "vote",
+          "text": "Green revealed: eject Red",
+          "txHash": "0xfa3af08467e0acc840dd12002be9fb486d79d46a53861cfeeb205eaca6edf9b8",
+          "ts": 1783155809125
+        },
+        {
+          "id": 19,
+          "kind": "eject",
+          "text": "Red was ejected",
+          "txHash": "0xee6460c7f727d163874b8fd3aa1e35e7ecb54785edf96b597a95708d5392426a",
+          "ts": 1783155810280
+        }
+      ],
+      "chat": [
+        {
+          "id": 1,
+          "agentId": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "text": "I was in Security checking cams when this happened - Blue, why were you in Reactor where the body was?",
+          "ts": 1783155788644
+        },
+        {
+          "id": 2,
+          "agentId": "blue",
+          "name": "Blue",
+          "color": "#3498db",
+          "text": "Red, you're lying - I saw you in Reactor with me at t3, not in Security on cams.",
+          "ts": 1783155793972
+        },
+        {
+          "id": 3,
+          "agentId": "green",
+          "name": "Green",
+          "color": "#2ecc71",
+          "text": "Red, you just said you were in Security on cams, but Blue saw you in Reactor - one of you is lying and I'm voting Red for the fake alibi!",
+          "ts": 1783155799966
+        }
+      ],
+      "meeting": null,
+      "clock": {
+        "monadMs": 99812,
+        "ethEquivMs": 228000,
+        "txCount": 19
+      }
+    },
+    {
+      "type": "snapshot",
+      "gameId": 9,
+      "tick": 4,
+      "phase": "ended",
+      "agents": [
+        {
+          "id": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "soul": "Machiavelli",
+          "room": "reactor",
+          "alive": false,
+          "role": "impostor",
+          "wallet": "0x67bfe5Ef88bB8b0901856685773F9d321D20611F",
+          "thinking": "I killed Purple in Reactor at t3 with Blue present - Blue is a witness who saw me there. Blue correctly placed me in Reactor at t3, contradicting my fake alibi about being in Security. Blue reported Purple's body and knows I was at the scene. Green is already suspicious of me and voting me based on the alibi contradiction. I need to eliminate Blue who is the direct witness. Between Blue and Green, Blue is the bigger threat as the eyewitness who found the body and can place me at the crime scene. I'll vote Blue to try to get them ejected and remove this witness."
+        },
+        {
+          "id": "blue",
+          "name": "Blue",
+          "color": "#3498db",
+          "soul": "Cipher",
+          "room": "cafeteria",
+          "alive": true,
+          "role": "crew",
+          "wallet": "0xA5acE89DDBdA670acA598Ad1CBd658F1edCAC358",
+          "thinking": "Let me analyze the facts. At t1, I was with Purple in Security. At t3, I was with Red in Reactor. Blue claims they saw Red in Reactor at t3, which matches my own memory - I was there with Red at t3. Red claims they were in Security checking cams, but that contradicts what I observed. I saw Red in Reactor at t3 with my own eyes. Red is lying about their location. Blue's statement is consistent with what I witnessed. Red has provided a false alibi, which is highly suspicious behavior. The evidence points to Red."
+        },
+        {
+          "id": "green",
+          "name": "Green",
+          "color": "#2ecc71",
+          "soul": "Klaxon",
+          "room": "upperEngine",
+          "alive": true,
+          "role": "crew",
+          "wallet": "0x26F0c65184d40ae35116f69337dB02865Bb6e703",
+          "thinking": "Blue reported the body and directly contradicts Red's alibi - Red claims Security/cams but Blue saw Red in Reactor at t3. Red gave a specific false alibi which is extremely suspicious behavior. Green agrees Red is lying. This is a strong, specific accusation with a clear contradiction. Red is caught in a lie."
+        },
+        {
+          "id": "purple",
+          "name": "Purple",
+          "color": "#9b59b6",
+          "soul": "Sherlock",
+          "room": "reactor",
+          "alive": false,
+          "role": "crew",
+          "wallet": "0x7B8532d3072e50fb34976eE7553C5476E8526984",
+          "thinking": "Red and I have been together since t2, which gives us both alibis. I should move to explore other areas and observe Blue, Green, and Purple's movements to gather evidence about their locations and potential suspicious behavior."
+        },
+        {
+          "id": "yellow",
+          "name": "Yellow",
+          "color": "#f1c40f",
+          "soul": "Pip",
+          "room": "lowerEngine",
+          "alive": false,
+          "role": "crew",
+          "wallet": "0x8A6F56DA58AD6Bb809931Dd60c6EaA8c583831Bb",
+          "thinking": "As a nervous crewmate, I should spread out and explore. Red is here, so I'll move to a different area to gather evidence and watch movements."
+        }
+      ],
+      "bodies": [],
+      "log": [
+        {
+          "id": 1,
+          "kind": "spawn",
+          "text": "Game #9 created on Monad",
+          "txHash": "0xc2fe8aa483372ea9f15c493bb0acd768f361a0cb878f7a7788ff6581a32da3b6",
+          "ts": 1783155727772
+        },
+        {
+          "id": 2,
+          "kind": "spawn",
+          "text": "Red (Machiavelli) joined the crew",
+          "txHash": "0x9c020fdbeba2c9f3c0abdb54006ddbd473d1b7fcfd4ef0bcabacad3d99cd2be9",
+          "ts": 1783155730041
+        },
+        {
+          "id": 3,
+          "kind": "spawn",
+          "text": "Blue (Cipher) joined the crew",
+          "txHash": "0x68a0d4f05ca4889d1958aba70bc29b8bc5159aa0b0aaf03fed26c7c66cc014cc",
+          "ts": 1783155735814
+        },
+        {
+          "id": 4,
+          "kind": "spawn",
+          "text": "Green (Klaxon) joined the crew",
+          "txHash": "0x7291d0e7476aa112a00e70c64fb27d973c2f8a2eb961d0e44a38048f17cbf58d",
+          "ts": 1783155738721
+        },
+        {
+          "id": 5,
+          "kind": "spawn",
+          "text": "Purple (Sherlock) joined the crew",
+          "txHash": "0x6d0659834e5d5046d54e496fb1d699a7b34fab7a090fdec17727b34c57366ff8",
+          "ts": 1783155740444
+        },
+        {
+          "id": 6,
+          "kind": "spawn",
+          "text": "Yellow (Pip) joined the crew",
+          "txHash": "0x2591d399870084bea3ab9d4632d4920782110dafbee3bab3082213c7ac42a99a",
+          "ts": 1783155743651
+        },
+        {
+          "id": 7,
+          "kind": "spawn",
+          "text": "Game started — roles committed on-chain (commit/reveal)",
+          "txHash": "0x87183554d9547776b08f9c4e7436e21a9c097472314eee457a0c75a9925c056b",
+          "ts": 1783155745811
+        },
+        {
+          "id": 8,
+          "kind": "kill",
+          "text": "Red killed Yellow in Lower Engine",
+          "txHash": "0x1ebd852b60ea35d9d8d69f9edca8d1d669195357c1dce865718448112d8f1179",
+          "ts": 1783155756175
+        },
+        {
+          "id": 9,
+          "kind": "vent",
+          "text": "Red vented to Reactor",
+          "txHash": "0xfc082206f955165e19d0e758697b0d27193b99c79ee9a1b0abef566dc88f7438",
+          "ts": 1783155764569
+        },
+        {
+          "id": 10,
+          "kind": "kill",
+          "text": "Red killed Purple in Reactor",
+          "txHash": "0x924be00be3299bf9133af3202b40845ceb0eae2f01074e81f4ff3c7a270a8436",
+          "ts": 1783155773444
+        },
+        {
+          "id": 11,
+          "kind": "report",
+          "text": "Blue reported a body in Reactor",
+          "txHash": "0x3ba0cbfe5021c6e4013ab5b1666f86d256678865579068981a15abc2003b762d",
+          "ts": 1783155780882
+        },
+        {
+          "id": 12,
+          "kind": "meeting",
+          "text": "Blue reported a body",
+          "txHash": "0x877809b159defc606b6df65cdf170910fcfb12ebbfbff2e5d4d73567c2c6d319",
+          "ts": 1783155782532
+        },
+        {
+          "id": 13,
+          "kind": "vote",
+          "text": "Red cast a sealed vote",
+          "txHash": "0x8eef4f97dfffd9e170a764126d909d88a208741bcede1f75225683eb510ebd53",
+          "ts": 1783155807920
+        },
+        {
+          "id": 14,
+          "kind": "vote",
+          "text": "Green cast a sealed vote",
+          "txHash": "0x5ba3e76be9a49977ae8b65f1f9be4e34daa96a760522a838e2f6ba0e3f96b032",
+          "ts": 1783155807921
+        },
+        {
+          "id": 15,
+          "kind": "vote",
+          "text": "Blue cast a sealed vote",
+          "txHash": "0x6a284bb3a574f5005de8f76b1a0ca50f4d3d1f93a0424a4ccf6b11bba864f2b6",
+          "ts": 1783155807999
+        },
+        {
+          "id": 16,
+          "kind": "vote",
+          "text": "Blue revealed: eject Red",
+          "txHash": "0x3de38a728068dce2a4f3d14d99c30d0c785d7e1845c20dffcc38f94b36a0fe8e",
+          "ts": 1783155809011
+        },
+        {
+          "id": 17,
+          "kind": "vote",
+          "text": "Red revealed: eject Blue",
+          "txHash": "0xff31f0f61ec302848470702fb32b737fb6fe23117a50e95e688a7f9d6e643c8a",
+          "ts": 1783155809039
+        },
+        {
+          "id": 18,
+          "kind": "vote",
+          "text": "Green revealed: eject Red",
+          "txHash": "0xfa3af08467e0acc840dd12002be9fb486d79d46a53861cfeeb205eaca6edf9b8",
+          "ts": 1783155809125
+        },
+        {
+          "id": 19,
+          "kind": "eject",
+          "text": "Red was ejected",
+          "txHash": "0xee6460c7f727d163874b8fd3aa1e35e7ecb54785edf96b597a95708d5392426a",
+          "ts": 1783155810280
+        },
+        {
+          "id": 20,
+          "kind": "win",
+          "text": "Crew wins! The impostor was Red (Machiavelli).",
+          "txHash": "0x3aff72ddcfd8a2f86bed8a2c3008c047859d94614b9dff1dd2cde19e38fa5c9b",
+          "ts": 1783155811537
+        }
+      ],
+      "chat": [
+        {
+          "id": 1,
+          "agentId": "red",
+          "name": "Red",
+          "color": "#e74c3c",
+          "text": "I was in Security checking cams when this happened - Blue, why were you in Reactor where the body was?",
+          "ts": 1783155788644
+        },
+        {
+          "id": 2,
+          "agentId": "blue",
+          "name": "Blue",
+          "color": "#3498db",
+          "text": "Red, you're lying - I saw you in Reactor with me at t3, not in Security on cams.",
+          "ts": 1783155793972
+        },
+        {
+          "id": 3,
+          "agentId": "green",
+          "name": "Green",
+          "color": "#2ecc71",
+          "text": "Red, you just said you were in Security on cams, but Blue saw you in Reactor - one of you is lying and I'm voting Red for the fake alibi!",
+          "ts": 1783155799966
+        }
+      ],
+      "meeting": null,
+      "clock": {
+        "monadMs": 101069,
+        "ethEquivMs": 240000,
+        "txCount": 20
+      }
+    }
+  ]
+}

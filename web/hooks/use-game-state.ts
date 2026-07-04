@@ -8,7 +8,7 @@ import { useWebSocketSnapshot } from "./use-websocket-snapshot";
 import { useReplayPlayer, type ReplayPlayerState } from "./use-replay-player";
 
 const WS_CONNECT_TIMEOUT_MS = 2500;
-const DEFAULT_REPLAY_NAME = "demo-sample";
+const DEFAULT_REPLAY_NAME = "demo-game";
 
 export type ConnectionMode = "connecting" | "live" | "replay";
 
