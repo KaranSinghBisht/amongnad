@@ -118,26 +118,28 @@ export function BetPanel() {
     }
   }, [address, round, market, pick, amount]);
 
-  if (!round || round.startsAt === 0) return null; // arena never opened — hide
-
-  const secsLeft = round.startsAt - now;
-  const bettingOpen = round.open && secsLeft > 0;
+  const secsLeft = round ? round.startsAt - now : 0;
+  const bettingOpen = !!round && round.open && secsLeft > 0;
   const mm = String(Math.max(0, Math.floor(secsLeft / 60))).padStart(2, "0");
   const ss = String(Math.max(0, secsLeft % 60)).padStart(2, "0");
 
   return (
     <div className="relative flex shrink-0 flex-wrap items-center gap-x-4 gap-y-2 rounded-lg border border-[#836EF9]/30 bg-[#140A2E]/70 px-4 py-2 text-xs">
       <span className="font-mono font-bold uppercase tracking-widest text-[#C9B8FF]">
-        🎲 Arena · game #{round.gameId.toString()}
+        🎲 Arena{round ? ` · game #${round.gameId.toString()}` : ""}
       </span>
 
-      {bettingOpen ? (
+      {!round ? (
+        <span className="font-mono text-[#A99BFF]/70">
+          next round opening soon — games run every ~10 min, bet MON on who wins &amp; who dies first
+        </span>
+      ) : bettingOpen ? (
         <span className="font-mono text-emerald-300">
-          betting closes in <span className="font-bold">{mm}:{ss}</span>
+          betting closes in <span className="font-bold">{mm}:{ss}</span> — game starts right after
         </span>
       ) : (
         <span className="font-mono text-[#A99BFF]/70">
-          {round.settled ? "round settled — next opens soon" : "betting closed — game in progress"}
+          {round.settled ? "round settled — next opens soon" : `game #${round.gameId.toString()} in progress — bets locked`}
         </span>
       )}
 
@@ -206,7 +208,19 @@ export function BetPanel() {
         </span>
       )}
       {status && <span className="text-amber-300">{status}</span>}
-      <span className="ml-auto font-mono text-[10px] text-[#6b5fa8]">house-banked · broke house auto-refunds</span>
+      <span className="ml-auto flex items-center gap-3">
+        {!address && !bettingOpen && (
+          <button type="button" onClick={connect}
+            className="rounded border border-[#836EF9]/60 px-3 py-1.5 font-bold uppercase tracking-wide text-[#C9B8FF] hover:bg-[#836EF9]/20">
+            Connect wallet
+          </button>
+        )}
+        <a href="/watch?replay=demo-game"
+          className="rounded border border-[#836EF9]/40 px-3 py-1.5 font-bold uppercase tracking-wide text-[#C9B8FF] hover:bg-[#836EF9]/15">
+          ▶ Watch last game
+        </a>
+        <span className="font-mono text-[10px] text-[#6b5fa8]">house-banked · broke house auto-refunds</span>
+      </span>
     </div>
   );
 }

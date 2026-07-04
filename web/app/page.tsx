@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { CornerBrackets } from "@/components/corner-brackets";
+import { BetPanel } from "@/components/bet-panel";
+import { GameHistory } from "@/components/game-history";
 import { GAME_CONTRACT } from "@/lib/env";
 
 const EXPLORER_ADDRESS = "https://testnet.monadscan.com/address/";
@@ -78,6 +80,12 @@ export default function LandingPage() {
             <span>◈ commit–reveal ballots</span>
           </div>
         </div>
+      </section>
+
+      {/* ───────────────── live arena strip ───────────────── */}
+      <section className="mx-auto w-full max-w-6xl space-y-2 px-4 pt-6 sm:px-6">
+        <BetPanel />
+        <GameHistory />
       </section>
 
       {/* ───────────────── showcase: emergency-meeting art + pitch ───────────────── */}
