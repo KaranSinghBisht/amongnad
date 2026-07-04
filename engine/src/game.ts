@@ -14,10 +14,10 @@ import {
 } from './agent';
 import type { Snapshot, LogEntry, ChatMsg, Body, MeetingView, LogKind, Phase } from './protocol';
 
-const MAX_TICKS = 18;
+const MAX_TICKS = 22;
 const DISCUSS_ROUNDS = 2;       // two rounds so accusations get rebutted before the vote
 const PACE_MS = 300;
-const WALL_CLOCK_MS = 200_000;   // hard cap so a game always fits a ~3-min demo (6 agents × 2 rounds needs air)
+const WALL_CLOCK_MS = 240_000;   // hard cap so a game always fits a ~4-min arena slot
 const MAX_EMERGENCY = 2;         // emergency (no-body) meetings allowed per game
 const EMERGENCY_COOLDOWN = 3;    // ticks between emergency meetings
 const EMERGENCY_MIN_TICK = 4;    // no emergency meetings before this — let kills happen first
@@ -71,6 +71,7 @@ export class Game {
   private lightsOutTick = -99;
   private lightsRestoredTick = -99;
   private sabotagesUsed = 0;
+  private firstVictimId: string | null = null;
 
   constructor(onSnapshot: (s: Snapshot) => void) {
     this.onSnapshot = onSnapshot;
@@ -182,6 +183,7 @@ export class Game {
       adjacent: adjacentRooms(a.room),
       vents: a.role === 'impostor' ? ventRooms(a.room) : null,
       lightsOut: this.lightsOut,
+      ticksLeft: MAX_TICKS - this.tick,
       here: blind ? [] : here.map((o) => o.name),
       alive: this.alive().map((o) => o.name),
       dead: this.agents.filter((o) => !o.alive).map((o) => o.name),
@@ -323,9 +325,9 @@ export class Game {
   private currentWinner(): number {
     const w = this.checkWin();
     if (w !== null) return w;
-    // timeout with no decision: a still-breathing impostor escaped — saying
-    // "crew wins" while the killer walks free reads as a broken ending.
-    return this.impostor.alive ? Winner.Impostor : Winner.Crew;
+    // Real Among Us: the impostor only wins at parity (checkWin). If the shift
+    // ends before parity, the crew survived — crew wins the tiebreak.
+    return Winner.Crew;
   }
 
   // ---- ACTION phase ----
@@ -454,6 +456,7 @@ export class Game {
       ? []
       : this.alive().filter((o) => o.id !== killer.id && o.id !== victim.id && o.room === room);
     victim.alive = false;
+    if (this.firstVictimId === null) this.firstVictimId = victim.id;
     this.bodies.push({ room, victim: victim.id });
     this.remember(killer, `t${this.tick}: you killed ${victim.name} in ${roomName(room)}`);
     for (const w of witnesses) {
@@ -634,9 +637,14 @@ export class Game {
   // ---- summary for replay meta / reporting ----
 
   summary() {
+    const victimIndex = this.firstVictimId
+      ? this.agents.findIndex((a) => a.id === this.firstVictimId)
+      : null;
     return {
       gameId: Number(this.gameId),
       winner: this.winner === Winner.Impostor ? 'impostor' : 'crew',
+      winnerSide: this.winner === Winner.Impostor ? 1 : 0,
+      firstVictimIndex: victimIndex,
       impostor: this.impostor?.name,
       txCount: this.txCount,
       txFailures: this.txFailures,

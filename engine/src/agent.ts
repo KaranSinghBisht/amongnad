@@ -24,6 +24,7 @@ export interface ActionPOV {
   adjacent: { id: string; name: string }[];
   vents: { id: string; name: string }[] | null; // only for impostor
   lightsOut: boolean;  // sabotage active — crew are blind, kills unwitnessed
+  ticksLeft: number;   // rounds before the shift ends (crew wins a timeout)
   here: string[];      // other alive agent names in the room
   alive: string[];     // all alive agent names
   dead: string[];      // dead / ejected names
@@ -150,6 +151,9 @@ export async function decideAction(pov: ActionPOV): Promise<ActionDecision> {
       }
     } else {
       lines.push(`Your KILL is READY. Killable right now: ${pov.killable.join(', ') || '(no one isolated with you — move to hunt a lone crewmate)'}.`);
+    }
+    if (pov.ticksLeft <= 6) {
+      lines.push(`⏳ Only ${pov.ticksLeft} rounds left in the shift — if you have not reached parity when it ends, the CREW WINS. Hunt aggressively NOW.`);
     }
   }
   if (pov.lightsOut) {

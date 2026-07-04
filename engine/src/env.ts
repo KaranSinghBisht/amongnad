@@ -25,6 +25,8 @@ export const config = {
   rpcFallback: process.env.MONAD_RPC_FALLBACK || '',
   chainId: Number(process.env.CHAIN_ID || '10143'),
   contract: req('GAME_CONTRACT_ADDRESS') as `0x${string}`,
+  arenaContract: (process.env.ARENA_CONTRACT_ADDRESS ||
+    '0x78Ba46dC4Ebdc8d178b1656bfE389e10EA305DD8') as `0x${string}`,
   wsPort: Number(process.env.WS_PORT || '8787'),
   explorerTx: 'https://testnet.monadscan.com/tx/', // monadvision 403s in-browser
 

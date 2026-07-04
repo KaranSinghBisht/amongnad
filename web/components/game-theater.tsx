@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useGameState } from "@/hooks/use-game-state";
 import { ShadowClock } from "./shadow-clock";
 import { GameLog } from "./game-log";
@@ -8,6 +9,8 @@ import { StagePanel } from "./stage-panel";
 import { AgentPanelRow } from "./agent-panel-row";
 import { ReplayControls } from "./replay-controls";
 import { TheaterLoading } from "./theater-loading";
+import { BetPanel } from "./bet-panel";
+import { GameHistory } from "./game-history";
 
 export function GameTheater() {
   const { mode, snapshot, replay } = useGameState();
@@ -21,11 +24,9 @@ export function GameTheater() {
       <div className="flex shrink-0 items-stretch gap-3">
         <Link
           href="/"
-          className="glow-purple flex items-center rounded-lg border border-[#836EF9]/30 bg-[#140A2E]/60 px-4 font-black italic tracking-tight"
+          className="glow-purple flex items-center rounded-lg border border-[#836EF9]/30 bg-[#140A2E]/60 px-4"
         >
-          <span className="bg-gradient-to-r from-white via-[#E4B9F0] to-[#836EF9] bg-clip-text text-xl text-transparent">
-            AMONG⚡NAD
-          </span>
+          <Image src="/wordmark.png" alt="AMONGNAD" width={1579} height={436} priority className="h-7 w-auto" />
         </Link>
         <div className="min-w-0 flex-1">
           <ShadowClock clock={snapshot.clock} mode={mode} />
@@ -45,7 +46,9 @@ export function GameTheater() {
         <AgentPanelRow agents={snapshot.agents} />
       </div>
 
+      <BetPanel />
       {replay && <ReplayControls replay={replay} />}
+      <GameHistory />
     </div>
   );
 }

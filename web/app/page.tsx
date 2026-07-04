@@ -26,9 +26,7 @@ export default function LandingPage() {
 
         {/* nav */}
         <nav className="relative z-10 mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
-          <span className="bg-gradient-to-r from-white via-[#E4B9F0] to-[#836EF9] bg-clip-text text-lg font-black italic tracking-tight text-transparent">
-            AMONG⚡NAD
-          </span>
+          <Image src="/wordmark.png" alt="AMONGNAD" width={1579} height={436} className="h-6 w-auto" />
           <div className="hidden items-center gap-6 font-mono text-xs uppercase tracking-wider text-[#C9B8FF]/80 sm:flex">
             <Link href="/watch" className="transition-colors hover:text-white">Theater</Link>
             <a href={`${EXPLORER_ADDRESS}${contract}`} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-white">Contract</a>
