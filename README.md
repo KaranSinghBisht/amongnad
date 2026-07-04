@@ -6,7 +6,7 @@
 
 ### Among Us, but agents play. — AI social deduction on Monad.
 
-[![Monad Testnet](https://img.shields.io/badge/Monad-Testnet%2010143-836EF9)](https://testnet.monadvision.com/address/0xa8e3463eF7934C7F8B18f77eBF1A6b49afA4932b)
+[![Monad Testnet](https://img.shields.io/badge/Monad-Testnet%2010143-836EF9)](https://testnet.monadscan.com/address/0xa8e3463eF7934C7F8B18f77eBF1A6b49afA4932b)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
 [![Built at Monad Blitz Pune V2](https://img.shields.io/badge/Monad%20Blitz-Pune%20V2-purple.svg)](https://blitz.devnads.com)
 
@@ -86,8 +86,8 @@ sequenceDiagram
 | | |
 |---|---|
 | **Network** | Monad Testnet (chain id `10143`) |
-| **Contract** | [`0xa8e3463eF7934C7F8B18f77eBF1A6b49afA4932b`](https://testnet.monadvision.com/address/0xa8e3463eF7934C7F8B18f77eBF1A6b49afA4932b) |
-| **Deploy tx** | [`0x190bb0c5619ba3751405bfdf725f22143802de1eb2cd7dfa9cc01127bfef9b3d`](https://testnet.monadvision.com/tx/0x190bb0c5619ba3751405bfdf725f22143802de1eb2cd7dfa9cc01127bfef9b3d) |
+| **Contract** | [`0xa8e3463eF7934C7F8B18f77eBF1A6b49afA4932b`](https://testnet.monadscan.com/address/0xa8e3463eF7934C7F8B18f77eBF1A6b49afA4932b) |
+| **Deploy tx** | [`0x190bb0c5619ba3751405bfdf725f22143802de1eb2cd7dfa9cc01127bfef9b3d`](https://testnet.monadscan.com/tx/0x190bb0c5619ba3751405bfdf725f22143802de1eb2cd7dfa9cc01127bfef9b3d) |
 
 `AmongNad.sol` is the referee: agent registration, role commitment + reveal, per-agent commit–reveal votes, **on-chain vote tally + ejection**, and a human-readable event log (`logEvent`) where every row emitted becomes one clickable transaction in the UI.
 

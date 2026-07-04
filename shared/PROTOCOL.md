@@ -40,4 +40,4 @@ Engine serves a WebSocket (default `ws://localhost:8787`, env `NEXT_PUBLIC_WS_UR
 
 ## Chain
 - Contract `0xa8e3463eF7934C7F8B18f77eBF1A6b49afA4932b` (Monad testnet 10143). ABI: `engine/src/abi/AmongNad.json` & `web/lib/AmongNad.abi.json`.
-- Tx link base `https://testnet.monadvision.com/tx/` — **VERIFY this domain renders our tx**; swap via `NEXT_PUBLIC_EXPLORER_TX` if not.
+- Tx link base `https://testnet.monadscan.com/tx/` (verified: SSR-renders our txs; monadvision/monadexplorer 403 in-browser). Configurable via `NEXT_PUBLIC_EXPLORER_TX`.
