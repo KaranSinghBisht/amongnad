@@ -24,6 +24,7 @@ async function main() {
     winner: s.winner,
     impostor: s.impostor,
     txCount: s.txCount,
+    txFailures: s.txFailures,
     createdAt: ts,
     agents: s.agents,
     contract: config.contract,

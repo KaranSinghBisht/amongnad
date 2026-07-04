@@ -17,7 +17,7 @@ import type { Snapshot, LogEntry, ChatMsg, Body, MeetingView, LogKind, Phase } f
 const MAX_TICKS = 18;
 const DISCUSS_ROUNDS = 1;
 const PACE_MS = 300;
-const WALL_CLOCK_MS = 150_000;   // hard cap so a game always fits a ~3-min demo
+const WALL_CLOCK_MS = 130_000;   // hard cap so a game always fits a ~3-min demo
 const MAX_EMERGENCY = 2;         // emergency (no-body) meetings allowed per game
 const EMERGENCY_COOLDOWN = 3;    // ticks between emergency meetings
 const EMERGENCY_MIN_TICK = 4;    // no emergency meetings before this — let kills happen first
@@ -119,15 +119,18 @@ export class Game {
     }
   }
 
-  // Assign each agent a distinct scattered room so nobody starts (or regroups)
-  // clumped together — agents must get isolated enough for kills to happen.
+  // Place agents in a compact CONNECTED region (a random hub room + its
+  // neighbours) so they cross paths and find bodies, while each room still
+  // holds only 1-2 agents so 1-on-1 isolation for kills keeps happening.
+  // (Fully scattering across all 14 rooms made bodies impossible to find.)
   private scatterRooms(agents: AgentState[]): void {
-    const pool = ROOMS.map((r) => r.id);
-    for (let i = pool.length - 1; i > 0; i--) {
+    const hub = ROOMS[Math.floor(Math.random() * ROOMS.length)].id;
+    const region = [hub, ...adjacentRooms(hub).map((r) => r.id)];
+    for (let i = region.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [pool[i], pool[j]] = [pool[j], pool[i]];
+      [region[i], region[j]] = [region[j], region[i]];
     }
-    agents.forEach((a, i) => { a.room = pool[i % pool.length]; });
+    agents.forEach((a, i) => { a.room = region[i % region.length]; });
   }
 
   // Top up any agent wallet that's too low to pay for its votes, so a live demo
@@ -408,11 +411,11 @@ export class Game {
       this.remember(w, `t${this.tick}: you SAW ${killer.name} kill ${victim.name} in ${roomName(room)}`);
     }
 
-    // The on-chain note stays NEUTRAL — naming the killer here would leak the
-    // impostor before the endGame reveal. The spicy, identifying text lives
-    // only in the off-chain UI log line below.
+    // The on-chain note names only the VICTIM + room (both public once a body is
+    // found) — never the killer, which would leak the impostor before the
+    // endGame reveal. The spicy, killer-identifying text is off-chain only (UI log).
     const kHash = await this.tryChain(() =>
-      chain.kill(this.gameId, victim.address, roomName(room), `a body was left in ${roomName(room)}`),
+      chain.kill(this.gameId, victim.address, roomName(room), `${victim.name} was eliminated in ${roomName(room)}`),
     'kill');
     this.addLog('kill', `${killer.name} killed ${victim.name} in ${roomName(room)}`, kHash);
 
@@ -430,10 +433,11 @@ export class Game {
     const from = a.room;
     a.room = toRoom;
     this.remember(a, `t${this.tick}: vented ${roomName(from)} -> ${roomName(toRoom)}`);
-    // Venting is impostor-only, so the on-chain actor is ZERO — recording the
-    // real address would out the impostor before the reveal. UI text keeps it.
+    // Venting is impostor-only, so BOTH the on-chain actor AND the note stay
+    // neutral — recording the real address (or the word "vent") would out the
+    // impostor before the reveal. The UI log keeps the real "X vented" text.
     const h = await this.tryChain(() =>
-      chain.logEvent(this.gameId, Kind.Vent, ZERO_ADDRESS, ZERO_ADDRESS, roomName(toRoom), `a vent was used near ${roomName(toRoom)}`),
+      chain.logEvent(this.gameId, Kind.Vent, ZERO_ADDRESS, ZERO_ADDRESS, roomName(toRoom), `suspicious activity near ${roomName(toRoom)}`),
     'logEvent(Vent)');
     this.addLog('vent', `${a.name} vented to ${roomName(toRoom)}`, h);
   }

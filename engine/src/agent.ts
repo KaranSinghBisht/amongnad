@@ -28,7 +28,8 @@ export interface ActionPOV {
   dead: string[];      // dead / ejected names
   bodies: string[];    // victim names in this room
   memory: string[];    // recent private sightings
-  killable: string[];  // names the impostor could kill right now
+  killable: string[];  // names the impostor could kill right now (empty on cooldown)
+  killCooldown: number; // ticks until the impostor can kill again (0 = ready)
   canReport: boolean;
 }
 
@@ -129,10 +130,23 @@ export async function decideAction(pov: ActionPOV): Promise<ActionDecision> {
   lines.push(`Alive: ${pov.alive.join(', ')}. Dead/ejected: ${pov.dead.join(', ') || 'none'}.`);
   lines.push(pov.bodies.length ? `DEAD BODY in your room: ${pov.bodies.join(', ')}.` : 'No bodies in your room.');
   lines.push(`Recent memory:\n${pov.memory.length ? pov.memory.join('\n') : '(nothing notable yet)'}`);
-  if (s.role === 'impostor') lines.push(`Killable right now: ${pov.killable.join(', ') || '(no one isolated with you)'}.`);
+  if (s.role === 'impostor') {
+    if (pov.killCooldown > 0) {
+      if (pov.vents && pov.vents.length) {
+        lines.push(`Your KILL is on COOLDOWN for ${pov.killCooldown} more tick(s). You are standing on a VENT — VENT NOW to ${pov.vents.map((r) => r.name).join(' or ')} to escape the scene before the body is found. This is your strongest move right now.`);
+      } else {
+        lines.push(`Your KILL is on COOLDOWN for ${pov.killCooldown} more tick(s) — you cannot kill yet. Move toward a vent or your next isolated target, or blend in.`);
+      }
+    } else {
+      lines.push(`Your KILL is READY. Killable right now: ${pov.killable.join(', ') || '(no one isolated with you — move to hunt a lone crewmate)'}.`);
+    }
+  }
   const acts = ['MOVE <room>', 'WAIT'];
   if (pov.canReport) acts.push('REPORT');
-  if (s.role === 'impostor') { acts.push('KILL <player>'); acts.push('VENT <vent room>'); }
+  if (s.role === 'impostor') {
+    if (pov.killCooldown === 0) acts.push('KILL <player>');
+    acts.push('VENT <vent room>');
+  }
   acts.push('CALL_MEETING');
   lines.push(`Legal actions: ${acts.join(', ')}.`);
   lines.push('Respond with ONLY this JSON: {"thinking":"private reasoning, 1-2 sentences","action":"MOVE|WAIT|KILL|VENT|REPORT|CALL_MEETING","target":"<room name, player name, or null>"}');
