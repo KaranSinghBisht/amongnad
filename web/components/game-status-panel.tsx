@@ -17,6 +17,8 @@ export function GameStatusPanel({ snapshot }: GameStatusPanelProps) {
     ? agents.filter((a) => a.role === "impostor" && a.alive).length
     : null;
 
+  const lights = snapshot.lights ?? true;
+
   return (
     <div className="absolute left-2 top-2 z-10 rounded border border-[#836EF9]/35 bg-[#0B0620]/80 px-3 py-2 font-mono text-[10px] leading-relaxed text-[#C9B8FF] backdrop-blur-sm">
       <div className="mb-1 border-b border-[#836EF9]/25 pb-1 tracking-widest text-[#A99BFF]/70">
@@ -24,17 +26,18 @@ export function GameStatusPanel({ snapshot }: GameStatusPanelProps) {
       </div>
       <StatusRow label="ALIVE" value={`${aliveCount}/${agents.length}`} />
       <StatusRow label="IMPOSTORS" value={impostorsLeft === null ? "?" : String(impostorsLeft)} />
+      <StatusRow label="LIGHTS" value={lights ? "ON" : "OUT"} valueClass={lights ? undefined : "text-orange-400 animate-pulse"} />
       <StatusRow label="TICK" value={`#${tick}`} />
     </div>
   );
 }
 
-function StatusRow({ label, value }: { label: string; value: string }) {
+function StatusRow({ label, value, valueClass }: { label: string; value: string; valueClass?: string }) {
   return (
     <div className="flex items-center gap-1.5">
       <span className="inline-block h-2 w-2 shrink-0 border border-[#836EF9]/60" aria-hidden />
       <span className="text-[#A99BFF]/70">{label}</span>
-      <span className="ml-auto pl-3 font-bold text-[#F4F2FF]">{value}</span>
+      <span className={`ml-auto pl-3 font-bold ${valueClass ?? "text-[#F4F2FF]"}`}>{value}</span>
     </div>
   );
 }

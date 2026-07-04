@@ -20,17 +20,27 @@ export interface AgentWallet {
 const FILE = fileURLToPath(new URL('../.agents.json', import.meta.url));
 
 export function loadOrCreateAgents(): AgentWallet[] {
+  // Keep any existing (already-funded) wallets keyed by soul id and only
+  // generate keys for souls that don't have one yet — adding a 6th soul must
+  // not orphan five funded wallets.
+  let existing = new Map<string, AgentWallet>();
   if (existsSync(FILE)) {
     try {
       const parsed = JSON.parse(readFileSync(FILE, 'utf8')) as AgentWallet[];
-      if (Array.isArray(parsed) && parsed.length === SOULS.length) return parsed;
-      console.warn('[wallets] .agents.json is stale/mismatched — regenerating');
+      if (Array.isArray(parsed)) existing = new Map(parsed.map((w) => [w.id, w]));
     } catch (err) {
-      console.warn('[wallets] failed to parse .agents.json — regenerating:', err);
+      console.warn('[wallets] failed to parse .agents.json — regenerating all:', err);
     }
   }
 
+  let generated = 0;
   const agents: AgentWallet[] = SOULS.map((s) => {
+    const prior = existing.get(s.id);
+    if (prior?.privateKey && prior?.address) {
+      // refresh display fields from the soul definition, keep the keypair
+      return { ...prior, name: s.name, color: s.color, soul: s.soul, persona: s.persona };
+    }
+    generated++;
     const pk = generatePrivateKey();
     return {
       id: s.id,
@@ -44,6 +54,6 @@ export function loadOrCreateAgents(): AgentWallet[] {
   });
 
   writeFileSync(FILE, JSON.stringify(agents, null, 2));
-  console.log(`[wallets] generated ${agents.length} agent wallets -> ${FILE}`);
+  if (generated > 0) console.log(`[wallets] generated ${generated} new agent wallet(s) -> ${FILE}`);
   return agents;
 }

@@ -23,6 +23,7 @@ export interface ActionPOV {
   room: { id: string; name: string };
   adjacent: { id: string; name: string }[];
   vents: { id: string; name: string }[] | null; // only for impostor
+  lightsOut: boolean;  // sabotage active — crew are blind, kills unwitnessed
   here: string[];      // other alive agent names in the room
   alive: string[];     // all alive agent names
   dead: string[];      // dead / ejected names
@@ -54,7 +55,7 @@ export interface VotePOV {
 
 export interface ActionDecision {
   thinking: string;
-  action: 'MOVE' | 'WAIT' | 'KILL' | 'VENT' | 'REPORT' | 'CALL_MEETING';
+  action: 'MOVE' | 'WAIT' | 'KILL' | 'VENT' | 'REPORT' | 'CALL_MEETING' | 'SABOTAGE' | 'FIX';
   target: string | null;
 }
 export interface DiscussDecision { thinking: string; statement: string; }
@@ -115,7 +116,7 @@ async function askJson(system: string, user: string): Promise<any | null> {
 
 function systemFor(self: SelfView, outputRule: string): string {
   const playbook = self.role === 'impostor' ? IMPOSTOR_PLAYBOOK : CREW_PLAYBOOK;
-  return `${self.systemPrompt}\n\n${playbook}\n\nYou are playing AmongNad, an Among Us style social-deduction game on The Skeld. ${outputRule}`;
+  return `${self.systemPrompt}\n\n${playbook}\n\nYou are playing AmongNad, an Among Us style social-deduction game on The Skeld. YOUR IDENTITY: you are ${self.name} ("${self.soul}"). Always speak in FIRST PERSON as ${self.name} — never talk about ${self.name} in the third person, never address yourself, never vote for yourself. ${outputRule}`;
 }
 
 // --- ACTION ---
@@ -126,9 +127,19 @@ export async function decideAction(pov: ActionPOV): Promise<ActionDecision> {
   lines.push(`PHASE: ACTION (tick ${pov.tick}).`);
   lines.push(`Location: ${pov.room.name}. Adjacent rooms: ${pov.adjacent.map((r) => r.name).join(', ') || 'none'}.`);
   if (pov.vents && pov.vents.length) lines.push(`Vents (impostor only) lead to: ${pov.vents.map((r) => r.name).join(', ')}.`);
-  lines.push(`In your room now: ${pov.here.join(', ') || 'no one'}.`);
+  lines.push(
+    pov.lightsOut && s.role === 'crew'
+      ? 'In your room now: ??? — the lights are OUT, too dark to see anyone.'
+      : `In your room now: ${pov.here.join(', ') || 'no one'}.`,
+  );
   lines.push(`Alive: ${pov.alive.join(', ')}. Dead/ejected: ${pov.dead.join(', ') || 'none'}.`);
-  lines.push(pov.bodies.length ? `DEAD BODY in your room: ${pov.bodies.join(', ')}.` : 'No bodies in your room.');
+  lines.push(
+    pov.bodies.length
+      ? (s.role === 'crew'
+          ? `🚨 A DEAD BODY (${pov.bodies.join(', ')}) IS RIGHT HERE IN YOUR ROOM. REPORT it now — reporting is how the crew fights back. This beats every other action.`
+          : `DEAD BODY in your room: ${pov.bodies.join(', ')}.`)
+      : 'No bodies in your room.',
+  );
   lines.push(`Recent memory:\n${pov.memory.length ? pov.memory.join('\n') : '(nothing notable yet)'}`);
   if (s.role === 'impostor') {
     if (pov.killCooldown > 0) {
@@ -141,15 +152,24 @@ export async function decideAction(pov: ActionPOV): Promise<ActionDecision> {
       lines.push(`Your KILL is READY. Killable right now: ${pov.killable.join(', ') || '(no one isolated with you — move to hunt a lone crewmate)'}.`);
     }
   }
+  if (pov.lightsOut) {
+    lines.push(
+      s.role === 'crew'
+        ? '🚨 THE LIGHTS ARE OUT. If you are IN Electrical, use action FIX right now. If you are ADJACENT to Electrical, MOVE there. Everyone else: do NOT wander alone in the dark — WAIT where you are or move toward other crew, and REPORT any body you stumble on.'
+        : 'You cut the lights — the crew is blind and kills leave NO witnesses until power returns. Strike now.',
+    );
+  }
   const acts = ['MOVE <room>', 'WAIT'];
   if (pov.canReport) acts.push('REPORT');
+  if (pov.lightsOut) acts.push('FIX');
   if (s.role === 'impostor') {
     if (pov.killCooldown === 0) acts.push('KILL <player>');
     acts.push('VENT <vent room>');
+    if (!pov.lightsOut) acts.push('SABOTAGE');
   }
   acts.push('CALL_MEETING');
   lines.push(`Legal actions: ${acts.join(', ')}.`);
-  lines.push('Respond with ONLY this JSON: {"thinking":"private reasoning, 1-2 sentences","action":"MOVE|WAIT|KILL|VENT|REPORT|CALL_MEETING","target":"<room name, player name, or null>"}');
+  lines.push('Respond with ONLY this JSON: {"thinking":"private reasoning, 1-2 sentences","action":"MOVE|WAIT|KILL|VENT|REPORT|CALL_MEETING|SABOTAGE|FIX","target":"<room name, player name, or null>"}');
 
   const out = await askJson(systemFor(s, 'Output strict JSON only.'), lines.join('\n'));
   if (!out || typeof out.action !== 'string') return { thinking: '(no decision)', action: 'WAIT', target: null };
@@ -188,7 +208,8 @@ export async function vote(pov: VotePOV): Promise<VoteDecision> {
     `PHASE: VOTE. Meeting reason: ${pov.reason}.`,
     `Discussion:\n${chat}`,
     `Your memory:\n${pov.memory.length ? pov.memory.join('\n') : '(nothing notable)'}`,
-    `You may vote to eject one of: ${pov.candidates.join(', ')}. Or vote SKIP if genuinely unsure.`,
+    `You may vote to eject one of: ${pov.candidates.join(', ')}. Or vote SKIP.`,
+    'A wrong ejection HELPS the impostor. Vote to eject only if the discussion produced concrete evidence — a witnessed kill, a caught lie, an alibi that cannot be true. Gut feeling alone = SKIP.',
     'Respond with ONLY this JSON: {"thinking":"private reasoning","vote":"<player name or SKIP>"}',
   ].join('\n');
 

@@ -16,7 +16,9 @@ export type LogKind =
   | "meeting"
   | "vote"
   | "eject"
-  | "win";
+  | "win"
+  | "sabotage"
+  | "fix";
 
 export interface AgentState {
   id: string;
@@ -75,6 +77,8 @@ export interface Snapshot {
   phase: Phase;
   agents: AgentState[];
   bodies: Body[];
+  /** false while sabotage has the lights out; absent in pre-sabotage replays */
+  lights?: boolean;
   log: LogEntry[];
   chat: ChatMessage[];
   meeting: Meeting;

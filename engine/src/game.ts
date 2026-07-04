@@ -6,7 +6,7 @@ import { chain, Kind, Winner, ZERO_ADDRESS, rolesCommit, voteHash, randomSalt } 
 import { loadOrCreateAgents } from './wallets';
 import { SOULS } from './souls';
 import {
-  ROOMS, START_ROOM, roomName, adjacentRooms, ventRooms, isAdjacent, isVentAdjacent, resolveRoom,
+  START_ROOM, roomName, adjacentRooms, ventRooms, isAdjacent, isVentAdjacent, resolveRoom,
 } from './map';
 import {
   decideAction, discuss, vote,
@@ -15,13 +15,16 @@ import {
 import type { Snapshot, LogEntry, ChatMsg, Body, MeetingView, LogKind, Phase } from './protocol';
 
 const MAX_TICKS = 18;
-const DISCUSS_ROUNDS = 1;
+const DISCUSS_ROUNDS = 2;       // two rounds so accusations get rebutted before the vote
 const PACE_MS = 300;
-const WALL_CLOCK_MS = 130_000;   // hard cap so a game always fits a ~3-min demo
+const WALL_CLOCK_MS = 200_000;   // hard cap so a game always fits a ~3-min demo (6 agents × 2 rounds needs air)
 const MAX_EMERGENCY = 2;         // emergency (no-body) meetings allowed per game
 const EMERGENCY_COOLDOWN = 3;    // ticks between emergency meetings
 const EMERGENCY_MIN_TICK = 4;    // no emergency meetings before this — let kills happen first
 const KILL_COOLDOWN = 2;         // ticks between kills — spaces kills so bodies get found & reported
+const LIGHTS_AUTO_RESTORE = 3;   // ticks of darkness before emergency power kicks in
+const MAX_SABOTAGE = 2;          // blackouts per game — sabotage is strong
+const SABOTAGE_COOLDOWN = 3;     // ticks after a restore before the next blackout
 const TOP_UP_THRESHOLD = 150_000_000_000_000_000n; // 0.15 MON
 const TOP_UP_AMOUNT = '0.5';     // MON to send a low agent wallet at setup
 
@@ -64,6 +67,10 @@ export class Game {
   private lastMeetingTick = -99;
   private lastKillTick = -99;
   private emergencyCount = 0;
+  private lightsOut = false;
+  private lightsOutTick = -99;
+  private lightsRestoredTick = -99;
+  private sabotagesUsed = 0;
 
   constructor(onSnapshot: (s: Snapshot) => void) {
     this.onSnapshot = onSnapshot;
@@ -119,20 +126,6 @@ export class Game {
     }
   }
 
-  // Place agents in a compact CONNECTED region (a random hub room + its
-  // neighbours) so they cross paths and find bodies, while each room still
-  // holds only 1-2 agents so 1-on-1 isolation for kills keeps happening.
-  // (Fully scattering across all 14 rooms made bodies impossible to find.)
-  private scatterRooms(agents: AgentState[]): void {
-    const hub = ROOMS[Math.floor(Math.random() * ROOMS.length)].id;
-    const region = [hub, ...adjacentRooms(hub).map((r) => r.id)];
-    for (let i = region.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [region[i], region[j]] = [region[j], region[i]];
-    }
-    agents.forEach((a, i) => { a.room = region[i % region.length]; });
-  }
-
   // Top up any agent wallet that's too low to pay for its votes, so a live demo
   // never dies on a broke signer mid-game. (Monad charges the full gas limit.)
   private async ensureFunded(): Promise<void> {
@@ -163,6 +156,7 @@ export class Game {
         wallet: a.address, thinking: a.thinking,
       })),
       bodies: this.bodies.map((b) => ({ room: b.room, victim: b.victim })),
+      lights: !this.lightsOut,
       log: this.log,
       chat: this.chat,
       meeting: this.meeting,
@@ -179,13 +173,16 @@ export class Game {
   private buildActionPOV(a: AgentState): ActionPOV {
     const here = this.alive().filter((o) => o.id !== a.id && o.room === a.room);
     const cooldown = a.role === 'impostor' ? Math.max(0, KILL_COOLDOWN - (this.tick - this.lastKillTick)) : 0;
+    // in the dark, crew can't see who shares their room; the impostor still can
+    const blind = this.lightsOut && a.role === 'crew';
     return {
       self: this.selfView(a),
       tick: this.tick,
       room: { id: a.room, name: roomName(a.room) },
       adjacent: adjacentRooms(a.room),
       vents: a.role === 'impostor' ? ventRooms(a.room) : null,
-      here: here.map((o) => o.name),
+      lightsOut: this.lightsOut,
+      here: blind ? [] : here.map((o) => o.name),
       alive: this.alive().map((o) => o.name),
       dead: this.agents.filter((o) => !o.alive).map((o) => o.name),
       bodies: this.bodies.filter((b) => b.room === a.room).map((b) => this.nameOf(b.victim)),
@@ -236,7 +233,8 @@ export class Game {
         role: 'crew' as const, alive: true, room: START_ROOM, thinking: '', memory: [] as string[],
       };
     });
-    this.scatterRooms(this.agents); // spawn scattered, not clumped in Cafeteria
+    // Everyone starts around the Cafeteria table (authentic Among Us opening);
+    // they disperse on their own — and the impostor can sabotage the lights.
 
     // Pick exactly one impostor, secretly.
     const idx = Math.floor(Math.random() * this.agents.length);
@@ -323,12 +321,21 @@ export class Game {
   }
 
   private currentWinner(): number {
-    return this.checkWin() ?? Winner.Crew; // timeout: crew survived the shift
+    const w = this.checkWin();
+    if (w !== null) return w;
+    // timeout with no decision: a still-breathing impostor escaped — saying
+    // "crew wins" while the killer walks free reads as a broken ending.
+    return this.impostor.alive ? Winner.Impostor : Winner.Crew;
   }
 
   // ---- ACTION phase ----
 
   private async actionPhase(): Promise<void> {
+    // emergency power: darkness never lasts more than a few ticks
+    if (this.lightsOut && this.tick - this.lightsOutTick >= LIGHTS_AUTO_RESTORE) {
+      await this.restoreLights(null);
+    }
+
     const actors = this.alive();
     const decisions = await Promise.all(
       actors.map(async (a) => ({ a, d: await decideAction(this.buildActionPOV(a)) })),
@@ -343,6 +350,31 @@ export class Game {
       const target = this.resolveAgent(d.target);
       if (target && target.alive && target.id !== a.id && target.room === a.room) {
         await this.doKill(a, target);
+      }
+    }
+
+    // 1b. sabotage + fixes (after kills so a dark kill this tick reads in order)
+    for (const { a, d } of decisions) {
+      if (!a.alive) continue;
+      if (
+        d.action === 'SABOTAGE' && a.role === 'impostor' && !this.lightsOut &&
+        this.sabotagesUsed < MAX_SABOTAGE && this.tick - this.lightsRestoredTick >= SABOTAGE_COOLDOWN
+      ) {
+        this.sabotagesUsed++;
+        this.lightsOut = true;
+        this.lightsOutTick = this.tick;
+        this.remember(a, `t${this.tick}: you sabotaged the lights`);
+        for (const c of this.alive()) {
+          if (c.id !== a.id) this.remember(c, `t${this.tick}: the lights went OUT`);
+        }
+        // actor stays ZERO on-chain — naming the saboteur would out the impostor
+        const h = await this.tryChain(() =>
+          chain.logEvent(this.gameId, Kind.Move, ZERO_ADDRESS, ZERO_ADDRESS, '', 'the lights went dark'),
+        'logEvent(Sabotage)');
+        this.addLog('sabotage', 'The lights went dark across the Skeld', h);
+        this.emit();
+      } else if (d.action === 'FIX' && this.lightsOut && a.room === 'electrical') {
+        await this.restoreLights(a);
       }
     }
 
@@ -400,10 +432,27 @@ export class Game {
     this.emit();
   }
 
+  private async restoreLights(fixer: AgentState | null): Promise<void> {
+    this.lightsOut = false;
+    this.lightsRestoredTick = this.tick;
+    const text = fixer
+      ? `${fixer.name} fixed the lights in Electrical`
+      : 'Emergency power restored the lights';
+    if (fixer) this.remember(fixer, `t${this.tick}: you fixed the lights`);
+    const h = await this.tryChain(() =>
+      chain.logEvent(this.gameId, Kind.Move, fixer?.address ?? ZERO_ADDRESS, ZERO_ADDRESS, 'Electrical', 'the lights came back on'),
+    'logEvent(Fix)');
+    this.addLog('fix', text, h);
+    this.emit();
+  }
+
   private async doKill(killer: AgentState, victim: AgentState): Promise<void> {
     const room = victim.room;
     this.lastKillTick = this.tick;
-    const witnesses = this.alive().filter((o) => o.id !== killer.id && o.id !== victim.id && o.room === room);
+    // kills in the dark have no witnesses — that's the point of the sabotage
+    const witnesses = this.lightsOut
+      ? []
+      : this.alive().filter((o) => o.id !== killer.id && o.id !== victim.id && o.room === room);
     victim.alive = false;
     this.bodies.push({ room, victim: victim.id });
     this.remember(killer, `t${this.tick}: you killed ${victim.name} in ${roomName(room)}`);
@@ -456,6 +505,7 @@ export class Game {
   private async meetingPhase(reason: string): Promise<void> {
     this.phase = 'meeting';
     this.lastMeetingTick = this.tick;
+    this.lightsOut = false; // systems reset when everyone gathers
     this.chat = []; // fresh chat for this meeting
     const initialVotes: Record<string, string | null> = {};
     for (const a of this.alive()) initialVotes[a.id] = null;
@@ -541,13 +591,13 @@ export class Game {
       this.addLog('eject', 'No one was ejected (skipped)', rHash);
     }
 
-    // cleanup: bodies cleared, survivors disperse scattered (not clumped) so
-    // the next round can produce isolation and kills again.
+    // cleanup: bodies cleared, survivors regroup at the Cafeteria table (real
+    // Among Us behaviour) and disperse again on their own next tick.
     this.bodies = [];
     this.meeting.active = false;
     this.meeting = null;
     this.phase = 'active';
-    this.scatterRooms(this.alive());
+    for (const a of this.alive()) a.room = START_ROOM;
     this.emit();
   }
 

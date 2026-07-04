@@ -20,4 +20,6 @@ export const LOG_KIND_STYLE: Record<LogKind, LogKindStyle> = {
   vote: { icon: "🗳️", textClass: "text-blue-400" },
   eject: { icon: "⛔", textClass: "text-purple-400" },
   win: { icon: "🏆", textClass: "text-green-400" },
+  sabotage: { icon: "🌑", textClass: "text-orange-400" },
+  fix: { icon: "💡", textClass: "text-emerald-300" },
 };

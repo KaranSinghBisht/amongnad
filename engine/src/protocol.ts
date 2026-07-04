@@ -5,7 +5,8 @@ export type Phase = 'lobby' | 'active' | 'meeting' | 'ended';
 
 export type LogKind =
   | 'spawn' | 'move' | 'saw' | 'kill' | 'vent'
-  | 'report' | 'meeting' | 'vote' | 'eject' | 'win';
+  | 'report' | 'meeting' | 'vote' | 'eject' | 'win'
+  | 'sabotage' | 'fix';
 
 export interface AgentView {
   id: string;
@@ -62,6 +63,7 @@ export interface Snapshot {
   phase: Phase;
   agents: AgentView[];
   bodies: Body[];
+  lights: boolean; // false while the impostor's sabotage has the lights out
   log: LogEntry[];
   chat: ChatMsg[];
   meeting: MeetingView | null;
