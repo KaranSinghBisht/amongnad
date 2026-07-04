@@ -1,4 +1,7 @@
+"use client";
+
 import type { AgentState } from "@/lib/protocol";
+import { useTypewriter } from "@/hooks/use-typewriter";
 import { CrewmateIcon } from "./crewmate-icon";
 import { CornerBrackets } from "./corner-brackets";
 
@@ -8,6 +11,8 @@ interface AgentPanelProps {
 
 export function AgentPanel({ agent }: AgentPanelProps) {
   const isRevealedImpostor = agent.role === "impostor";
+  const thinking = useTypewriter(agent.thinking);
+  const typing = thinking.length < agent.thinking.length;
 
   return (
     <div
@@ -31,7 +36,8 @@ export function AgentPanel({ agent }: AgentPanelProps) {
       </header>
       <div className="flex-1 overflow-y-auto px-3 py-2">
         <p className="whitespace-pre-wrap break-words font-mono text-xs leading-relaxed text-[#c9bfe8]/90">
-          {agent.thinking || "…"}
+          {thinking || "…"}
+          {typing && <span className="animate-pulse text-[#836EF9]">▌</span>}
         </p>
       </div>
     </div>

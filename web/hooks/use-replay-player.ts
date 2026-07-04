@@ -3,7 +3,19 @@
 import { useEffect, useState } from "react";
 import type { ReplayFile, Snapshot } from "@/lib/protocol";
 
-const FRAME_INTERVAL_MS = 1200;
+/**
+ * Content-aware pacing: hold each frame long enough for a human to read what
+ * it just revealed, instead of a fixed metronome that races past the chat.
+ */
+function frameDelay(frames: Snapshot[], i: number): number {
+  const cur = frames[i];
+  const prev = i > 0 ? frames[i - 1] : null;
+  if (!cur || !prev) return 1600;
+  if (cur.chat.length > prev.chat.length) return 3400; // someone spoke — let people read it
+  if (cur.phase === "meeting") return 2200; // votes sealing/revealing
+  if (cur.log.length > prev.log.length) return 1900; // a new on-chain beat
+  return 1100; // plain movement
+}
 
 export interface ReplayPlayerState {
   snapshot: Snapshot | null;
@@ -64,12 +76,12 @@ export function useReplayPlayer(name: string | null): ReplayPlayerState {
   }, [name]);
 
   useEffect(() => {
-    if (!playing || frames.length === 0) return;
-    const timer = setInterval(() => {
-      setFrameIndex((i) => (i + 1 < frames.length ? i + 1 : i));
-    }, FRAME_INTERVAL_MS);
-    return () => clearInterval(timer);
-  }, [playing, frames.length]);
+    if (!playing || frames.length === 0 || frameIndex >= frames.length - 1) return;
+    const timer = setTimeout(() => {
+      setFrameIndex((i) => Math.min(i + 1, frames.length - 1));
+    }, frameDelay(frames, frameIndex));
+    return () => clearTimeout(timer);
+  }, [playing, frames, frameIndex]);
 
   useEffect(() => {
     if (frames.length > 0 && frameIndex === frames.length - 1) {

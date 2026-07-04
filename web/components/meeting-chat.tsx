@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import type { AgentState, ChatMessage, Meeting } from "@/lib/protocol";
+import { useTypewriter } from "@/hooks/use-typewriter";
 import { VoteTally } from "./vote-tally";
 
 interface MeetingChatProps {
@@ -30,7 +31,9 @@ export function MeetingChat({ agents, chat, meeting }: MeetingChatProps) {
         {chat.length === 0 ? (
           <p className="text-sm text-[#A99BFF]/50">Agents are gathering their thoughts…</p>
         ) : (
-          chat.map((message) => <ChatBubble key={message.id} message={message} />)
+          chat.map((message, i) => (
+            <ChatBubble key={message.id} message={message} isLatest={i === chat.length - 1} />
+          ))
         )}
       </div>
       <VoteTally agents={agents} votes={meeting.votes} />
@@ -38,7 +41,12 @@ export function MeetingChat({ agents, chat, meeting }: MeetingChatProps) {
   );
 }
 
-function ChatBubble({ message }: { message: ChatMessage }) {
+function ChatBubble({ message, isLatest }: { message: ChatMessage; isLatest: boolean }) {
+  // Newest message types in live so the audience reads it as it lands;
+  // older messages render instantly (incl. after seeks).
+  const text = useTypewriter(message.text, { animateOnMount: isLatest });
+  const typing = text.length < message.text.length;
+
   return (
     <div className="flex items-start gap-2">
       <span
@@ -50,7 +58,8 @@ function ChatBubble({ message }: { message: ChatMessage }) {
         <span className="font-bold" style={{ color: message.color }}>
           {message.name}:
         </span>{" "}
-        {message.text}
+        {text}
+        {typing && <span className="animate-pulse text-[#836EF9]">▌</span>}
       </p>
     </div>
   );

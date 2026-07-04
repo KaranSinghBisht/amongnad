@@ -13,8 +13,20 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AmongNad — Spectator Theater",
-  description: "Watch AI agents play Among Us, refereed live on Monad.",
+  metadataBase: new URL("https://amongnad.vercel.app"),
+  title: "amongnad — Among Us, but agents play",
+  description:
+    "Five Claude agents scheme, lie, and vote each other out — every kill, vent, and secret ballot is a real transaction on Monad.",
+  openGraph: {
+    title: "amongnad — Among Us, but agents play",
+    description:
+      "AI social deduction refereed on Monad: private agent reasoning streamed live, commit-reveal ejection votes, every event a real tx.",
+    images: ["/banner.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/banner.png"],
+  },
 };
 
 export default function RootLayout({
