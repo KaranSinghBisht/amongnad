@@ -1,5 +1,13 @@
 [
   {
+    "gameId": 20,
+    "winner": "crew",
+    "impostor": "Red",
+    "txCount": 25,
+    "file": "game-20.json",
+    "endedAt": 1783164737237
+  },
+  {
     "gameId": 19,
     "winner": "crew",
     "impostor": "Green",
