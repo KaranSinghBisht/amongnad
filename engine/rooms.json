@@ -1,0 +1,37 @@
+{
+  "name": "The Skeld (simplified graph)",
+  "note": "Rooms-as-graph, NOT pixel pathfinding. Coords in a 0..100 space for SVG. Shared by engine (movement/vision) and web (render).",
+  "rooms": [
+    { "id": "reactor",     "name": "Reactor",       "x": 8,  "y": 50 },
+    { "id": "upperEngine", "name": "Upper Engine",  "x": 18, "y": 28 },
+    { "id": "lowerEngine", "name": "Lower Engine",  "x": 18, "y": 72 },
+    { "id": "security",    "name": "Security",      "x": 27, "y": 50 },
+    { "id": "medbay",      "name": "MedBay",        "x": 36, "y": 32 },
+    { "id": "electrical",  "name": "Electrical",    "x": 36, "y": 68 },
+    { "id": "storage",     "name": "Storage",       "x": 52, "y": 72 },
+    { "id": "admin",       "name": "Admin",         "x": 60, "y": 52 },
+    { "id": "cafeteria",   "name": "Cafeteria",     "x": 58, "y": 25 },
+    { "id": "weapons",     "name": "Weapons",       "x": 74, "y": 18 },
+    { "id": "o2",          "name": "O2",            "x": 68, "y": 40 },
+    { "id": "navigation",  "name": "Navigation",    "x": 90, "y": 45 },
+    { "id": "shields",     "name": "Shields",       "x": 76, "y": 74 },
+    { "id": "comms",       "name": "Communications","x": 66, "y": 84 }
+  ],
+  "edges": [
+    ["reactor", "upperEngine"], ["reactor", "lowerEngine"], ["reactor", "security"],
+    ["upperEngine", "security"], ["upperEngine", "medbay"],
+    ["lowerEngine", "security"], ["lowerEngine", "electrical"],
+    ["medbay", "cafeteria"], ["electrical", "storage"],
+    ["cafeteria", "weapons"], ["cafeteria", "admin"],
+    ["weapons", "o2"], ["weapons", "navigation"],
+    ["o2", "navigation"], ["o2", "admin"],
+    ["navigation", "shields"], ["shields", "comms"], ["shields", "storage"],
+    ["comms", "storage"], ["storage", "admin"]
+  ],
+  "vents": [
+    ["medbay", "electrical"], ["electrical", "security"], ["medbay", "security"],
+    ["weapons", "navigation"], ["navigation", "shields"],
+    ["reactor", "upperEngine"], ["reactor", "lowerEngine"],
+    ["cafeteria", "admin"]
+  ]
+}

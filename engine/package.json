@@ -1,0 +1,25 @@
+{
+  "name": "amongnad-engine",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Game engine + AI agent brains + Monad chain writes for AmongNad",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "start": "tsx src/index.ts",
+    "fund-agents": "tsx src/scripts/fundAgents.ts",
+    "run-game": "tsx src/scripts/runGame.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.65.0",
+    "dotenv": "^16.4.7",
+    "viem": "^2.37.0",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/ws": "^8.5.13",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

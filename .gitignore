@@ -1,0 +1,39 @@
+# secrets — NEVER commit
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.local
+
+# node
+node_modules/
+.pnp
+.pnp.js
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# next.js
+web/.next/
+web/out/
+web/build/
+.vercel
+
+# foundry
+contracts/out/
+contracts/cache/
+contracts/broadcast/
+contracts/lib/
+
+# engine / runtime
+engine/dist/
+engine/.agents.json
+*.tsbuildinfo
+.DS_Store
+
+# game replays / logs (keep curated ones only)
+engine/replays/*.json
+!engine/replays/demo-*.json
+
+# oh-my-claudecode tooling state
+.omc/
