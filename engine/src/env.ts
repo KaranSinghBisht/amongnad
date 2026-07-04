@@ -18,7 +18,7 @@ function req(name: string): string {
 export const config = {
   anthropicApiKey: req('ANTHROPIC_API_KEY'),
   agentModel: process.env.AGENT_MODEL || 'claude-sonnet-4-5',
-  fallbackModel: 'claude-3-5-sonnet-latest',
+  fallbackModel: 'claude-haiku-4-5-20251001', // current + fast (old 3.5-sonnet is retired)
   privateKey: req('PRIVATE_KEY') as `0x${string}`,
   rpcUrl: req('MONAD_RPC_URL'),
   rpcPublic: process.env.MONAD_RPC_PUBLIC || '',
@@ -26,5 +26,6 @@ export const config = {
   chainId: Number(process.env.CHAIN_ID || '10143'),
   contract: req('GAME_CONTRACT_ADDRESS') as `0x${string}`,
   wsPort: Number(process.env.WS_PORT || '8787'),
-  explorerTx: 'https://testnet.monadvision.com/tx/',
+  explorerTx: 'https://testnet.monadscan.com/tx/', // monadvision 403s in-browser
+
 } as const;

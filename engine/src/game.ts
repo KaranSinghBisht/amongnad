@@ -6,7 +6,7 @@ import { chain, Kind, Winner, ZERO_ADDRESS, rolesCommit, voteHash, randomSalt } 
 import { loadOrCreateAgents } from './wallets';
 import { SOULS } from './souls';
 import {
-  START_ROOM, roomName, adjacentRooms, ventRooms, isAdjacent, isVentAdjacent, resolveRoom,
+  ROOMS, START_ROOM, roomName, adjacentRooms, ventRooms, isAdjacent, isVentAdjacent, resolveRoom,
 } from './map';
 import {
   decideAction, discuss, vote,
@@ -20,6 +20,10 @@ const PACE_MS = 300;
 const WALL_CLOCK_MS = 150_000;   // hard cap so a game always fits a ~3-min demo
 const MAX_EMERGENCY = 2;         // emergency (no-body) meetings allowed per game
 const EMERGENCY_COOLDOWN = 3;    // ticks between emergency meetings
+const EMERGENCY_MIN_TICK = 4;    // no emergency meetings before this — let kills happen first
+const KILL_COOLDOWN = 2;         // ticks between kills — spaces kills so bodies get found & reported
+const TOP_UP_THRESHOLD = 150_000_000_000_000_000n; // 0.15 MON
+const TOP_UP_AMOUNT = '0.5';     // MON to send a low agent wallet at setup
 
 interface AgentState {
   id: string;
@@ -52,11 +56,13 @@ export class Game {
   private chat: ChatMsg[] = [];
   private meeting: MeetingView | null = null;
   txCount = 0;
+  txFailures = 0;
   private startTime = Date.now();
   private logSeq = 1;
   private chatSeq = 1;
   private winner: number | null = null;
   private lastMeetingTick = -99;
+  private lastKillTick = -99;
   private emergencyCount = 0;
 
   constructor(onSnapshot: (s: Snapshot) => void) {
@@ -98,15 +104,45 @@ export class Game {
     this.chat.push({ id: this.chatSeq++, agentId: a.id, name: a.name, color: a.color, text, ts: Date.now() });
   }
 
-  // Run an on-chain write; count it on success, never let a failure crash the game.
-  private async tryChain(fn: () => Promise<Hex>): Promise<Hex | null> {
+  // Run an on-chain write; count it on success, never let a failure crash the
+  // game. A failure is logged LOUDLY and counted — a swallowed vote tx means a
+  // log row with no explorer link, which we must notice, not hide.
+  private async tryChain(fn: () => Promise<Hex>, label = 'write'): Promise<Hex | null> {
     try {
       const h = await fn();
       this.txCount++;
       return h;
     } catch (err) {
-      console.error('[chain] write failed:', (err as Error).message);
+      this.txFailures++;
+      console.error(`[chain] ❌ ${label} FAILED (this log row will have NO tx link): ${(err as Error).message}`);
       return null;
+    }
+  }
+
+  // Assign each agent a distinct scattered room so nobody starts (or regroups)
+  // clumped together — agents must get isolated enough for kills to happen.
+  private scatterRooms(agents: AgentState[]): void {
+    const pool = ROOMS.map((r) => r.id);
+    for (let i = pool.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [pool[i], pool[j]] = [pool[j], pool[i]];
+    }
+    agents.forEach((a, i) => { a.room = pool[i % pool.length]; });
+  }
+
+  // Top up any agent wallet that's too low to pay for its votes, so a live demo
+  // never dies on a broke signer mid-game. (Monad charges the full gas limit.)
+  private async ensureFunded(): Promise<void> {
+    for (const a of this.agents) {
+      try {
+        const bal = await chain.balance(a.address);
+        if (bal < TOP_UP_THRESHOLD) {
+          const h = await chain.fund(a.address, TOP_UP_AMOUNT);
+          console.log(`[game] topped up ${a.name} (${a.address}) with ${TOP_UP_AMOUNT} MON — tx ${h}`);
+        }
+      } catch (err) {
+        console.error(`[game] top-up check failed for ${a.name}:`, (err as Error).message);
+      }
     }
   }
 
@@ -139,6 +175,7 @@ export class Game {
 
   private buildActionPOV(a: AgentState): ActionPOV {
     const here = this.alive().filter((o) => o.id !== a.id && o.room === a.room);
+    const cooldown = a.role === 'impostor' ? Math.max(0, KILL_COOLDOWN - (this.tick - this.lastKillTick)) : 0;
     return {
       self: this.selfView(a),
       tick: this.tick,
@@ -150,7 +187,8 @@ export class Game {
       dead: this.agents.filter((o) => !o.alive).map((o) => o.name),
       bodies: this.bodies.filter((b) => b.room === a.room).map((b) => this.nameOf(b.victim)),
       memory: a.memory.slice(-8),
-      killable: a.role === 'impostor' ? here.map((o) => o.name) : [],
+      killable: (a.role === 'impostor' && cooldown === 0) ? here.map((o) => o.name) : [],
+      killCooldown: cooldown,
       canReport: this.bodies.some((b) => b.room === a.room),
     };
   }
@@ -195,6 +233,7 @@ export class Game {
         role: 'crew' as const, alive: true, room: START_ROOM, thinking: '', memory: [] as string[],
       };
     });
+    this.scatterRooms(this.agents); // spawn scattered, not clumped in Cafeteria
 
     // Pick exactly one impostor, secretly.
     const idx = Math.floor(Math.random() * this.agents.length);
@@ -206,17 +245,30 @@ export class Game {
     this.phase = 'lobby';
     this.emit();
 
-    // createGame -> gameId + tx hash
-    const created = await chain.createGame();
-    this.gameId = created.gameId;
+    // make sure every agent can afford its votes before we start
+    await this.ensureFunded();
+
+    // createGame -> gameId + tx hash. Retry a few times so an RPC blip at game
+    // start doesn't crash the whole process.
+    let created: { gameId: bigint; hash: Hex } | null = null;
+    for (let attempt = 1; attempt <= 3 && !created; attempt++) {
+      try {
+        created = await chain.createGame();
+      } catch (err) {
+        console.error(`[game] createGame attempt ${attempt}/3 failed:`, (err as Error).message);
+        if (attempt === 3) throw new Error('createGame failed after 3 attempts — aborting setup');
+        await sleep(1500);
+      }
+    }
+    this.gameId = created!.gameId;
     this.txCount++;
-    this.addLog('spawn', `Game #${this.gameId} created on Monad`, created.hash);
+    this.addLog('spawn', `Game #${this.gameId} created on Monad`, created!.hash);
     this.emit();
 
     // addPlayer for each agent
     for (const a of this.agents) {
       const soulId = stringToHex(a.id, { size: 32 });
-      const h = await this.tryChain(() => chain.addPlayer(this.gameId, a.address, a.name, soulId));
+      const h = await this.tryChain(() => chain.addPlayer(this.gameId, a.address, a.name, soulId), 'addPlayer');
       this.addLog('spawn', `${a.name} (${a.soul}) joined the crew`, h);
       this.emit();
     }
@@ -224,7 +276,7 @@ export class Game {
     // startGame with the roles commitment
     this.salt = randomSalt();
     const commit = rolesCommit(this.impostor.address, this.salt);
-    const h = await this.tryChain(() => chain.startGame(this.gameId, commit));
+    const h = await this.tryChain(() => chain.startGame(this.gameId, commit), 'startGame');
     this.addLog('spawn', 'Game started — roles committed on-chain (commit/reveal)', h);
     this.phase = 'active';
     this.emit();
@@ -281,9 +333,10 @@ export class Game {
     for (const { a, d } of decisions) a.thinking = d.thinking;
     this.emit();
 
-    // 1. resolve kills using pre-move positions
+    // 1. resolve kills using pre-move positions (respecting the kill cooldown)
     for (const { a, d } of decisions) {
       if (d.action !== 'KILL' || a.role !== 'impostor' || !a.alive) continue;
+      if (this.tick - this.lastKillTick < KILL_COOLDOWN) continue; // kill on cooldown
       const target = this.resolveAgent(d.target);
       if (target && target.alive && target.id !== a.id && target.room === a.room) {
         await this.doKill(a, target);
@@ -291,16 +344,19 @@ export class Game {
     }
 
     // 2. detect a meeting trigger — body reports are always allowed; emergency
-    //    (no-body) meetings are rate-limited so the game can't stall on meetings.
+    //    (no-body) meetings are rate-limited and blocked early so the game can't
+    //    stall on meetings before any kills happen.
     let pending: string | null = null;
+    let bodyReporter: AgentState | null = null;
     for (const { a, d } of decisions) {
       if (!a.alive) continue;
       if (d.action === 'REPORT' && this.bodies.some((b) => b.room === a.room)) {
         pending = `${a.name} reported a body`;
+        bodyReporter = a;
         break;
       }
     }
-    if (!pending && this.emergencyCount < MAX_EMERGENCY && this.tick - this.lastMeetingTick >= EMERGENCY_COOLDOWN) {
+    if (!pending && this.tick >= EMERGENCY_MIN_TICK && this.emergencyCount < MAX_EMERGENCY && this.tick - this.lastMeetingTick >= EMERGENCY_COOLDOWN) {
       for (const { a, d } of decisions) {
         if (a.alive && d.action === 'CALL_MEETING') {
           pending = `${a.name} called an emergency meeting`;
@@ -310,6 +366,15 @@ export class Game {
       }
     }
     if (pending) {
+      // A body report is its own on-chain event (reporter identity isn't the
+      // secret — anyone can report), then the meeting opens.
+      if (bodyReporter) {
+        const room = bodyReporter.room;
+        const rHash = await this.tryChain(() =>
+          chain.logEvent(this.gameId, Kind.Report, bodyReporter!.address, ZERO_ADDRESS, roomName(room), `reported a body in ${roomName(room)}`),
+        'logEvent(Report)');
+        this.addLog('report', `${bodyReporter.name} reported a body in ${roomName(room)}`, rHash);
+      }
       this.emit();
       await this.meetingPhase(pending);
       return;
@@ -334,6 +399,7 @@ export class Game {
 
   private async doKill(killer: AgentState, victim: AgentState): Promise<void> {
     const room = victim.room;
+    this.lastKillTick = this.tick;
     const witnesses = this.alive().filter((o) => o.id !== killer.id && o.id !== victim.id && o.room === room);
     victim.alive = false;
     this.bodies.push({ room, victim: victim.id });
@@ -342,16 +408,20 @@ export class Game {
       this.remember(w, `t${this.tick}: you SAW ${killer.name} kill ${victim.name} in ${roomName(room)}`);
     }
 
+    // The on-chain note stays NEUTRAL — naming the killer here would leak the
+    // impostor before the endGame reveal. The spicy, identifying text lives
+    // only in the off-chain UI log line below.
     const kHash = await this.tryChain(() =>
-      chain.kill(this.gameId, victim.address, roomName(room), `${killer.name} eliminated ${victim.name}`),
-    );
+      chain.kill(this.gameId, victim.address, roomName(room), `a body was left in ${roomName(room)}`),
+    'kill');
     this.addLog('kill', `${killer.name} killed ${victim.name} in ${roomName(room)}`, kHash);
 
     if (witnesses.length > 0) {
       const w = witnesses[0];
+      // target = ZERO so the on-chain event doesn't encode who was seen.
       const sHash = await this.tryChain(() =>
-        chain.logEvent(this.gameId, Kind.Saw, w.address, killer.address, roomName(room), 'witnessed the kill'),
-      );
+        chain.logEvent(this.gameId, Kind.Saw, w.address, ZERO_ADDRESS, roomName(room), `a suspicious event in ${roomName(room)}`),
+      'logEvent(Saw)');
       this.addLog('saw', `${w.name} witnessed ${killer.name} near the body in ${roomName(room)}`, sHash);
     }
   }
@@ -360,9 +430,11 @@ export class Game {
     const from = a.room;
     a.room = toRoom;
     this.remember(a, `t${this.tick}: vented ${roomName(from)} -> ${roomName(toRoom)}`);
+    // Venting is impostor-only, so the on-chain actor is ZERO — recording the
+    // real address would out the impostor before the reveal. UI text keeps it.
     const h = await this.tryChain(() =>
-      chain.logEvent(this.gameId, Kind.Vent, a.address, ZERO_ADDRESS, roomName(toRoom), `vented from ${roomName(from)}`),
-    );
+      chain.logEvent(this.gameId, Kind.Vent, ZERO_ADDRESS, ZERO_ADDRESS, roomName(toRoom), `a vent was used near ${roomName(toRoom)}`),
+    'logEvent(Vent)');
     this.addLog('vent', `${a.name} vented to ${roomName(toRoom)}`, h);
   }
 
@@ -385,7 +457,7 @@ export class Game {
     for (const a of this.alive()) initialVotes[a.id] = null;
     this.meeting = { active: true, round: 1, reason, votes: initialVotes };
 
-    const smHash = await this.tryChain(() => chain.startMeeting(this.gameId, reason));
+    const smHash = await this.tryChain(() => chain.startMeeting(this.gameId, reason), 'startMeeting');
     this.addLog('meeting', reason, smHash);
     let meetingIndex = 0n;
     try { meetingIndex = await chain.getMeeting(this.gameId); } catch (err) {
@@ -429,14 +501,14 @@ export class Game {
 
     // commit (parallel, streamed live as each lands)
     await Promise.allSettled(plan.map(async (p) => {
-      const h = await this.tryChain(() => chain.commitVote(p.a.account, this.gameId, p.hash));
+      const h = await this.tryChain(() => chain.commitVote(p.a.account, this.gameId, p.hash), `commitVote(${p.a.name})`);
       this.addLog('vote', `${p.a.name} cast a sealed vote`, h);
       this.emit();
     }));
 
     // reveal (parallel, streamed live)
     await Promise.allSettled(plan.map(async (p) => {
-      const h = await this.tryChain(() => chain.revealVote(p.a.account, this.gameId, p.suspect, p.salt));
+      const h = await this.tryChain(() => chain.revealVote(p.a.account, this.gameId, p.suspect, p.salt), `revealVote(${p.a.name})`);
       this.meeting!.votes[p.a.id] = p.choiceLabel;
       this.addLog('vote', p.targetName ? `${p.a.name} revealed: eject ${p.targetName}` : `${p.a.name} revealed: skip`, h);
       this.emit();
@@ -465,12 +537,13 @@ export class Game {
       this.addLog('eject', 'No one was ejected (skipped)', rHash);
     }
 
-    // cleanup: bodies cleared, survivors regroup in the cafeteria
+    // cleanup: bodies cleared, survivors disperse scattered (not clumped) so
+    // the next round can produce isolation and kills again.
     this.bodies = [];
     this.meeting.active = false;
     this.meeting = null;
     this.phase = 'active';
-    for (const a of this.alive()) a.room = START_ROOM;
+    this.scatterRooms(this.alive());
     this.emit();
   }
 
@@ -497,7 +570,7 @@ export class Game {
   private async endGame(winner: number): Promise<void> {
     this.phase = 'ended';
     this.winner = winner;
-    const h = await this.tryChain(() => chain.endGame(this.gameId, this.impostor.address, this.salt, winner));
+    const h = await this.tryChain(() => chain.endGame(this.gameId, this.impostor.address, this.salt, winner), 'endGame');
     const label = winner === Winner.Impostor ? 'Impostor' : 'Crew';
     this.addLog('win', `${label} wins! The impostor was ${this.impostor.name} (${this.impostor.soul}).`, h);
     this.emit();
@@ -512,6 +585,7 @@ export class Game {
       winner: this.winner === Winner.Impostor ? 'impostor' : 'crew',
       impostor: this.impostor?.name,
       txCount: this.txCount,
+      txFailures: this.txFailures,
       agents: this.agents.map((a) => ({ id: a.id, name: a.name, color: a.color, soul: a.soul, address: a.address })),
       txHashes: this.log.filter((l) => l.txHash).map((l) => ({ kind: l.kind, text: l.text, txHash: l.txHash })),
     };

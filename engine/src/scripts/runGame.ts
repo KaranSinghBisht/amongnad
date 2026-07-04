@@ -31,10 +31,28 @@ async function main() {
   };
   writeFileSync(file, JSON.stringify({ meta, frames }, null, 2));
 
+  // P5: also overwrite the hosted-demo replay the web app serves.
+  let webFile = '';
+  try {
+    const webDir = fileURLToPath(new URL('../../../web/public/replays/', import.meta.url));
+    mkdirSync(webDir, { recursive: true });
+    webFile = `${webDir}demo-game.json`;
+    writeFileSync(webFile, JSON.stringify({ meta, frames }, null, 2));
+  } catch (err) {
+    console.warn('[run-game] could not write web replay:', (err as Error).message);
+  }
+
+  // Verify the signature events are present in this recording.
+  const lastLog = frames[frames.length - 1]?.log ?? [];
+  const kinds = new Set(lastLog.map((l) => l.kind));
+  const has = (k: string) => (kinds.has(k as never) ? 'yes' : 'NO');
+
   console.log('\n================ RUN COMPLETE ================');
   console.log(`replay: ${file}`);
+  if (webFile) console.log(`web replay (hosted demo): ${webFile}`);
   console.log(`frames: ${frames.length}`);
-  console.log(`winner: ${s.winner} | impostor: ${s.impostor} | on-chain txs: ${s.txCount}`);
+  console.log(`winner: ${s.winner} | impostor: ${s.impostor} | on-chain txs: ${s.txCount} | tx failures: ${s.txFailures}`);
+  console.log(`signature events -> kill: ${has('kill')} | report: ${has('report')} | vent: ${has('vent')} | meeting: ${has('meeting')} | eject: ${has('eject')}`);
   console.log('\nfunded agent addresses:');
   for (const a of s.agents) console.log(`  ${a.name} (${a.soul}): ${a.address}`);
 

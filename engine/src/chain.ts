@@ -86,7 +86,8 @@ async function send(
   gas: bigint,
 ): Promise<Hex> {
   const hash = await walletClient.writeContract({ ...CONTRACT, functionName, args, account, gas } as any);
-  await publicClient.waitForTransactionReceipt({ hash });
+  const receipt = await publicClient.waitForTransactionReceipt({ hash });
+  if (receipt.status === 'reverted') throw new Error(`${functionName} reverted on-chain (tx ${hash})`);
   return hash;
 }
 
@@ -100,7 +101,8 @@ async function simSend(
     ...CONTRACT, functionName, args, account, gas,
   } as any);
   const hash = await walletClient.writeContract(request as any);
-  await publicClient.waitForTransactionReceipt({ hash });
+  const receipt = await publicClient.waitForTransactionReceipt({ hash });
+  if (receipt.status === 'reverted') throw new Error(`${functionName} reverted on-chain (tx ${hash})`);
   return { hash, result };
 }
 
@@ -108,32 +110,32 @@ async function simSend(
 
 export const chain = {
   async createGame(): Promise<{ gameId: bigint; hash: Hex }> {
-    const { hash, result } = await simSend('createGame', [], master, 2_000_000n);
+    const { hash, result } = await simSend('createGame', [], master, 600_000n);
     return { gameId: result as bigint, hash };
   },
 
   addPlayer(g: bigint, agent: Address, name: string, soulId: Hex): Promise<Hex> {
-    return send('addPlayer', [g, agent, name, soulId], master, 2_000_000n);
+    return send('addPlayer', [g, agent, name, soulId], master, 500_000n);
   },
 
   startGame(g: bigint, commit: Hex): Promise<Hex> {
-    return send('startGame', [g, commit], master, 2_000_000n);
+    return send('startGame', [g, commit], master, 500_000n);
   },
 
   logEvent(g: bigint, kind: number, actor: Address, target: Address, room: string, note: string): Promise<Hex> {
-    return send('logEvent', [g, kind, actor, target, room, note], master, 1_800_000n);
+    return send('logEvent', [g, kind, actor, target, room, note], master, 500_000n);
   },
 
   kill(g: bigint, victim: Address, room: string, note: string): Promise<Hex> {
-    return send('kill', [g, victim, room, note], master, 1_800_000n);
+    return send('kill', [g, victim, room, note], master, 500_000n);
   },
 
   startMeeting(g: bigint, reason: string): Promise<Hex> {
-    return send('startMeeting', [g, reason], master, 2_000_000n);
+    return send('startMeeting', [g, reason], master, 500_000n);
   },
 
   async resolveMeeting(g: bigint): Promise<{ hash: Hex; ejected: Address; skipped: boolean }> {
-    const { hash, result } = await simSend('resolveMeeting', [g], master, 2_000_000n);
+    const { hash, result } = await simSend('resolveMeeting', [g], master, 700_000n);
     const r = result as any;
     const ejected = (Array.isArray(r) ? r[0] : r.ejected) as Address;
     const skipped = (Array.isArray(r) ? r[1] : r.skipped) as boolean;
@@ -141,21 +143,29 @@ export const chain = {
   },
 
   endGame(g: bigint, impostor: Address, salt: Hex, winner: number): Promise<Hex> {
-    return send('endGame', [g, impostor, salt, winner], master, 2_000_000n);
+    return send('endGame', [g, impostor, salt, winner], master, 500_000n);
   },
 
   // Monad charges on the gas LIMIT, not gas used — agent wallets are low-balance,
   // so these limits are kept tight (just above real usage) to conserve MON.
   commitVote(account: PrivateKeyAccount, g: bigint, hash: Hex): Promise<Hex> {
-    return send('commitVote', [g, hash], account, 150_000n);
+    return send('commitVote', [g, hash], account, 120_000n);
   },
 
   revealVote(account: PrivateKeyAccount, g: bigint, suspect: Address, salt: Hex): Promise<Hex> {
-    return send('revealVote', [g, suspect, salt], account, 200_000n);
+    return send('revealVote', [g, suspect, salt], account, 150_000n);
   },
 
   getMeeting(g: bigint): Promise<bigint> {
     return publicClient.readContract({ ...CONTRACT, functionName: 'meeting', args: [g] } as any) as Promise<bigint>;
+  },
+
+  isAlive(g: bigint, addr: Address): Promise<boolean> {
+    return publicClient.readContract({ ...CONTRACT, functionName: 'alive', args: [g, addr] } as any) as Promise<boolean>;
+  },
+
+  gameCount(): Promise<bigint> {
+    return publicClient.readContract({ ...CONTRACT, functionName: 'gameCount', args: [] } as any) as Promise<bigint>;
   },
 
   balance(addr: Address): Promise<bigint> {
