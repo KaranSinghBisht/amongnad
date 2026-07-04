@@ -11,7 +11,8 @@ import { Game } from '../game';
 import { GameServer } from '../server';
 import type { Snapshot } from '../protocol';
 
-const WINDOW_MS = 10 * 60 * 1000; // betting window between games
+// betting window between games — override for testing: ARENA_WINDOW_MS=60000
+const WINDOW_MS = Number(process.env.ARENA_WINDOW_MS || 10 * 60 * 1000);
 const REPO_ROOT = fileURLToPath(new URL('../../../', import.meta.url));
 const REPLAYS_DIR = `${REPO_ROOT}web/public/replays/`;
 
