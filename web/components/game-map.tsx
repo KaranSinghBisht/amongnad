@@ -4,8 +4,10 @@ import { motion } from "framer-motion";
 import { ROOMS, EDGES, VENTS, ROOM_BY_ID } from "@/lib/rooms";
 import { agentSpreadOffset } from "@/lib/agent-layout";
 import type { AgentState, Body } from "@/lib/protocol";
+import { CrewmateIcon } from "./crewmate-icon";
 
 const DOT_SPRING = { type: "spring" as const, stiffness: 120, damping: 18 };
+const ICON_SIZE = 5;
 
 interface GameMapProps {
   agents: AgentState[];
@@ -14,7 +16,7 @@ interface GameMapProps {
 
 export function GameMap({ agents, bodies }: GameMapProps) {
   return (
-    <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet" className="h-full w-full">
+    <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet" className="relative h-full w-full">
       <HallwayLines />
       <VentLines />
       <RoomNodes />
@@ -26,7 +28,7 @@ export function GameMap({ agents, bodies }: GameMapProps) {
 
 function HallwayLines() {
   return (
-    <g stroke="#3f3f46" strokeWidth={0.4}>
+    <g stroke="#836EF9" strokeOpacity={0.25} strokeWidth={0.4}>
       {EDGES.map(([a, b]) => {
         const from = ROOM_BY_ID[a];
         const to = ROOM_BY_ID[b];
@@ -55,12 +57,13 @@ function RoomNodes() {
     <g>
       {ROOMS.map((room) => (
         <g key={room.id}>
-          <circle cx={room.x} cy={room.y} r={2.6} fill="#18181b" stroke="#52525b" strokeWidth={0.3} />
+          <circle cx={room.x} cy={room.y} r={2.6} fill="#1a1030" stroke="#836EF9" strokeOpacity={0.45} strokeWidth={0.3} />
           <text
             x={room.x}
             y={room.y - 4}
             textAnchor="middle"
-            fill="#71717a"
+            fill="#A99BFF"
+            opacity={0.65}
             style={{ fontSize: 2.4, textTransform: "uppercase", letterSpacing: 0.15 }}
           >
             {room.name}
@@ -107,20 +110,23 @@ function AgentDots({ agents }: { agents: AgentState[] }) {
         const { dx, dy } = agentSpreadOffset(indexInRoom, roommates.length);
         const cx = room.x + dx;
         const cy = room.y + dy;
+        const x = cx - ICON_SIZE / 2;
+        const y = cy - ICON_SIZE / 2;
 
         return (
           <g key={agent.id}>
-            <motion.circle
-              r={2.3}
-              fill={agent.color}
-              opacity={agent.alive ? 1 : 0.3}
-              stroke="#000"
-              strokeOpacity={0.4}
-              strokeWidth={0.3}
-              initial={{ cx, cy }}
-              animate={{ cx, cy }}
+            <motion.svg
+              viewBox="0 0 36 36"
+              width={ICON_SIZE}
+              height={ICON_SIZE}
+              opacity={agent.alive ? 1 : 0.35}
+              style={{ filter: agent.alive ? `drop-shadow(0 0 1px ${agent.color})` : "none" }}
+              initial={{ x, y }}
+              animate={{ x, y }}
               transition={DOT_SPRING}
-            />
+            >
+              <CrewmateIcon color={agent.color} />
+            </motion.svg>
             {!agent.alive && (
               <motion.text
                 textAnchor="middle"

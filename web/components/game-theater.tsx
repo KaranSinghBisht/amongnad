@@ -1,6 +1,7 @@
 "use client";
 
 import { useGameState } from "@/hooks/use-game-state";
+import { SiteBanner } from "./site-banner";
 import { ShadowClock } from "./shadow-clock";
 import { GameLog } from "./game-log";
 import { StagePanel } from "./stage-panel";
@@ -16,7 +17,8 @@ export function GameTheater() {
   }
 
   return (
-    <div className="flex h-dvh flex-col gap-3 bg-[#0a0a0f] p-3 text-zinc-100">
+    <div className="flex h-dvh flex-col gap-3 p-3 text-[#F4F2FF]">
+      <SiteBanner />
       <ShadowClock clock={snapshot.clock} mode={mode} />
 
       <div className="grid min-h-0 flex-[3] grid-cols-10 gap-3">

@@ -1,8 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0f;
-  --foreground: #f4f4f5;
+  --background: #0b0620;
+  --background-2: #140a2e;
+  --foreground: #f4f2ff;
+  --monad-purple: #836ef9;
+  --monad-lilac: #a99bff;
+  --monad-heading: #c9b8ff;
 }
 
 @theme inline {
@@ -18,7 +22,14 @@ body {
 }
 
 body {
-  background: var(--background);
+  background:
+    radial-gradient(ellipse 80% 45% at 50% -8%, rgba(131, 110, 249, 0.22), transparent 60%),
+    linear-gradient(160deg, var(--background) 0%, var(--background-2) 55%, var(--background) 100%);
+  background-attachment: fixed;
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+.glow-purple {
+  box-shadow: 0 0 24px 0 rgba(131, 110, 249, 0.28);
 }

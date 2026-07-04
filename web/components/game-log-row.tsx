@@ -17,7 +17,7 @@ export function GameLogRow({ entry }: GameLogRowProps) {
       </span>
       <span className="flex-1 leading-snug">{entry.text}</span>
       {entry.txHash && (
-        <span className="shrink-0 font-mono text-[10px] text-zinc-500 group-hover:text-zinc-300">
+        <span className="shrink-0 font-mono text-[10px] text-[#A99BFF]/60 group-hover:text-[#C9B8FF]">
           ↗ tx
         </span>
       )}
@@ -33,7 +33,7 @@ export function GameLogRow({ entry }: GameLogRowProps) {
       href={`${EXPLORER_TX_BASE}${entry.txHash}`}
       target="_blank"
       rel="noopener noreferrer"
-      className={`${rowClass} transition-colors hover:bg-zinc-900`}
+      className={`${rowClass} transition-colors hover:bg-[#836EF9]/10`}
     >
       {content}
     </a>

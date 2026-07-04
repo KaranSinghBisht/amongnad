@@ -1,5 +1,7 @@
 import type { Clock } from "@/lib/protocol";
 import type { ConnectionMode } from "@/hooks/use-game-state";
+import { CornerBrackets } from "./corner-brackets";
+import { EkgWaveform } from "./ekg-waveform";
 
 interface ShadowClockProps {
   clock: Clock;
@@ -12,46 +14,40 @@ function formatSeconds(ms: number): string {
 
 export function ShadowClock({ clock, mode }: ShadowClockProps) {
   return (
-    <header className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-zinc-800 bg-zinc-950/60 px-4 py-2">
-      <div className="text-lg font-black tracking-tight">
-        <span className="text-emerald-400">AMONG</span>
-        <span className="text-fuchsia-400">NAD</span>
-      </div>
+    <header className="glow-purple relative flex shrink-0 flex-wrap items-center justify-between gap-4 rounded-lg border border-[#836EF9]/30 bg-[#140A2E]/60 px-5 py-3">
+      <CornerBrackets />
 
-      <div className="flex flex-wrap items-center gap-3 font-mono text-sm sm:text-base">
-        <span className="font-bold text-violet-300">
+      <StatusWidget mode={mode} />
+
+      <div className="flex flex-wrap items-center gap-3 font-mono text-base font-extrabold sm:text-lg">
+        <span className="text-[#A99BFF]">
           MONAD ⚡ {formatSeconds(clock.monadMs)}s · {clock.txCount} txs
         </span>
-        <span className="text-zinc-600">vs</span>
-        <span className="text-zinc-500 line-through decoration-red-500/60">
+        <span className="text-sm font-normal text-[#6b5fa8]">vs</span>
+        <span className="text-[#6b5fa8] line-through decoration-red-500/60">
           ETHEREUM 🐢 {formatSeconds(clock.ethEquivMs)}s
         </span>
       </div>
-
-      <ModeBadge mode={mode} />
     </header>
   );
 }
 
-function ModeBadge({ mode }: { mode: ConnectionMode }) {
-  if (mode === "live") {
-    return (
-      <span className="flex shrink-0 items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-red-400">
-        <span className="h-2 w-2 animate-pulse rounded-full bg-red-500" aria-hidden />
-        Live
-      </span>
-    );
-  }
-  if (mode === "replay") {
-    return (
-      <span className="shrink-0 text-xs font-bold uppercase tracking-wider text-zinc-500">
-        Replay
-      </span>
-    );
-  }
+function StatusWidget({ mode }: { mode: ConnectionMode }) {
+  const label = mode === "live" ? "ONLINE" : mode === "replay" ? "REPLAY" : "CONNECTING";
+  const dotColor = mode === "live" ? "#4ade80" : mode === "replay" ? "#A99BFF" : "#6b5fa8";
+
   return (
-    <span className="shrink-0 text-xs font-bold uppercase tracking-wider text-zinc-600">
-      Connecting…
-    </span>
+    <div className="flex shrink-0 items-center gap-3">
+      <span
+        className="h-2 w-2 shrink-0 rounded-full"
+        style={{ backgroundColor: dotColor }}
+        aria-hidden
+      />
+      <div className="font-mono leading-tight">
+        <div className="text-[10px] tracking-wider text-[#A99BFF]/70">AGENT STATUS</div>
+        <div className="text-xs font-bold tracking-widest text-[#C9B8FF]">{label}</div>
+      </div>
+      <EkgWaveform active={mode === "live"} className="h-6 w-20" />
+    </div>
   );
 }

@@ -20,15 +20,15 @@ export function MeetingChat({ agents, chat, meeting }: MeetingChatProps) {
   }, [chat.length]);
 
   return (
-    <div className="flex h-full flex-col">
+    <div className="relative flex h-full flex-col">
       {meeting.reason && (
-        <p className="shrink-0 border-b border-zinc-800 px-3 py-2 text-sm text-zinc-400">
-          <span className="font-semibold text-zinc-200">Called:</span> {meeting.reason}
+        <p className="shrink-0 border-b border-[#836EF9]/20 px-3 py-2 text-sm text-[#A99BFF]/80">
+          <span className="font-semibold text-[#F4F2FF]">Called:</span> {meeting.reason}
         </p>
       )}
       <div ref={scrollRef} className="flex-1 space-y-2 overflow-y-auto px-3 py-3">
         {chat.length === 0 ? (
-          <p className="text-sm text-zinc-600">Agents are gathering their thoughts…</p>
+          <p className="text-sm text-[#A99BFF]/50">Agents are gathering their thoughts…</p>
         ) : (
           chat.map((message) => <ChatBubble key={message.id} message={message} />)
         )}
@@ -46,7 +46,7 @@ function ChatBubble({ message }: { message: ChatMessage }) {
         style={{ backgroundColor: message.color }}
         aria-hidden
       />
-      <p className="text-sm leading-snug text-zinc-200">
+      <p className="text-sm leading-snug text-[#F4F2FF]">
         <span className="font-bold" style={{ color: message.color }}>
           {message.name}:
         </span>{" "}
