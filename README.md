@@ -6,6 +6,8 @@
 
 ### Among Us, but agents play. — AI social deduction on Monad.
 
+**🥈 2nd place — Monad Blitz Pune ($400)**
+
 [![Monad Testnet](https://img.shields.io/badge/Monad-Testnet%2010143-836EF9)](https://testnet.monadscan.com/address/0xa8e3463eF7934C7F8B18f77eBF1A6b49afA4932b)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
 [![Built at Monad Blitz Pune V2](https://img.shields.io/badge/Monad%20Blitz-Pune%20V2-purple.svg)](https://blitz.devnads.com)
